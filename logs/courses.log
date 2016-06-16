@@ -1,0 +1,142 @@
+2016-06-15 21:54:14,426 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 21:54:14,926 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:02:41,562 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:02:42,465 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:03:59,561 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-06-15 22:03:59,566 INFO  - HHH000206: hibernate.properties not found
+2016-06-15 22:03:59,569 INFO  - HHH000021: Bytecode provider name : javassist
+2016-06-15 22:03:59,611 WARN  - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-06-15 22:03:59,927 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-15 22:04:00,104 WARN  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-06-15 22:04:00,114 INFO  - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-15 22:04:00,114 INFO  - HHH10001001: Connection properties: {user=root, password=****}
+2016-06-15 22:04:00,115 INFO  - HHH10001003: Autocommit mode: false
+2016-06-15 22:04:00,122 INFO  - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-06-15 22:04:00,573 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-06-15 22:04:01,510 INFO  - HHH000250: Starting update timestamps cache at region: org.hibernate.cache.spi.UpdateTimestampsCache
+2016-06-15 22:04:01,512 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.spi.UpdateTimestampsCache]; using defaults.
+2016-06-15 22:04:01,536 INFO  - HHH000248: Starting query cache at region: org.hibernate.cache.internal.StandardQueryCache
+2016-06-15 22:04:01,537 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.internal.StandardQueryCache]; using defaults.
+2016-06-15 22:04:02,418 INFO  - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-15 22:09:53,451 INFO  - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-15 22:13:15,772 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:13:16,450 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:13:34,364 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:13:35,162 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-15 22:13:43,928 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:43,962 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:43,981 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:43,996 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,011 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,030 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,047 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,063 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,080 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,098 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,114 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,129 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,144 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,157 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,173 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,191 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,208 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,229 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,246 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,263 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,280 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,296 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,312 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,324 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,340 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,355 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,371 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,388 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-15 22:13:44,403 INFO  - Cobertura: Loaded information on 31 classes.
+2016-06-15 22:13:44,420 INFO  - Cobertura: Saved information on 31 classes.
+2016-06-16 08:35:38,555 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-06-16 08:35:38,629 INFO  - HHH000206: hibernate.properties not found
+2016-06-16 08:35:38,632 INFO  - HHH000021: Bytecode provider name : javassist
+2016-06-16 08:35:38,734 WARN  - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-06-16 08:35:39,512 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-16 08:35:39,621 WARN  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-06-16 08:35:39,627 INFO  - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:35:39,628 INFO  - HHH10001001: Connection properties: {user=root, password=****}
+2016-06-16 08:35:39,628 INFO  - HHH10001003: Autocommit mode: false
+2016-06-16 08:35:39,633 INFO  - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-06-16 08:35:40,228 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-06-16 08:35:41,154 INFO  - HHH000250: Starting update timestamps cache at region: org.hibernate.cache.spi.UpdateTimestampsCache
+2016-06-16 08:35:41,157 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.spi.UpdateTimestampsCache]; using defaults.
+2016-06-16 08:35:41,197 INFO  - HHH000248: Starting query cache at region: org.hibernate.cache.internal.StandardQueryCache
+2016-06-16 08:35:41,197 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.internal.StandardQueryCache]; using defaults.
+2016-06-16 08:35:43,253 INFO  - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-16 08:37:50,015 INFO  - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:38:24,195 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-06-16 08:38:24,199 INFO  - HHH000206: hibernate.properties not found
+2016-06-16 08:38:24,202 INFO  - HHH000021: Bytecode provider name : javassist
+2016-06-16 08:38:24,222 WARN  - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-06-16 08:38:24,369 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-16 08:38:24,466 WARN  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-06-16 08:38:24,474 INFO  - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:38:24,475 INFO  - HHH10001001: Connection properties: {user=root, password=****}
+2016-06-16 08:38:24,475 INFO  - HHH10001003: Autocommit mode: false
+2016-06-16 08:38:24,479 INFO  - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-06-16 08:38:24,981 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-06-16 08:38:25,588 INFO  - HHH000250: Starting update timestamps cache at region: org.hibernate.cache.spi.UpdateTimestampsCache
+2016-06-16 08:38:25,594 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.spi.UpdateTimestampsCache]; using defaults.
+2016-06-16 08:38:25,628 INFO  - HHH000248: Starting query cache at region: org.hibernate.cache.internal.StandardQueryCache
+2016-06-16 08:38:25,629 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.internal.StandardQueryCache]; using defaults.
+2016-06-16 08:38:26,935 INFO  - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-16 08:39:02,855 INFO  - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:39:28,559 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-06-16 08:39:28,561 INFO  - HHH000206: hibernate.properties not found
+2016-06-16 08:39:28,564 INFO  - HHH000021: Bytecode provider name : javassist
+2016-06-16 08:39:28,577 WARN  - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-06-16 08:39:28,768 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-16 08:39:28,855 WARN  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-06-16 08:39:28,860 INFO  - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:39:28,860 INFO  - HHH10001001: Connection properties: {user=root, password=****}
+2016-06-16 08:39:28,860 INFO  - HHH10001003: Autocommit mode: false
+2016-06-16 08:39:28,863 INFO  - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-06-16 08:39:29,270 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-06-16 08:39:29,706 INFO  - HHH000250: Starting update timestamps cache at region: org.hibernate.cache.spi.UpdateTimestampsCache
+2016-06-16 08:39:29,708 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.spi.UpdateTimestampsCache]; using defaults.
+2016-06-16 08:39:29,729 INFO  - HHH000248: Starting query cache at region: org.hibernate.cache.internal.StandardQueryCache
+2016-06-16 08:39:29,729 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.internal.StandardQueryCache]; using defaults.
+2016-06-16 08:39:30,914 INFO  - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-16 08:42:13,166 INFO  - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:43:06,562 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-06-16 08:43:06,564 INFO  - HHH000206: hibernate.properties not found
+2016-06-16 08:43:06,566 INFO  - HHH000021: Bytecode provider name : javassist
+2016-06-16 08:43:06,579 WARN  - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-06-16 08:43:06,710 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-16 08:43:06,807 WARN  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-06-16 08:43:06,811 INFO  - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:43:06,812 INFO  - HHH10001001: Connection properties: {user=root, password=****}
+2016-06-16 08:43:06,812 INFO  - HHH10001003: Autocommit mode: false
+2016-06-16 08:43:06,814 INFO  - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-06-16 08:43:07,258 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-06-16 08:43:07,752 INFO  - HHH000250: Starting update timestamps cache at region: org.hibernate.cache.spi.UpdateTimestampsCache
+2016-06-16 08:43:07,755 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.spi.UpdateTimestampsCache]; using defaults.
+2016-06-16 08:43:07,775 INFO  - HHH000248: Starting query cache at region: org.hibernate.cache.internal.StandardQueryCache
+2016-06-16 08:43:07,775 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.internal.StandardQueryCache]; using defaults.
+2016-06-16 08:43:08,549 INFO  - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-16 08:44:52,399 INFO  - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:45:14,726 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-16 08:45:15,300 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Exception
+2016-06-16 08:50:25,253 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-06-16 08:50:25,256 INFO  - HHH000206: hibernate.properties not found
+2016-06-16 08:50:25,259 INFO  - HHH000021: Bytecode provider name : javassist
+2016-06-16 08:50:25,290 WARN  - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-06-16 08:50:25,622 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-06-16 08:50:25,730 WARN  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-06-16 08:50:25,735 INFO  - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
+2016-06-16 08:50:25,735 INFO  - HHH10001001: Connection properties: {user=root, password=****}
+2016-06-16 08:50:25,735 INFO  - HHH10001003: Autocommit mode: false
+2016-06-16 08:50:25,741 INFO  - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-06-16 08:50:26,101 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-06-16 08:50:27,007 INFO  - HHH000250: Starting update timestamps cache at region: org.hibernate.cache.spi.UpdateTimestampsCache
+2016-06-16 08:50:27,012 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.spi.UpdateTimestampsCache]; using defaults.
+2016-06-16 08:50:27,045 INFO  - HHH000248: Starting query cache at region: org.hibernate.cache.internal.StandardQueryCache
+2016-06-16 08:50:27,048 WARN  - HHH020003: Could not find a specific ehcache configuration for cache named [org.hibernate.cache.internal.StandardQueryCache]; using defaults.
+2016-06-16 08:50:29,059 INFO  - HHH000397: Using ASTQueryTranslatorFactory
+2016-06-16 08:52:51,090 INFO  - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8]
