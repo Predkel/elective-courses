@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - elective_courses@localhost" uuid="4cdc7402-b208-4a7a-a6f2-b374dbd7f4dd">
+    <database-info product="MySQL" version="5.7.9-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="elective_courses"/>
+    <table name="course" schema="" catalog="elective_courses" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="teacher_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FKgtqlaqit9ohaq3yvpxocqxoi5" columns="teacher_id" ref-table="user" ref-schema="" ref-catalog="elective_courses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FKfc6jipdblc0lt2ttxt2jaq9do" table="mark" schema="" catalog="elective_courses" columns="course_id"/>
+      <index name="FKgtqlaqit9ohaq3yvpxocqxoi5" unique="false" columns="teacher_id"/>
+    </table>
+    <table name="hibernate_sequence" schema="" catalog="elective_courses" type="TABLE">
+      <column name="next_val" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+    </table>
+    <table name="mark" schema="" catalog="elective_courses" type="TABLE">
+      <column name="courseId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="studentId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="value" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="course_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="student_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="courseId,studentId"/>
+      <foreign-key name="FKfc6jipdblc0lt2ttxt2jaq9do" columns="course_id" ref-table="course" ref-schema="" ref-catalog="elective_courses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKiih3v4ajlivmswrqo95rp3rq4" columns="student_id" ref-table="user" ref-schema="" ref-catalog="elective_courses" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FKfc6jipdblc0lt2ttxt2jaq9do" unique="false" columns="course_id"/>
+      <index name="FKiih3v4ajlivmswrqo95rp3rq4" unique="false" columns="student_id"/>
+    </table>
+    <table name="user" schema="" catalog="elective_courses" type="TABLE">
+      <column name="DTYPE" sqlType="VARCHAR" precision="31" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="documentId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="firstName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKgtqlaqit9ohaq3yvpxocqxoi5" table="course" schema="" catalog="elective_courses" columns="teacher_id"/>
+      <exported-key name="FKiih3v4ajlivmswrqo95rp3rq4" table="mark" schema="" catalog="elective_courses" columns="student_id"/>
+      <index name="UK_4d9tn03ui42aa3iqvjf6347sw" unique="true" columns="documentId"/>
+    </table>
+  </data-source>
+</component>
