@@ -8,25 +8,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddCourseCommand implements Command {
+public class AddCourseCommand extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(AddCourseCommand.class);
 
-    AddCourseCommand() {
+    public AddCourseCommand(HttpServletRequest request) {
+        super(request);
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            setPathToProcessForm(request);
-            Dispatcher.forward(ADD_COURSE_FORM, request, response);
-        } catch (ServletException | IOException e) {
-            LOGGER.error(e);
-            CommandsFactory.createErrorCommand().execute(request, response);
-        }
+    protected boolean requestIsValid() {
+        return false;
     }
 
-    private void setPathToProcessForm(HttpServletRequest request) {
-        request.setAttribute("processFormPath", request.getServletPath());
+    @Override
+    protected void setContent() {
+
+    }
+
+    @Override
+    protected void goFurther(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected void setExplainingMessage() {
+
+    }
+
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }

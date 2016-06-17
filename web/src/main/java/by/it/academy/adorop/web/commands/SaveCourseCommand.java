@@ -14,59 +14,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SaveCourseCommand implements Command {
+public class SaveCourseCommand extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(SaveCourseCommand.class);
 
     private final TeacherService teacherService;
 
-    public SaveCourseCommand(TeacherService teacherService) {
+    protected SaveCourseCommand(HttpServletRequest request, TeacherService teacherService) {
+        super(request);
         this.teacherService = teacherService;
     }
 
+
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        try {
-            if (RequestParamValidator.isEmpty(title)) {
-                Dispatcher.forwardWithMessage(ADD_COURSE_FORM, request, response, SHOULD_BE_NOT_EMPTY_MESSAGE);
-            } else {
-                Course course = buildCourse(title, description);
-                boolean courseNotExists = saveCourseIfNotExists(course, getCurrentTeacher(request));
-                goFurther(courseNotExists, request, response);
-            }
-        } catch (ServletException | IOException | ServiceException e) {
-            LOGGER.error(e);
-            CommandsFactory.createErrorCommand().execute(request, response);
-        }
+    protected boolean requestIsValid() {
+        return false;
     }
 
-    private void goFurther(boolean isSuccessfulAdding, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isSuccessfulAdding) {
-            goToMain(request, response);
-        } else {
-            Dispatcher.forwardWithMessage(ADD_COURSE_FORM, request, response, THE_SAME_COURSE_ALREADY_EXISTS_MESSAGE);
-        }
+    @Override
+    protected void setContent() {
+
     }
 
-    private void goToMain(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String pathToMain = PathBuilder.buildPath(request, OPERATION_MAIN);
-        response.sendRedirect(pathToMain);
+    @Override
+    protected void goFurther(HttpServletResponse response) {
+
     }
 
-    private boolean saveCourseIfNotExists(Course course, Teacher currentTeacher) throws ServiceException {
-        return teacherService.addCourse(currentTeacher, course);
+    @Override
+    protected void setExplainingMessage() {
+
     }
 
-    private Teacher getCurrentTeacher(HttpServletRequest request) {
-        return (Teacher) request.getSession().getAttribute("teacher");
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) {
+
     }
 
-    private Course buildCourse(String title, String description) {
-        Course course = new Course();
-        course.setTitle(title);
-        course.setDescription(description);
-        return course;
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }

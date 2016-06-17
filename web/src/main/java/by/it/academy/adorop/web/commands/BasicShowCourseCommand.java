@@ -13,37 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public abstract class BasicShowCourseCommand implements Command {
+public abstract class BasicShowCourseCommand extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(BasicShowCourseCommand.class);
 
     private final IdValidator<Course> idValidator;
     final MarkService markService;
 
-    BasicShowCourseCommand(MarkService markService, IdValidator<Course> idValidator) {
-        this.markService = markService;
+    public BasicShowCourseCommand(HttpServletRequest request, IdValidator<Course> idValidator, MarkService markService) {
+        super(request);
         this.idValidator = idValidator;
+        this.markService = markService;
     }
-
-    @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            String courseIdParam = request.getParameter("courseId");
-            if (!idValidator.isValid(courseIdParam)) {
-                Dispatcher.forwardToMainWithFollowTheLinkMessage(request, response);
-            } else {
-                Course course = idValidator.getValidModel();
-                setContent(request, course);
-                forward(request, response, course);
-            }
-        } catch (ServletException | IOException | ServiceException e) {
-            LOGGER.error(e);
-            CommandsFactory.createErrorCommand().execute(request, response);
-        }
-    }
-
-    abstract void setContent(HttpServletRequest request, Course course) throws ServiceException;
-
-    abstract void forward(HttpServletRequest request, HttpServletResponse response, Course course) throws ServletException, IOException;
-
 }

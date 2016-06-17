@@ -23,25 +23,25 @@ public class CommandsFactory {
         Command command;
         String operation = request.getParameter("operation");
         if (isEmpty(operation)) {
-            command = new AuthenticationCommand<>(injectUserService(request));
+            command = new AuthenticationCommand<>(request, injectUserService(request));
         } else if (operation.equals("main")) {
             command = createMainCommand(request);
         } else if (operation.equals("showCourse")) {
             command = createShowCourseCommand(request);
         } else if (operation.equals("registerForTheCourse") && !requestIsFromTeacher(request)) {
-            command = new RegisterForTheCourseCommand(createCourseIdValidator(),
+            command = new RegisterForTheCourseCommand(request, createCourseIdValidator(),
                     StudentServiceImpl.getInstance());
         } else if (operation.equals("evaluate")) {
-            command = new EvaluateCommand(createCourseIdValidator(), new IdValidator<>(MarkServiceImpl.getInstance()),
+            command = new EvaluateCommand(request, createCourseIdValidator(), new IdValidator<>(MarkServiceImpl.getInstance()),
                     TeacherServiceImpl.getInstance());
         } else if (operation.equals("addCourse") && requestIsFromTeacher(request)) {
-            command = new AddCourseCommand();
+            command = new AddCourseCommand(request);
         } else if (operation.equals("saveCourse") && requestIsFromTeacher(request)) {
-            command = new SaveCourseCommand(TeacherServiceImpl.getInstance());
+            command = new SaveCourseCommand(request, TeacherServiceImpl.getInstance());
         } else if (operation.equals("register")) {
-            command = new RegisterCommand();
+            command = new RegisterCommand(request);
         } else if (operation.equals("saveUser")) {
-            command = new SaveUserCommand<>(injectUserService(request));
+            command = new SaveUserCommand<>(request, injectUserService(request));
         } else {
             command = createMainCommand(request);
         }
@@ -49,11 +49,11 @@ public class CommandsFactory {
     }
 
     public static Command createAuthenticationCommand(HttpServletRequest request) {
-        return new AuthenticationCommand<>(injectUserService(request));
+        return new AuthenticationCommand<>(request, injectUserService(request));
     }
 
-    public static Command createErrorCommand() {
-        return new ErrorCommand();
+    public static Command createErrorCommand(HttpServletRequest request) {
+        return new ErrorCommand(request);
     }
 
     private static boolean requestIsFromTeacher(HttpServletRequest request) {
@@ -64,17 +64,17 @@ public class CommandsFactory {
         Command command;
         String servletPath = request.getServletPath();
         if (servletPath.equals("/students")) {
-            command = new ShowCourseForStudentCommand(MarkServiceImpl.getInstance(),
-                    createCourseIdValidator());
+            command = new ShowCourseForStudentCommand(request, createCourseIdValidator(),
+                    MarkServiceImpl.getInstance());
         } else {
-            command = new ShowCourseForTeacherCommand(MarkServiceImpl.getInstance(),
-                    createCourseIdValidator());
+            command = new ShowCourseForTeacherCommand(request, createCourseIdValidator(),
+                    MarkServiceImpl.getInstance());
         }
         return command;
     }
 
     private static Command createMainCommand(HttpServletRequest request) {
-        return new MainCommand(CourseServiceImpl.getInstance(), new PaginatorImpl("course", request));
+        return new MainCommand(request, CourseServiceImpl.getInstance(), new PaginatorImpl("course", request));
     }
 
     private static IdValidator<Course> createCourseIdValidator() {
