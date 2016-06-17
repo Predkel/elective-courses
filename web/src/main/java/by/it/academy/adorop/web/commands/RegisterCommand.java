@@ -29,7 +29,7 @@ public class RegisterCommand extends Command {
     }
 
     @Override
-    protected void goFurther(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+    protected void move(HttpServletResponse response) throws ServiceException, IOException, ServletException {
 
     }
 
