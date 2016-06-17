@@ -19,7 +19,7 @@ public class SecurityStudentsFilter extends BasicFilter {
 
         if (student == null && !"register".equals(operation) && !"saveUser".equals(operation)) {
             Command command = CommandsFactory.createAuthenticationCommand(request);
-            command.execute(request, response);
+            command.execute(response);
         }
         else {
             chain.doFilter(request, response);

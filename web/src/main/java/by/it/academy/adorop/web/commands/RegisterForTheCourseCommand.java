@@ -14,42 +14,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegisterForTheCourseCommand implements Command {
+public class RegisterForTheCourseCommand extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(RegisterForTheCourseCommand.class);
 
     private final IdValidator<Course> idValidator;
     private final StudentService studentService;
 
-    public RegisterForTheCourseCommand(IdValidator<Course> idValidator, StudentService studentService) {
+    public RegisterForTheCourseCommand(HttpServletRequest request, IdValidator<Course> idValidator, StudentService studentService) {
+        super(request);
         this.idValidator = idValidator;
         this.studentService = studentService;
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            String courseIdParam = request.getParameter("courseId");
-            if (!idValidator.isValid(courseIdParam)) {
-                Dispatcher.forwardToMainWithFollowTheLinkMessage(request, response);
-            } else {
-                registerStudentForTheCourse(request);
-                redirectToShowCourse(request, response, courseIdParam);
-            }
-        } catch (ServiceException | IOException | ServletException e) {
-            LOGGER.error(e);
-            CommandsFactory.createErrorCommand().execute(request, response);
-        }
+    protected boolean requestIsValid() {
+        return false;
     }
 
-    private void redirectToShowCourse(HttpServletRequest request, HttpServletResponse response, String courseIdParam) throws IOException {
-        String pathToShowCourse = PathBuilder.buildPath(request, OPERATION_SHOW_COURSE, "courseId", courseIdParam);
-        response.sendRedirect(pathToShowCourse);
+    @Override
+    protected void setContent() {
+
     }
 
-    private void registerStudentForTheCourse(HttpServletRequest request) throws ServiceException {
-        Course course = idValidator.getValidModel();
-        Student student = (Student) request.getSession().getAttribute("student");
-        studentService.registerForTheCourse(student, course);
+    @Override
+    protected void goFurther(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected void setExplainingMessage() {
+
+    }
+
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }

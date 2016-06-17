@@ -8,6 +8,7 @@ import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.IdValidator;
 import by.it.academy.adorop.web.utils.PathBuilder;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,38 +17,38 @@ import java.io.IOException;
 
 class ShowCourseForStudentCommand extends BasicShowCourseCommand {
 
-    ShowCourseForStudentCommand(MarkService markService, IdValidator<Course> idValidator) {
-        super(markService, idValidator);
+
+    public ShowCourseForStudentCommand(HttpServletRequest request, IdValidator<Course> idValidator, MarkService markService) {
+        super(request, idValidator, markService);
     }
 
     @Override
-    void setContent(HttpServletRequest request, Course course) throws ServiceException {
-        request.setAttribute("course", course);
-        Student student = getStudent(request);
-        setIsCourseListener(request, student, course);
-        setPathToRegisterOnTheCourse(request);
+    protected boolean requestIsValid() {
+        return false;
     }
 
     @Override
-    void forward(HttpServletRequest request, HttpServletResponse response, Course course) throws ServletException, IOException {
-        Dispatcher.forward(COURSE_FOR_STUDENTS_PAGE, request, response);
+    protected void setContent() {
+
     }
 
-    private void setPathToRegisterOnTheCourse(HttpServletRequest request) {
-        request.setAttribute("action", PathBuilder.buildPath(request, OPERATION_REGISTER_FOR_THE_COURSE));
+    @Override
+    protected void goFurther(HttpServletResponse response) {
+
     }
 
-    private void setIsCourseListener(HttpServletRequest request, Student student, Course course) throws ServiceException {
-        Mark mark = markService.getByStudentAndCourse(student, course);
-        boolean isCourseListener = false;
-        if (mark != null) {
-            isCourseListener = true;
-            request.setAttribute("mark", mark);
-        }
-        request.setAttribute("isCourseListener", isCourseListener);
+    @Override
+    protected void setExplainingMessage() {
+
     }
 
-    private Student getStudent(HttpServletRequest request) {
-        return  (Student) request.getSession().getAttribute("student");
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }

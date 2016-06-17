@@ -7,6 +7,7 @@ import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.web.utils.CourseSecurity;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.IdValidator;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,32 +16,38 @@ import java.io.IOException;
 
 class ShowCourseForTeacherCommand extends BasicShowCourseCommand {
 
-    ShowCourseForTeacherCommand(MarkService markService, IdValidator<Course> idValidator) {
-        super(markService, idValidator);
+
+    public ShowCourseForTeacherCommand(HttpServletRequest request, IdValidator<Course> idValidator, MarkService markService) {
+        super(request, idValidator, markService);
     }
 
     @Override
-    void setContent(HttpServletRequest request, Course course) throws ServiceException {
-        if (CourseSecurity.isTeacherOfTheCourse(getTeacher(request), course)) {
-            request.setAttribute("marks", markService.getByCourse(course));
-            setPathToProcessEvaluate(request);
-        }
+    protected boolean requestIsValid() {
+        return false;
     }
 
     @Override
-    void forward(HttpServletRequest request, HttpServletResponse response, Course course) throws ServletException, IOException {
-        if (!CourseSecurity.isTeacherOfTheCourse(getTeacher(request), course)) {
-            Dispatcher.forwardToMainWithFollowTheLinkMessage(request, response);
-        } else {
-            Dispatcher.forward(COURSE_FOR_TEACHER_PAGE, request, response);
-        }
+    protected void setContent() {
+
     }
 
-    private void setPathToProcessEvaluate(HttpServletRequest request) {
-        request.setAttribute("action", request.getServletPath());
+    @Override
+    protected void goFurther(HttpServletResponse response) {
+
     }
 
-    private Teacher getTeacher(HttpServletRequest request) {
-        return (Teacher) request.getSession().getAttribute("teacher");
+    @Override
+    protected void setExplainingMessage() {
+
+    }
+
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }

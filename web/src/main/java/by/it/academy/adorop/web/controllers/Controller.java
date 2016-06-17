@@ -23,10 +23,10 @@ public class Controller extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
             Command command = CommandsFactory.createCommand(request);
-            command.execute(request, response);
+            command.execute(response);
         } catch (Exception e) {
-            Command errorCommand = CommandsFactory.createErrorCommand();
-            errorCommand.execute(request, response);
+            Command errorCommand = CommandsFactory.createErrorCommand(request);
+            errorCommand.execute(response);
         }
     }
     @Override

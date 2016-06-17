@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AuthenticationCommand<T extends User> implements Command {
+public class AuthenticationCommand<T extends User> extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(AuthenticationCommand.class);
     static final String AUTHENTICATION_PAGE = "views/authentication.jsp";
@@ -19,42 +19,39 @@ public class AuthenticationCommand<T extends User> implements Command {
 
     private final UserService<T> userService;
 
-    AuthenticationCommand(UserService<T> userService) {
+    public AuthenticationCommand(HttpServletRequest request, UserService<T> userService) {
+        super(request);
         this.userService = userService;
     }
 
+
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        String documentId = request.getParameter("documentId");
-        String password = request.getParameter("password");
-        try {
-            if (RequestParamValidator.areEmpty(documentId, password)) {
-                sendToAuthenticationPage(request, response);
-            } else {
-                if (userService.isValid(documentId, password)) {
-                    T validUser = userService.getByDocumentId(documentId);
-                    request.getSession().setAttribute(buildNameOfUserForSessionAttribute(validUser), validUser);
-                    response.sendRedirect(buildPathToMain(request));
-                } else {
-                    request.setAttribute("failedAttemptMessage", FAILED_ATTEMPT_MESSAGE);
-                    sendToAuthenticationPage(request, response);
-                }
-            }
-        } catch (ServletException | IOException | ServiceException e) {
-            LOGGER.error(e);
-            CommandsFactory.createErrorCommand().execute(request, response);
-        }
+    protected boolean requestIsValid() {
+        return false;
     }
 
-    private String buildNameOfUserForSessionAttribute(T user) {
-        return user.getClass().getSimpleName().toLowerCase();
+    @Override
+    protected void setContent() {
+
     }
 
-    private void sendToAuthenticationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(AUTHENTICATION_PAGE).forward(request, response);
+    @Override
+    protected void goFurther(HttpServletResponse response) {
+
     }
 
-    private String buildPathToMain(HttpServletRequest request) {
-        return request.getServletPath() + "?operation=main";
+    @Override
+    protected void setExplainingMessage() {
+
+    }
+
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }

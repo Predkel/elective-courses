@@ -12,46 +12,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MainCommand implements Command {
+public class MainCommand extends Command {
 
     private static final Logger LOGGER = Logger.getLogger(MainCommand.class);
 
     private final CourseService courseService;
     private final Paginator paginator;
 
-    public MainCommand(CourseService courseService, Paginator paginator) {
+    public MainCommand(HttpServletRequest request, CourseService courseService, Paginator paginator) {
+        super(request);
         this.courseService = courseService;
         this.paginator = paginator;
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            setContent(request);
-            Dispatcher.forward(MAIN_PAGE, request, response);
-        } catch (ServletException | IOException | ServiceException e) {
-            LOGGER.error(e);
-            CommandsFactory.createErrorCommand().execute(request, response);
-        }
+    protected boolean requestIsValid() throws ServiceException, IOException, ServletException {
+        return false;
     }
 
-    private void setContent(HttpServletRequest request) throws ServiceException {
-        setCourses(request);
-        request.setAttribute("pathToProcessCourseLink", PathBuilder.buildPath(request, OPERATION_SHOW_COURSE));
-        request.setAttribute("pathToProcessPagination", PathBuilder.buildPath(request, OPERATION_MAIN));
+    @Override
+    protected void setContent() throws ServiceException, IOException, ServletException {
+
     }
 
-    private void setCourses(HttpServletRequest request) throws ServiceException {
-        Long totalCount = courseService.getTotalCount();
-        paginator.setTotalNumberOfEntities(totalCount);
-        int firstResult = paginator.defineFirstResult();
-        int maxResult = paginator.defineMaxResult();
-        setRange(request, totalCount, firstResult, maxResult);
-        request.setAttribute("courses", courseService.getBunch(firstResult, maxResult));
+    @Override
+    protected void goFurther(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+
     }
 
-    private void setRange(HttpServletRequest request, Long totalCount, int firstResult, int maxResult) {
-        request.setAttribute("isTheFirstPage", firstResult == 0);
-        request.setAttribute("isTheLastPage", firstResult + maxResult >= totalCount);
+    @Override
+    protected void setExplainingMessage() throws ServiceException, IOException, ServletException {
+
+    }
+
+    @Override
+    protected void sendToRelevantPage(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return null;
     }
 }
