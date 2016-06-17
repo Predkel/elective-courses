@@ -3,7 +3,6 @@ package by.it.academy.adorop.web.commands;
 import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
@@ -19,30 +18,27 @@ import static by.it.academy.adorop.web.utils.Constants.*;
 
 public class AuthenticationCommand<T extends User> extends Command {
 
-    private static final Logger LOGGER = Logger.getLogger(AuthenticationCommand.class);
-    static final String AUTHENTICATION_PAGE = "views/authentication.jsp";
-    static final String FAILED_ATTEMPT_MESSAGE = "Invalid combination of login and password";
-
     private final UserService<T> userService;
-    private final String documentId;
-    private final String password;
+    private final String documentIdParameter;
+    private final String passwordParameter;
 
     public AuthenticationCommand(HttpServletRequest request, UserService<T> userService) {
         super(request);
         this.userService = userService;
-        documentId = request.getParameter("documentId");
-        password = request.getParameter("password");
+        documentIdParameter = request.getParameter("documentId");
+        passwordParameter = request.getParameter("password");
     }
 
 
     @Override
     protected boolean requestIsValid() throws ServiceException {
-        return !RequestParamValidator.areEmpty(documentId, password) && userService.isValid(documentId, password);
+        return !RequestParamValidator.areEmpty(documentIdParameter, passwordParameter)
+                && userService.isValid(documentIdParameter, passwordParameter);
     }
 
     @Override
     protected void setContent() throws ServiceException {
-        T validUser = userService.getByDocumentId(documentId);
+        T validUser = userService.getByDocumentId(documentIdParameter);
         String nameOfAttribute = defineNameOfAttribute(validUser);
         getSession().setAttribute(nameOfAttribute, validUser);
     }
@@ -64,7 +60,7 @@ public class AuthenticationCommand<T extends User> extends Command {
     @Override
     protected void setExplainingMessage() {
         String explainingMessage;
-        if (RequestParamValidator.areEmpty(documentId, password)) {
+        if (RequestParamValidator.areEmpty(documentIdParameter, passwordParameter)) {
             explainingMessage = SHOULD_BE_NOT_EMPTY_MESSAGE;
         } else {
             explainingMessage = INVALID_USER_MESSAGE;
