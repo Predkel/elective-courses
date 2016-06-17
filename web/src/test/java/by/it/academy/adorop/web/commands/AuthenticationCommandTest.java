@@ -3,7 +3,6 @@ package by.it.academy.adorop.web.commands;
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.UserService;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
@@ -22,8 +21,7 @@ import static org.mockito.Mockito.when;
 
 public class AuthenticationCommandTest extends BasicCommandTest {
 
-    private static final String ANY_STRING = "";
-    private final String ANY_PATH = "any path";
+    private static final String ANY_PATH = "any path";
     @Mock
     UserService userService;
 
@@ -37,7 +35,6 @@ public class AuthenticationCommandTest extends BasicCommandTest {
     @Test
     public void requestIsValidShouldReturnFalseWhenOneOfParametersIsEmpty() throws Exception {
         PowerMockito.when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(true);
-//        buildCommand(ANY_STRING, ANY_STRING);
         assertFalse(command.requestIsValid());
     }
 
@@ -45,7 +42,6 @@ public class AuthenticationCommandTest extends BasicCommandTest {
     public void requestIsValidShouldReturnFalseWhenUserWithGivenDocumentIdAndPasswordDoesNotExist() throws Exception {
         PowerMockito.when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(false);
         when(userService.isValid(anyString(), anyString())).thenReturn(false);
-//        buildCommand(ANY_STRING, ANY_STRING);
         assertFalse(command.requestIsValid());
     }
 
@@ -53,7 +49,6 @@ public class AuthenticationCommandTest extends BasicCommandTest {
     public void requestIsValidShouldReturnTrueWhenUserWithGivenParametersExists() throws Exception {
         PowerMockito.when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(false);
         when(userService.isValid(anyString(), anyString())).thenReturn(true);
-//        buildCommand(ANY_STRING, ANY_STRING);
         assertTrue(command.requestIsValid());
     }
 
@@ -73,25 +68,26 @@ public class AuthenticationCommandTest extends BasicCommandTest {
         verify(session).setAttribute("teacher", teacher);
     }
 
+//    @Test
+//    public void setContentShouldSetPathToProcessRegistration() throws Exception {
+//        PowerMockito.when(PathBuilder.buildPath(anyObject(), anyString())).thenReturn(ANY_PATH);
+//        command.setContent();
+//        PowerMockito.verifyStatic();
+//        PathBuilder.buildPath(request, OPERATION_REGISTER);
+//        verify(request).setAttribute("pathToProcessRegistration", ANY_PATH);
+//    }
+
     @Test
-    public void goFurtherShouldRedirectToMain() throws Exception {
+    public void moveShouldRedirectToMain() throws Exception {
         when(PathBuilder.buildPath(anyObject(), anyString())).thenReturn(ANY_PATH);
-        command.goFurther(response);
+        command.move(response);
         PowerMockito.verifyStatic();
         PathBuilder.buildPath(request, OPERATION_MAIN);
         verify(response).sendRedirect(ANY_PATH);
     }
 
     @Test
-    public void setExplainingMessageShouldSetRelevantMessageIfParametersAreEmpty() throws Exception {
-        when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(true);
-        command.setExplainingMessage();
-        verify(request).setAttribute("message", SHOULD_BE_NOT_EMPTY_MESSAGE);
-    }
-
-    @Test
     public void setExplainingMessageShouldSetRelevantMessageIfUserIsNotValid() throws Exception {
-        when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(false);
         when(userService.isValid(anyString(), anyString())).thenReturn(false);
         command.setExplainingMessage();
         verify(request).setAttribute("message", INVALID_USER_MESSAGE);
@@ -103,11 +99,4 @@ public class AuthenticationCommandTest extends BasicCommandTest {
         PowerMockito.verifyStatic();
         Dispatcher.forward(AUTHENTICATION_PAGE, request, response);
     }
-
-    //    @SuppressWarnings("unchecked")
-//    private void buildCommand(String documentId, String password) {
-//        when(request.getParameter("documentId")).thenReturn(documentId);
-//        when(request.getParameter("password")).thenReturn(password);
-//        command = new AuthenticationCommand<>(request, userService);
-//    }
 }

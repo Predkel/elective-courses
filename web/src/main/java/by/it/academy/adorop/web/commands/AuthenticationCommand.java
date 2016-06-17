@@ -38,6 +38,15 @@ public class AuthenticationCommand<T extends User> extends Command {
 
     @Override
     protected void setContent() throws ServiceException {
+        putUserIntoSession();
+        setPathToProcessRegistration();
+    }
+
+    private void setPathToProcessRegistration() {
+        request.setAttribute("pathToProcessRegistration", PathBuilder.buildPath(request, OPERATION_REGISTER));
+    }
+
+    private void putUserIntoSession() throws ServiceException {
         T validUser = userService.getByDocumentId(documentIdParameter);
         String nameOfAttribute = defineNameOfAttribute(validUser);
         getSession().setAttribute(nameOfAttribute, validUser);
@@ -52,20 +61,16 @@ public class AuthenticationCommand<T extends User> extends Command {
     }
 
     @Override
-    protected void goFurther(HttpServletResponse response) throws IOException {
+    protected void move(HttpServletResponse response) throws IOException {
         String pathToMain = PathBuilder.buildPath(request, OPERATION_MAIN);
         response.sendRedirect(pathToMain);
     }
 
     @Override
-    protected void setExplainingMessage() {
-        String explainingMessage;
-        if (RequestParamValidator.areEmpty(documentIdParameter, passwordParameter)) {
-            explainingMessage = SHOULD_BE_NOT_EMPTY_MESSAGE;
-        } else {
-            explainingMessage = INVALID_USER_MESSAGE;
+    protected void setExplainingMessage() throws ServiceException {
+        if (!RequestParamValidator.areEmpty(documentIdParameter, passwordParameter)) {
+            request.setAttribute("message", INVALID_USER_MESSAGE);
         }
-        request.setAttribute("message", explainingMessage);
     }
 
     @Override
