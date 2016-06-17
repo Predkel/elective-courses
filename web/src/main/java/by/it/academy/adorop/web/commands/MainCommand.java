@@ -19,8 +19,6 @@ import static by.it.academy.adorop.web.utils.Constants.*;
 
 public class MainCommand extends Command {
 
-    private static final Logger LOGGER = Logger.getLogger(MainCommand.class);
-
     private final CourseService courseService;
     private final Paginator paginator;
 
