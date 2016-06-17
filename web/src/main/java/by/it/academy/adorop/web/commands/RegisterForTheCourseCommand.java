@@ -38,7 +38,7 @@ public class RegisterForTheCourseCommand extends Command {
     }
 
     @Override
-    protected void goFurther(HttpServletResponse response) {
+    protected void move(HttpServletResponse response) {
 
     }
 

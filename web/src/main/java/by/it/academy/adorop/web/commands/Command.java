@@ -10,10 +10,6 @@ import java.io.IOException;
 
 public abstract class Command {
 
-
-
-    String MAIN_PAGE = "views/main.jsp";
-    String OPERATION_SHOW_COURSE = "showCourse";
     String COURSE_FOR_STUDENTS_PAGE = "views/courseForStudent.jsp";
     String COURSE_FOR_TEACHER_PAGE = "views/courseForTeacher.jsp";
     String ADD_COURSE_FORM = "views/addCourseForm.jsp";
@@ -34,8 +30,7 @@ public abstract class Command {
         try {
             if (requestIsValid()) {
                 setContent();
-                //TODO имя!
-                goFurther(response);
+                move(response);
             } else {
                 setExplainingMessage();
                 //TODO имя
@@ -51,7 +46,7 @@ public abstract class Command {
 
     protected abstract void setContent() throws ServiceException, IOException, ServletException;
 
-    protected abstract void goFurther(HttpServletResponse response) throws ServiceException, IOException, ServletException;
+    protected abstract void move(HttpServletResponse response) throws ServiceException, IOException, ServletException;
 
     protected abstract void setExplainingMessage() throws ServiceException, IOException, ServletException;
 

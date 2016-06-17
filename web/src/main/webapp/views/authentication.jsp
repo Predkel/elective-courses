@@ -7,13 +7,13 @@
 <body>
 <h1>Authentication</h1>
 
-${failedAttemptMessage}
+${message}
 
 <form method="post" action="${requestScope.processFormPath}">
   Document Id:  <input type="text" name="documentId"><br>
   Password:     <input type="password" name="password"><br>
                 <input type="submit" value="Enter"><br>
 </form>
-<a href="${requestScope.processFormPath}?operation=register">Register</a>
+<a href="${requestScope.pathToProcessRegistration}">Register</a>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class SaveUserCommand<T extends User> extends Command {
     }
 
     @Override
-    protected void goFurther(HttpServletResponse response) {
+    protected void move(HttpServletResponse response) {
 
     }
 
