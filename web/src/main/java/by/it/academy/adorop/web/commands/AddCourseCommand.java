@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddCourseCommand extends Command {
+public class AddCourseCommand extends BasicCommandVerifyingRequest {
 
     private static final Logger LOGGER = Logger.getLogger(AddCourseCommand.class);
 

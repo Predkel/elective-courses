@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegisterForTheCourseCommand extends Command {
+public class RegisterForTheCourseCommand extends BasicCommandVerifyingRequest {
 
     private static final Logger LOGGER = Logger.getLogger(RegisterForTheCourseCommand.class);
 

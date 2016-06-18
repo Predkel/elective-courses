@@ -21,9 +21,4 @@ public class Dispatcher {
         forward(path, request, response);
 
     }
-
-    public static void forwardToMainWithFollowTheLinkMessage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String pathToMain = PathBuilder.buildPath(request, Constants.OPERATION_MAIN);
-        forwardWithMessage(pathToMain, request, response, Command.FOLLOW_THE_LINK_MESSAGE);
-    }
 }

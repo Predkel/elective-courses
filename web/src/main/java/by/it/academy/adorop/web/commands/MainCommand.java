@@ -17,7 +17,7 @@ import java.util.List;
 
 import static by.it.academy.adorop.web.utils.Constants.*;
 
-public class MainCommand extends Command {
+public class MainCommand extends BasicCommand {
 
     private final CourseService courseService;
     private final Paginator paginator;
@@ -29,12 +29,7 @@ public class MainCommand extends Command {
     }
 
     @Override
-    protected boolean requestIsValid() throws ServiceException, IOException, ServletException {
-        return true;
-    }
-
-    @Override
-    protected void setContent() throws ServiceException, IOException, ServletException {
+    protected void setContent() throws ServiceException {
         Long totalCount = courseService.getTotalCount();
         paginator.setTotalNumberOfEntities(totalCount);
         int firstResult = paginator.defineFirstResult();
@@ -60,18 +55,8 @@ public class MainCommand extends Command {
     }
 
     @Override
-    protected void move(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+    protected void move(HttpServletResponse response) throws ServletException, IOException {
         Dispatcher.forward(MAIN_PAGE, request, response);
-    }
-
-    @Override
-    protected void setExplainingMessage() throws ServiceException, IOException, ServletException {
-
-    }
-
-    @Override
-    protected void sendToRelevantPage(HttpServletResponse response) throws ServiceException, IOException, ServletException {
-
     }
 
     @Override

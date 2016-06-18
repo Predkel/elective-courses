@@ -19,7 +19,7 @@ import static org.mockito.Matchers.anyVararg;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class AuthenticationCommandTest extends BasicCommandTest {
+public class AuthenticationCommandTest extends BasicCommandVerifyingRequestTest {
 
     private static final String ANY_PATH = "any path";
     @Mock
@@ -67,15 +67,6 @@ public class AuthenticationCommandTest extends BasicCommandTest {
         command.setContent();
         verify(session).setAttribute("teacher", teacher);
     }
-
-//    @Test
-//    public void setContentShouldSetPathToProcessRegistration() throws Exception {
-//        PowerMockito.when(PathBuilder.buildPath(anyObject(), anyString())).thenReturn(ANY_PATH);
-//        command.setContent();
-//        PowerMockito.verifyStatic();
-//        PathBuilder.buildPath(request, OPERATION_REGISTER);
-//        verify(request).setAttribute("pathToProcessRegistration", ANY_PATH);
-//    }
 
     @Test
     public void moveShouldRedirectToMain() throws Exception {
