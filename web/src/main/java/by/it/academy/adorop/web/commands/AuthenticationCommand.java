@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import static by.it.academy.adorop.web.utils.Constants.*;
 
-public class AuthenticationCommand<T extends User> extends Command {
+public class AuthenticationCommand<T extends User> extends BasicCommandVerifyingRequest {
 
     private final UserService<T> userService;
     private final String documentIdParameter;

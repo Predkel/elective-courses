@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BasicCommandTest extends CommandTest {
+public class BasicCommandVerifyingRequestTest extends CommandTest {
 
-    BasicCommand command;
+    BasicCommandVerifyingRequest command;
 
     @Test
     public void testGetLogger() throws Exception {

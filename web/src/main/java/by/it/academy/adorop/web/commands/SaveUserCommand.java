@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SaveUserCommand<T extends User> extends Command {
+public class SaveUserCommand<T extends User> extends BasicCommandVerifyingRequest {
 
     private static final Logger LOGGER = Logger.getLogger(SaveUserCommand.class);
     private final UserService<T> userService;

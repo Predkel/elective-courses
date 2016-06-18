@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public abstract class BasicShowCourseCommand extends Command {
+public abstract class BasicShowCourseCommand extends BasicCommandVerifyingRequest {
 
     private static final Logger LOGGER = Logger.getLogger(BasicShowCourseCommand.class);
 

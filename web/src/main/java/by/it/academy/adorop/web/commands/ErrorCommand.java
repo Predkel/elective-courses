@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-class ErrorCommand extends Command {
+class ErrorCommand extends BasicCommand {
 
     private static final String ERROR_PAGE = "views/error.jsp";
     private static final Logger logger = Logger.getLogger(ErrorCommand.class);
@@ -17,28 +17,14 @@ class ErrorCommand extends Command {
         super(request);
     }
 
-    @Override
-    protected boolean requestIsValid() throws ServiceException, IOException, ServletException {
-        return false;
-    }
 
     @Override
-    protected void setContent() throws ServiceException, IOException, ServletException {
+    protected void setContent() throws ServiceException {
 
     }
 
     @Override
-    protected void move(HttpServletResponse response) throws ServiceException, IOException, ServletException {
-
-    }
-
-    @Override
-    protected void setExplainingMessage() throws ServiceException, IOException, ServletException {
-
-    }
-
-    @Override
-    protected void sendToRelevantPage(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+    protected void move(HttpServletResponse response) throws IOException{
 
     }
 

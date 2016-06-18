@@ -41,11 +41,6 @@ public class MainCommandTest extends BasicCommandTest {
     }
 
     @Test
-    public void requestIsValidShouldReturnTrue() throws Exception {
-        assertTrue(command.requestIsValid());
-    }
-
-    @Test
     public void setContentShouldGetCountOfCoursesAndPassItToPaginator() throws ServiceException, IOException, ServletException {
         when(courseService.getTotalCount()).thenReturn(TOTAL_COUNT);
         command.setContent();

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegisterCommand extends Command {
+public class RegisterCommand extends BasicCommandVerifyingRequest {
 
     private static final Logger LOGGER = Logger.getLogger(RegisterCommand.class);
 
@@ -19,27 +19,27 @@ public class RegisterCommand extends Command {
 
 
     @Override
-    protected boolean requestIsValid() throws ServiceException, IOException, ServletException {
+    protected boolean requestIsValid() {
         return false;
     }
 
     @Override
-    protected void setContent() throws ServiceException, IOException, ServletException {
+    protected void setContent() {
 
     }
 
     @Override
-    protected void move(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+    protected void move(HttpServletResponse response) {
 
     }
 
     @Override
-    protected void setExplainingMessage() throws ServiceException, IOException, ServletException {
+    protected void setExplainingMessage() {
 
     }
 
     @Override
-    protected void sendToRelevantPage(HttpServletResponse response) throws ServiceException, IOException, ServletException {
+    protected void sendToRelevantPage(HttpServletResponse response) {
 
     }
 
