@@ -2,6 +2,7 @@ package by.it.academy.adorop.web.commands;
 
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.users.Teacher;
+import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.web.utils.CourseSecurity;
@@ -17,8 +18,12 @@ import java.io.IOException;
 class ShowCourseForTeacherCommand extends BasicShowCourseCommand {
 
 
-    public ShowCourseForTeacherCommand(HttpServletRequest request, IdValidator<Course> idValidator, MarkService markService) {
-        super(request, idValidator, markService);
+    public ShowCourseForTeacherCommand(HttpServletRequest request) {
+        super(request);
+    }
+
+    ShowCourseForTeacherCommand(HttpServletRequest request, MarkService markService, CourseService courseService) {
+        super(request, markService, courseService);
     }
 
     @Override

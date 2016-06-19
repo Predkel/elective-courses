@@ -64,11 +64,9 @@ public class CommandsFactory {
         Command command;
         String servletPath = request.getServletPath();
         if (servletPath.equals("/students")) {
-            command = new ShowCourseForStudentCommand(request, createCourseIdValidator(),
-                    MarkServiceImpl.getInstance());
+            command = new ShowCourseForStudentCommand(request);
         } else {
-            command = new ShowCourseForTeacherCommand(request, createCourseIdValidator(),
-                    MarkServiceImpl.getInstance());
+            command = new ShowCourseForTeacherCommand(request);
         }
         return command;
     }

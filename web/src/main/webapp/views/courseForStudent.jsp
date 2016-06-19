@@ -28,7 +28,7 @@
     </tr>
   </table>
 <c:if test="${!requestScope.isCourseListener}">
-  <a href="${requestScope.action}&courseId=${requestScope.course.id}">Register for the course</a>
+  <a href="${requestScope.pathToProcessRegistrationForTheCourse}">Register for the course</a>
 </c:if>
 </body>
 </html>

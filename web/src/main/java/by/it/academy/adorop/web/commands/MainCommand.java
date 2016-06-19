@@ -3,7 +3,6 @@ package by.it.academy.adorop.web.commands;
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
 import by.it.academy.adorop.web.utils.pagination.Paginator;
@@ -36,7 +35,7 @@ public class MainCommand extends BasicCommand {
         int maxResult = paginator.defineMaxResult();
         setCourses(firstResult, maxResult);
         setRange(firstResult, maxResult, totalCount);
-        setLinks();
+        setPathToProcessLinks();
     }
 
     private void setCourses(int firstResult, int maxResult) throws ServiceException {
@@ -44,7 +43,7 @@ public class MainCommand extends BasicCommand {
         request.setAttribute("courses", courses);
     }
 
-    private void setLinks() {
+    private void setPathToProcessLinks() {
         request.setAttribute("pathToProcessPagination", PathBuilder.buildPath(request, OPERATION_MAIN));
         request.setAttribute("pathToProcessCourseLink", PathBuilder.buildPath(request, OPERATION_SHOW_COURSE));
     }

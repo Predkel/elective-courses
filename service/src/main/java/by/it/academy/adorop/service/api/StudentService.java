@@ -6,4 +6,5 @@ import by.it.academy.adorop.service.exceptions.ServiceException;
 
 public interface StudentService extends UserService<Student> {
     void registerForTheCourse(Student student, Course course) throws ServiceException;
+    boolean isCourseListener(Student student, Course course) throws ServiceException;
 }
