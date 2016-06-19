@@ -7,7 +7,6 @@ import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.service.implementations.CourseServiceImpl;
 import by.it.academy.adorop.service.implementations.StudentServiceImpl;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
@@ -54,7 +53,7 @@ public class RegisterForTheCourseCommand extends BasicCommandVerifyingRequest {
 
     @Override
     protected void setExplainingMessage() {
-        request.setAttribute("message", REGISTER_FOR_THE_COURSE_MESSAGE);
+        request.setAttribute("message", FAILED_REGISTER_FOR_THE_COURSE_MESSAGE);
     }
 
     @Override

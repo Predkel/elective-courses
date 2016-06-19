@@ -21,4 +21,9 @@ public class Dispatcher {
         forward(path, request, response);
 
     }
+
+    public static void forwardToMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String pathToMain = PathBuilder.buildPath(request, Constants.OPERATION_MAIN);
+        forward(pathToMain, request, response);
+    }
 }
