@@ -87,24 +87,7 @@ public class TeacherServiceTest {
     }
 
     @Test
-    public void addCourseShouldReturnFalseWhenTeacherAlreadyHasSameCourse() throws Exception {
-        when(teacher.addCourse(anyObject())).thenReturn(false);
-        assertFalse(teacherService.addCourse(teacher, new Course()));
-    }
-
-    @Test
-    public void addCourseShouldReturnTrueWhenCourseIsNew() throws Exception {
-        whenCourseIsNew();
-        assertTrue(teacherService.addCourse(teacher, new Course()));
-    }
-
-    private void whenCourseIsNew() {
-        when(teacher.addCourse(anyObject())).thenReturn(true);
-    }
-
-    @Test
     public void addCourseShouldCommitChanges() throws Exception {
-        whenCourseIsNew();
         teacherService.addCourse(teacher, new Course());
         verify(userDAO).update(teacher);
         verify(transaction).commit();

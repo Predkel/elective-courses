@@ -43,21 +43,15 @@ public class TeacherServiceImpl extends BasicUserService<Teacher> implements Tea
     }
 
     @Override
-    public boolean addCourse(Teacher teacher, Course course) throws ServiceException {
-        boolean isSuccessful = true;
-        if (!teacher.addCourse(course))
-            isSuccessful = false;
-        else {
-            try {
-                transaction = HibernateUtils.beginTransaction();
-                userDAO.update(teacher);
-                transaction.commit();
-            } catch (DaoException e) {
-                isSuccessful = false;
-                catchDaoException(e);
-            }
+    public void addCourse(Teacher teacher, Course course) throws ServiceException {
+        try {
+            teacher.addCourse(course);
+            transaction = HibernateUtils.beginTransaction();
+            userDAO.update(teacher);
+            transaction.commit();
+        } catch (DaoException e) {
+            catchDaoException(e);
         }
-        return isSuccessful;
     }
 
     @Override
