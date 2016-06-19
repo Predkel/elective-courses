@@ -63,16 +63,16 @@ public class ShowCourseForTeacherCommandTest extends BasicShowCourseCommandTest 
     }
 
     @Test
-    public void setContentShouldSetPathToTeachersController() throws Exception {
-        command.setContent();
+    public void prepareResponseShouldSetPathToTeachersController() throws Exception {
+        command.prepareResponse();
         verify(request).setAttribute("pathToTeachersController", PATH_TO_CONTROLLER);
     }
 
     @Test
-    public void setContentShouldSetMarksOfGivenCourse() throws Exception {
+    public void prepareResponseShouldSetMarksOfGivenCourse() throws Exception {
         ArrayList<Mark> marks = new ArrayList<>();
         when(markService.getByCourse(anyObject())).thenReturn(marks);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("marks", marks);
     }
 }

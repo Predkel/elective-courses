@@ -40,7 +40,7 @@ public abstract class BasicCommandVerifyingRequest extends BasicCommand {
 
     protected abstract boolean requestIsValid() throws ServiceException;
 
-    protected abstract void setContent() throws ServiceException;
+    protected abstract void prepareResponse() throws ServiceException;
 
     protected abstract void move(HttpServletResponse response) throws IOException, ServletException;
 

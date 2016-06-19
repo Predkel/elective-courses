@@ -35,7 +35,7 @@ public class EvaluateCommand extends BasicCommandVerifyingRequest {
     }
 
     @Override
-    protected void setContent() {
+    protected void prepareResponse() {
 
     }
 

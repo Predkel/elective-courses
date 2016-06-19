@@ -53,18 +53,18 @@ public class AuthenticationCommandTest extends BasicCommandVerifyingRequestTest 
     }
 
     @Test
-    public void setContentShouldPutStudentIntoSessionWhenRequestIsFromStudent() throws Exception {
+    public void prepareResponseShouldPutStudentIntoSessionWhenRequestIsFromStudent() throws Exception {
         Student student = new Student();
         when(userService.getByDocumentId(anyString())).thenReturn(student);
-        command.setContent();
+        command.prepareResponse();
         verify(session).setAttribute("student", student);
     }
 
     @Test
-    public void setContentShouldPutTeacherIntoSessionWhenRequestIsFromTeacher() throws Exception {
+    public void prepareResponseShouldPutTeacherIntoSessionWhenRequestIsFromTeacher() throws Exception {
         Teacher teacher = new Teacher();
         when(userService.getByDocumentId(anyString())).thenReturn(teacher);
-        command.setContent();
+        command.prepareResponse();
         verify(session).setAttribute("teacher", teacher);
     }
 

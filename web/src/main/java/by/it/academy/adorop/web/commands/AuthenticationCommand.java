@@ -37,7 +37,7 @@ public class AuthenticationCommand<T extends User> extends BasicCommandVerifying
     }
 
     @Override
-    protected void setContent() throws ServiceException {
+    protected void prepareResponse() throws ServiceException {
         putUserIntoSession();
         setPathToProcessRegistration();
     }

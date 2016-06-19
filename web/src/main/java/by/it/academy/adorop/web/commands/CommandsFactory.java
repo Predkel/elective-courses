@@ -29,8 +29,7 @@ public class CommandsFactory {
         } else if (operation.equals("showCourse")) {
             command = createShowCourseCommand(request);
         } else if (operation.equals("registerForTheCourse") && !requestIsFromTeacher(request)) {
-            command = new RegisterForTheCourseCommand(request, createCourseIdValidator(),
-                    StudentServiceImpl.getInstance());
+            command = new RegisterForTheCourseCommand(request);
         } else if (operation.equals("evaluate")) {
             command = new EvaluateCommand(request, createCourseIdValidator(), new IdValidator<>(MarkServiceImpl.getInstance()),
                     TeacherServiceImpl.getInstance());
