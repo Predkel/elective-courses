@@ -14,7 +14,7 @@
         <td>
           <c:choose>
             <c:when test="${mark.value == null}">
-              <form action="${requestScope.action}" method="post">
+              <form action="${requestScope.pathToTeachersController}" method="post">
                 <input type="text" name="markValue">
                 <input type="hidden" name="markId" value="${mark.id}">
                 <input type="hidden" name="courseId" value="${mark.course.id}">
