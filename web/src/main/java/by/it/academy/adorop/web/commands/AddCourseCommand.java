@@ -1,5 +1,6 @@
 package by.it.academy.adorop.web.commands;
 
+import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import org.apache.log4j.Logger;
 
@@ -8,41 +9,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddCourseCommand extends BasicCommandVerifyingRequest {
+import static by.it.academy.adorop.web.utils.Constants.*;
 
-    private static final Logger LOGGER = Logger.getLogger(AddCourseCommand.class);
+public class AddCourseCommand extends BasicCommand {
 
-    public AddCourseCommand(HttpServletRequest request) {
+    private static final String TEACHERS_CONTROLLER_PATH = "/teachers";
+
+    AddCourseCommand(HttpServletRequest request) {
         super(request);
     }
 
-    @Override
-    protected boolean requestIsValid() {
-        return false;
-    }
 
     @Override
     protected void prepareResponse() {
-
+        request.setAttribute("processFormPath", TEACHERS_CONTROLLER_PATH);
     }
 
     @Override
-    protected void move(HttpServletResponse response) {
-
-    }
-
-    @Override
-    protected void setExplainingMessage() {
-
-    }
-
-    @Override
-    protected void sendToRelevantPage(HttpServletResponse response) {
-
+    protected void move(HttpServletResponse response) throws ServletException, IOException {
+        Dispatcher.forward(ADD_COURSE_FORM, request, response);
     }
 
     @Override
     protected Logger getLogger() {
-        return null;
+        return Logger.getLogger(AddCourseCommand.class);
     }
 }

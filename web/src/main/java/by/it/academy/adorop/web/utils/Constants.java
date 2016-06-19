@@ -9,6 +9,7 @@ public class Constants {
     public static final String MAIN_PAGE = "views/main.jsp";
     public static final String COURSE_FOR_STUDENTS_PAGE = "views/courseForStudent.jsp";
     public static final String COURSE_FOR_TEACHER_PAGE = "views/courseForTeacher.jsp";
+    public static final String ADD_COURSE_FORM = "views/addCourseForm.jsp";
     public static final String OPERATION_MAIN = "main";
     public static final String OPERATION_SHOW_COURSE = "showCourse";
     public static final String OPERATION_REGISTER = "register";

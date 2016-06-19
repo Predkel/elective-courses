@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public abstract class BasicCommandVerifyingRequest extends BasicCommand {
-
-    String ADD_COURSE_FORM = "views/addCourseForm.jsp";
     String REGISTER_FORM = "views/register.jsp";
     String SHOULD_BE_A_NUMBER_MESSAGE = "Should be a number from Zero to Ten";
     String THE_SAME_COURSE_ALREADY_EXISTS_MESSAGE = "The same course already exists";
