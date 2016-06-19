@@ -59,7 +59,7 @@ public class RegisterForTheCourseCommandTest extends BasicCommandVerifyingReques
     @Test
     public void setExplainingMessageShouldSetRegisterForTheCourseMessage() throws Exception {
         command.setExplainingMessage();
-        verify(request).setAttribute("message", Constants.REGISTER_FOR_THE_COURSE_MESSAGE);
+        verify(request).setAttribute("message", Constants.FAILED_REGISTER_FOR_THE_COURSE_MESSAGE);
     }
 
     @Test

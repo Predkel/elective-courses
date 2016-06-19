@@ -15,7 +15,7 @@ public class Mark implements Serializable {
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     private Student student;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Course course;
     @Column
     private Integer value;

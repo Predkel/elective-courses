@@ -25,6 +25,7 @@ public class Controller extends HttpServlet {
             Command command = CommandsFactory.createCommand(request);
             command.execute(response);
         } catch (Exception e) {
+            e.printStackTrace();
             Command errorCommand = CommandsFactory.createErrorCommand(request);
             errorCommand.execute(response);
         }

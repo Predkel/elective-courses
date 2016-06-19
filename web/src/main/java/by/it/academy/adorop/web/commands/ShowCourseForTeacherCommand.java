@@ -1,6 +1,7 @@
 package by.it.academy.adorop.web.commands;
 
 import by.it.academy.adorop.model.Course;
+import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 class ShowCourseForTeacherCommand extends BasicShowCourseCommand {
 
