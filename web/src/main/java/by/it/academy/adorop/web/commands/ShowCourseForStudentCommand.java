@@ -40,7 +40,7 @@ class ShowCourseForStudentCommand extends BasicShowCourseCommand {
     }
 
     @Override
-    protected void setContent() throws ServiceException {
+    protected void prepareResponse() throws ServiceException {
         Course course = getCourseById();
         setCourse(course);
         Student student = getCurrentStudent();

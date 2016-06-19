@@ -24,7 +24,7 @@ public class RegisterCommand extends BasicCommandVerifyingRequest {
     }
 
     @Override
-    protected void setContent() {
+    protected void prepareResponse() {
 
     }
 

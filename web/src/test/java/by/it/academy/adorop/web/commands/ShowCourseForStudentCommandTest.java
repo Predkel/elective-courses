@@ -56,34 +56,34 @@ public class ShowCourseForStudentCommandTest extends BasicShowCourseCommandTest 
     }
 
     @Test
-    public void setContentShouldSetCourse() throws Exception {
+    public void prepareResponseShouldSetCourse() throws Exception {
         when(courseService.find(anyLong())).thenReturn(COURSE);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("course", COURSE);
     }
 
     @Test
-    public void setContentShouldSetPathToProcessRegistrationForTheCourse() throws Exception {
+    public void prepareResponseShouldSetPathToProcessRegistrationForTheCourse() throws Exception {
         PowerMockito.when(PathBuilder.buildPath(anyObject(), anyString(), anyString(), anyString())).thenReturn(PATH);
-        command.setContent();
+        command.prepareResponse();
         PowerMockito.verifyStatic();
         PathBuilder.buildPath(request, Constants.OPERATION_REGISTER_FOR_THE_COURSE, "courseId", COURSE_ID);
         verify(request).setAttribute("pathToProcessRegistrationForTheCourse", PATH);
     }
 
     @Test
-    public void setContentShouldSetIsTheStudentListenerOfTheGivenCourse() throws Exception {
+    public void prepareResponseShouldSetIsTheStudentListenerOfTheGivenCourse() throws Exception {
         final boolean TRUE = true;
         when(studentService.isCourseListener(anyObject(), anyObject())).thenReturn(TRUE);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("isCourseListener", TRUE);
     }
 
     @Test
-    public void setContentShouldSetMarkWhenStudentIsCourseListener() throws Exception {
+    public void prepareResponseShouldSetMarkWhenStudentIsCourseListener() throws Exception {
         when(studentService.isCourseListener(anyObject(), anyObject())).thenReturn(true);
         when(markService.getByStudentAndCourse(anyObject(), anyObject())).thenReturn(MARK);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("mark", MARK);
     }
 

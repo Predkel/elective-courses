@@ -28,10 +28,9 @@ public class StudentServiceImpl extends BasicUserService<Student> implements Stu
 
     @Override
     public void registerForTheCourse(Student student, Course course) throws ServiceException {
-        student.addMark(new Mark(student, course));
         try {
             transaction = HibernateUtils.beginTransaction();
-            userDAO.update(student);
+            markDAO.persist(new Mark(student, course));
             transaction.commit();
         } catch (DaoException e) {
             catchDaoException(e);

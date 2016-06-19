@@ -28,7 +28,7 @@ public class MainCommand extends BasicCommand {
     }
 
     @Override
-    protected void setContent() throws ServiceException {
+    protected void prepareResponse() throws ServiceException {
         Long totalCount = courseService.getTotalCount();
         paginator.setTotalNumberOfEntities(totalCount);
         int firstResult = paginator.defineFirstResult();

@@ -32,7 +32,7 @@ public class SaveCourseCommand extends BasicCommandVerifyingRequest {
     }
 
     @Override
-    protected void setContent() {
+    protected void prepareResponse() {
 
     }
 

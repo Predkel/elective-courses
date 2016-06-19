@@ -19,7 +19,7 @@ class ErrorCommand extends BasicCommand {
 
 
     @Override
-    protected void setContent() throws ServiceException {
+    protected void prepareResponse() throws ServiceException {
 
     }
 

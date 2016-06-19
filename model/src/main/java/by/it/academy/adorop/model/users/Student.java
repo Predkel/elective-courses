@@ -15,7 +15,7 @@ public class Student extends User implements Serializable {
 
     private static final long serialVersionUID = -52174491949198584L;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Mark> marks = new HashSet<>();
 
     public Set<Mark> getMarks() {
@@ -24,10 +24,6 @@ public class Student extends User implements Serializable {
 
     public void setMarks(Set<Mark> marks) {
         this.marks = marks;
-    }
-
-    public void addMark(Mark mark) {
-        marks.add(mark);
     }
 
     @Override

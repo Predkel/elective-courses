@@ -16,4 +16,5 @@ public class Constants {
     public static final String FOLLOW_THE_LINK_MESSAGE = "To watch a course follow the link";
     public static final String SHOULD_BE_NOT_EMPTY_MESSAGE = "Field should be not empty";
     public static final String INVALID_USER_MESSAGE = "Invalid combination of login and password";
+    public static final String REGISTER_FOR_THE_COURSE_MESSAGE = "To register for a course follow the link";
 }

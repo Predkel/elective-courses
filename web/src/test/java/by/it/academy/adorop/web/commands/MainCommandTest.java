@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static by.it.academy.adorop.web.utils.Constants.*;
-import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -41,46 +40,46 @@ public class MainCommandTest extends BasicCommandTest {
     }
 
     @Test
-    public void setContentShouldGetCountOfCoursesAndPassItToPaginator() throws ServiceException, IOException, ServletException {
+    public void prepareResponseShouldGetCountOfCoursesAndPassItToPaginator() throws ServiceException, IOException, ServletException {
         when(courseService.getTotalCount()).thenReturn(TOTAL_COUNT);
-        command.setContent();
+        command.prepareResponse();
         verify(courseService).getTotalCount();
         verify(paginator).setTotalNumberOfEntities(TOTAL_COUNT);
     }
 
     @Test
-    public void setContentShouldGetFirstResultAndMaxResultFromPaginatorAndPassItToCourseService() throws Exception {
+    public void prepareResponseShouldGetFirstResultAndMaxResultFromPaginatorAndPassItToCourseService() throws Exception {
         when(paginator.defineFirstResult()).thenReturn(FIRST_RESULT);
         when(paginator.defineMaxResult()).thenReturn(MAX_RESULT);
-        command.setContent();
+        command.prepareResponse();
         verify(paginator).defineFirstResult();
         verify(paginator).defineMaxResult();
         verify(courseService).getBunch(FIRST_RESULT, MAX_RESULT);
     }
 
     @Test
-    public void setContentShouldPutCourses() throws Exception {
+    public void prepareResponseShouldPutCourses() throws Exception {
         List<Course> courses = new ArrayList<>();
         when(courseService.getBunch(anyInt(), anyInt())).thenReturn(courses);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("courses", courses);
     }
 
     @Test
-    public void setContentShouldSetRange() throws Exception {
+    public void prepareResponseShouldSetRange() throws Exception {
         when(paginator.defineFirstResult()).thenReturn(FIRST_RESULT);
         when(paginator.defineMaxResult()).thenReturn(MAX_RESULT);
         when(courseService.getTotalCount()).thenReturn(TOTAL_COUNT);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("isTheFirstPage", FIRST_RESULT == 0);
         verify(request).setAttribute("isTheLastPage", FIRST_RESULT + MAX_RESULT >= TOTAL_COUNT);
     }
 
     @Test
-    public void setContentShouldSetPathsToProcessPaginationAndCourseLink() throws Exception {
+    public void prepareResponseShouldSetPathsToProcessPaginationAndCourseLink() throws Exception {
         PowerMockito.when(PathBuilder.buildPath(request, OPERATION_MAIN)).thenReturn(PATH_TO_MAIN);
         PowerMockito.when(PathBuilder.buildPath(request, OPERATION_SHOW_COURSE)).thenReturn(PATH_TO_SHOW_COURSE);
-        command.setContent();
+        command.prepareResponse();
         verify(request).setAttribute("pathToProcessPagination", PATH_TO_MAIN);
         verify(request).setAttribute("pathToProcessCourseLink", PATH_TO_SHOW_COURSE);
     }

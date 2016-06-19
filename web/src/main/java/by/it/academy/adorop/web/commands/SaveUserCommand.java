@@ -31,7 +31,7 @@ public class SaveUserCommand<T extends User> extends BasicCommandVerifyingReques
     }
 
     @Override
-    protected void setContent() {
+    protected void prepareResponse() {
 
     }
 

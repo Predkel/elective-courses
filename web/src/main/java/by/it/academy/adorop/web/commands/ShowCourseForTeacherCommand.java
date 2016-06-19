@@ -41,7 +41,7 @@ class ShowCourseForTeacherCommand extends BasicShowCourseCommand {
     }
 
     @Override
-    protected void setContent() throws ServiceException {
+    protected void prepareResponse() throws ServiceException {
         request.setAttribute("pathToTeachersController", PATH_TO_CONTROLLER);
         request.setAttribute("marks", markService.getByCourse(getCourseById()));
     }

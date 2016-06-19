@@ -19,7 +19,7 @@ public abstract class BasicCommand implements Command {
     @Override
     public void execute(HttpServletResponse response) {
         try {
-            setContent();
+            prepareResponse();
             move(response);
         } catch (ServiceException | IOException | ServletException e) {
             catchExceptions(e, response);
@@ -33,7 +33,7 @@ public abstract class BasicCommand implements Command {
 
     protected abstract Logger getLogger();
 
-    protected abstract void setContent() throws ServiceException;
+    protected abstract void prepareResponse() throws ServiceException;
 
     protected abstract void move(HttpServletResponse response) throws IOException, ServletException;
 }

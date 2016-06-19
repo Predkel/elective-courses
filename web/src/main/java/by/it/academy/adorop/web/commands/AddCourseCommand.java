@@ -22,7 +22,7 @@ public class AddCourseCommand extends BasicCommandVerifyingRequest {
     }
 
     @Override
-    protected void setContent() {
+    protected void prepareResponse() {
 
     }
 
