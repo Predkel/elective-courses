@@ -41,20 +41,20 @@ class ShowCourseForStudentCommand extends BasicShowCourseCommand {
 
     @Override
     protected void setContent() throws ServiceException {
-        Course course = getCourse();
-        Student student = getStudent();
-        boolean isCourseListener = studentService.isCourseListener(student, course);
+        Course course = getCourseById();
         setCourse(course);
+        Student student = getCurrentStudent();
+        boolean isCourseListener = studentService.isCourseListener(student, course);
         setIsCourseListener(isCourseListener);
         setMark(course, student, isCourseListener);
         setPathToProcessRegistrationForTheCourse();
     }
 
-    private Student getStudent() {
+    private Student getCurrentStudent() {
         return (Student) request.getSession().getAttribute("student");
     }
 
-    private Course getCourse() throws ServiceException {
+    private Course getCourseById() throws ServiceException {
         return courseService.find(Long.valueOf(courseIdParameter));
     }
 
