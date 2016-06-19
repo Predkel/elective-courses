@@ -31,8 +31,8 @@ public class Teacher extends User implements Serializable {
         return "Teacher{" + super.toString();
     }
 
-    public boolean addCourse(Course course) {
+    public void addCourse(Course course) {
         course.setTeacher(this);
-        return courses.add(course);
+        courses.add(course);
     }
 }

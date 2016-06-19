@@ -14,4 +14,8 @@ public class PathBuilder {
     public static String buildPath(HttpServletRequest request, String operation, String nameOfParameter, String parameter) {
         return request.getServletPath() + "?operation=" + operation + "&" + nameOfParameter + "=" + parameter;
     }
+
+    public static String buildPathToMain(HttpServletRequest request) {
+        return buildPath(request, Constants.OPERATION_MAIN);
+    }
 }

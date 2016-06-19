@@ -7,5 +7,5 @@ import by.it.academy.adorop.service.exceptions.ServiceException;
 
 public interface TeacherService extends UserService<Teacher> {
     void evaluate(Mark mark) throws ServiceException;
-    boolean addCourse(Teacher teacher, Course course) throws ServiceException;
+    void addCourse(Teacher teacher, Course course) throws ServiceException;
 }
