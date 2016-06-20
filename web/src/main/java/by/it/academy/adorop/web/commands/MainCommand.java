@@ -5,7 +5,6 @@ import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
-import by.it.academy.adorop.web.utils.pagination.Paginator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -19,22 +18,16 @@ import static by.it.academy.adorop.web.utils.Constants.*;
 public class MainCommand extends BasicCommand {
 
     private final CourseService courseService;
-    private final Paginator paginator;
 
-    public MainCommand(HttpServletRequest request, CourseService courseService, Paginator paginator) {
+    public MainCommand(HttpServletRequest request, CourseService courseService) {
         super(request);
         this.courseService = courseService;
-        this.paginator = paginator;
     }
 
     @Override
     protected void prepareResponse() throws ServiceException {
         Long totalCount = courseService.getTotalCount();
-        paginator.setTotalNumberOfEntities(totalCount);
-        int firstResult = paginator.defineFirstResult();
-        int maxResult = paginator.defineMaxResult();
-        setCourses(firstResult, maxResult);
-        setRange(firstResult, maxResult, totalCount);
+//
         setPathToProcessLinks();
     }
 
