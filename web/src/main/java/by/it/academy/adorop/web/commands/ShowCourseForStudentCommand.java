@@ -42,12 +42,8 @@ class ShowCourseForStudentCommand extends BasicShowCourseCommand {
     @Override
     protected void prepareResponse() throws ServiceException {
         Course course = getCourseById();
-        setCourse(course);
         Student student = getCurrentStudent();
-        boolean isCourseListener = studentService.isCourseListener(student, course);
-        setIsCourseListener(isCourseListener);
-        setMark(course, student, isCourseListener);
-        setPathToProcessRegistrationForTheCourse();
+        setContent(course, student);
     }
 
     private Student getCurrentStudent() {
@@ -56,6 +52,14 @@ class ShowCourseForStudentCommand extends BasicShowCourseCommand {
 
     private Course getCourseById() throws ServiceException {
         return courseService.find(Long.valueOf(courseIdParameter));
+    }
+
+    private void setContent(Course course, Student student) throws ServiceException {
+        setCourse(course);
+        boolean isCourseListener = studentService.isCourseListener(student, course);
+        setIsCourseListener(isCourseListener);
+        setMark(course, student, isCourseListener);
+        setPathToProcessRegistrationForTheCourse();
     }
 
     private void setMark(Course course, Student student, boolean isCourseListener) throws ServiceException {
