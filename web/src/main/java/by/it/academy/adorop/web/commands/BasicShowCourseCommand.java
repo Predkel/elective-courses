@@ -2,7 +2,6 @@ package by.it.academy.adorop.web.commands;
 
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
-import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.service.implementations.CourseServiceImpl;
 import by.it.academy.adorop.service.implementations.MarkServiceImpl;
 import by.it.academy.adorop.web.utils.Constants;

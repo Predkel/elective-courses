@@ -18,7 +18,6 @@ public class AddCourseCommand extends BasicCommand {
         super(request);
     }
 
-
     @Override
     protected void prepareResponse() {
         request.setAttribute("processFormPath", TEACHERS_CONTROLLER_PATH);

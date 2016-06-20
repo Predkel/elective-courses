@@ -5,7 +5,6 @@ import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.service.implementations.CourseServiceImpl;
 import by.it.academy.adorop.service.implementations.StudentServiceImpl;
 import by.it.academy.adorop.service.implementations.TeacherServiceImpl;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.pagination.PaginatorImpl;
 
 import javax.servlet.http.HttpServletRequest;
