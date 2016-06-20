@@ -1,6 +1,5 @@
 package by.it.academy.adorop.web.commands;
 
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import org.apache.log4j.Logger;
 
@@ -27,7 +26,7 @@ public class AddCourseCommand extends BasicCommand {
 
     @Override
     protected void move(HttpServletResponse response) throws ServletException, IOException {
-        Dispatcher.forward(ADD_COURSE_FORM, request, response);
+        Dispatcher.forward(ADD_COURSE_PAGE, request, response);
     }
 
     @Override

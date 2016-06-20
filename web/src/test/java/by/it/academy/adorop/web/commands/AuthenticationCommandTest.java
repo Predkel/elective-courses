@@ -34,20 +34,20 @@ public class AuthenticationCommandTest extends BasicCommandVerifyingRequestTest 
 
     @Test
     public void requestIsValidShouldReturnFalseWhenOneOfParametersIsEmpty() throws Exception {
-        PowerMockito.when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(true);
+        PowerMockito.when(RequestParamValidator.hasEmpty(anyVararg())).thenReturn(true);
         assertFalse(command.requestIsValid());
     }
 
     @Test
     public void requestIsValidShouldReturnFalseWhenUserWithGivenDocumentIdAndPasswordDoesNotExist() throws Exception {
-        PowerMockito.when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(false);
+        PowerMockito.when(RequestParamValidator.hasEmpty(anyVararg())).thenReturn(false);
         when(userService.isValid(anyString(), anyString())).thenReturn(false);
         assertFalse(command.requestIsValid());
     }
 
     @Test
     public void requestIsValidShouldReturnTrueWhenUserWithGivenParametersExists() throws Exception {
-        PowerMockito.when(RequestParamValidator.areEmpty(anyVararg())).thenReturn(false);
+        PowerMockito.when(RequestParamValidator.hasEmpty(anyVararg())).thenReturn(false);
         when(userService.isValid(anyString(), anyString())).thenReturn(true);
         assertTrue(command.requestIsValid());
     }

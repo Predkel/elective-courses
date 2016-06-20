@@ -51,7 +51,7 @@ public class CourseServiceImplTest {
 
     @Test
     public void saveShouldCommitChanges() throws Exception {
-        courseService.save(course);
+        courseService.persist(course);
         verify(transaction).commit();
     }
 
@@ -60,7 +60,7 @@ public class CourseServiceImplTest {
         DaoException daoException = new DaoException();
         when(courseDAO.persist(anyObject())).thenThrow(daoException);
         try {
-            courseService.save(new Course());
+            courseService.persist(new Course());
         } catch (ServiceException e) {
             assertEquals(daoException, e.getCause());
         }

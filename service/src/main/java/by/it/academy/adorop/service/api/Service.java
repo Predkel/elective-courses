@@ -9,5 +9,5 @@ public interface Service<T, ID extends Serializable> {
     T find(ID id) throws ServiceException;
     Long getTotalCount() throws ServiceException;
     List<T> getBunch(int firstResult, int lastResult) throws ServiceException;
-    T save(T entity) throws ServiceException;
+    T persist(T entity) throws ServiceException;
 }

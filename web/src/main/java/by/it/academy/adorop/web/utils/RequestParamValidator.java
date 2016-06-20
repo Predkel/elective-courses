@@ -8,7 +8,7 @@ public class RequestParamValidator {
     private RequestParamValidator() {
     }
 
-    public static boolean areEmpty(String... params) {
+    public static boolean hasEmpty(String... params) {
         for (String param : params) {
             if (param == null || param.equals("")) {
                 return true;

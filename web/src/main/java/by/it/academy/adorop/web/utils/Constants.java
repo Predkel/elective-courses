@@ -6,10 +6,11 @@ public class Constants {
     }
 
     public static final String AUTHENTICATION_PAGE = "views/authentication.jsp";
+    public static final String REGISTRATION_PAGE = "views/registration.jsp";
     public static final String MAIN_PAGE = "views/main.jsp";
     public static final String COURSE_FOR_STUDENTS_PAGE = "views/courseForStudent.jsp";
     public static final String COURSE_FOR_TEACHER_PAGE = "views/courseForTeacher.jsp";
-    public static final String ADD_COURSE_FORM = "views/addCourseForm.jsp";
+    public static final String ADD_COURSE_PAGE = "views/addCourseForm.jsp";
     public static final String OPERATION_MAIN = "main";
     public static final String OPERATION_SHOW_COURSE = "showCourse";
     public static final String OPERATION_REGISTER = "register";
@@ -21,4 +22,6 @@ public class Constants {
     public static final String FAILED_REGISTER_FOR_THE_COURSE_MESSAGE = "To register for a course follow the link";
     public static final String FAILED_EVALUATE_MESSAGE = "To evaluate fill the form";
     public static final String MARK_VALUE_MESSAGE = "Should be a number from zero to ten";
+    public static final String FIELDS_SHOULD_BE_NOT_EMPTY_MESSAGE = "All fields should be not empty";
+    public static final String USER_ALREADY_EXISTS_MESSAGE = "User with the same document id already exists";
 }

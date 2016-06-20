@@ -4,10 +4,8 @@ import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class AddCourseCommandTest extends BasicCommandTest {
@@ -29,6 +27,6 @@ public class AddCourseCommandTest extends BasicCommandTest {
     public void moveShouldForwardToAddCourseForm() throws Exception {
         command.move(response);
         PowerMockito.verifyStatic();
-        Dispatcher.forward(Constants.ADD_COURSE_FORM, request, response);
+        Dispatcher.forward(Constants.ADD_COURSE_PAGE, request, response);
     }
 }

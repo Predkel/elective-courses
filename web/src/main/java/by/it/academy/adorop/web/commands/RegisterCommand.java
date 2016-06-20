@@ -1,6 +1,7 @@
 package by.it.academy.adorop.web.commands;
 
 import by.it.academy.adorop.service.exceptions.ServiceException;
+import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import org.apache.log4j.Logger;
 
@@ -9,42 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegisterCommand extends BasicCommandVerifyingRequest {
+import static by.it.academy.adorop.web.utils.Constants.*;
 
-    private static final Logger LOGGER = Logger.getLogger(RegisterCommand.class);
+public class RegisterCommand extends BasicCommand {
 
-    protected RegisterCommand(HttpServletRequest request) {
+    RegisterCommand(HttpServletRequest request) {
         super(request);
-    }
-
-
-    @Override
-    protected boolean requestIsValid() {
-        return false;
     }
 
     @Override
     protected void prepareResponse() {
-
+        request.setAttribute("processFormPath", request.getServletPath());
     }
 
     @Override
-    protected void move(HttpServletResponse response) {
-
-    }
-
-    @Override
-    protected void setExplainingMessage() {
-
-    }
-
-    @Override
-    protected void sendToRelevantPage(HttpServletResponse response) {
-
+    protected void move(HttpServletResponse response) throws ServletException, IOException {
+        Dispatcher.forward(REGISTRATION_PAGE, request, response);
     }
 
     @Override
     protected Logger getLogger() {
-        return null;
+        return Logger.getLogger(RegisterCommand.class);
     }
 }
