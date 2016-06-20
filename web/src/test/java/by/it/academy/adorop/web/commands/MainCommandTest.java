@@ -5,7 +5,6 @@ import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
-import by.it.academy.adorop.web.utils.pagination.Paginator;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -30,13 +29,11 @@ public class MainCommandTest extends BasicCommandTest {
     private static final String PATH_TO_SHOW_COURSE = "path to show course";
     @Mock
     private CourseService courseService;
-    @Mock
-    private Paginator paginator;
 
     @Before
     public void setUp() throws Exception {
         super.setup();
-        command = new MainCommand(request, courseService, paginator);
+        command = new MainCommand(request, courseService);
     }
 
     @Test
@@ -44,18 +41,9 @@ public class MainCommandTest extends BasicCommandTest {
         when(courseService.getTotalCount()).thenReturn(TOTAL_COUNT);
         command.prepareResponse();
         verify(courseService).getTotalCount();
-        verify(paginator).setTotalNumberOfEntities(TOTAL_COUNT);
     }
 
-    @Test
-    public void prepareResponseShouldGetFirstResultAndMaxResultFromPaginatorAndPassItToCourseService() throws Exception {
-        when(paginator.defineFirstResult()).thenReturn(FIRST_RESULT);
-        when(paginator.defineMaxResult()).thenReturn(MAX_RESULT);
-        command.prepareResponse();
-        verify(paginator).defineFirstResult();
-        verify(paginator).defineMaxResult();
-        verify(courseService).getBunch(FIRST_RESULT, MAX_RESULT);
-    }
+
 
     @Test
     public void prepareResponseShouldPutCourses() throws Exception {
@@ -65,15 +53,6 @@ public class MainCommandTest extends BasicCommandTest {
         verify(request).setAttribute("courses", courses);
     }
 
-    @Test
-    public void prepareResponseShouldSetRange() throws Exception {
-        when(paginator.defineFirstResult()).thenReturn(FIRST_RESULT);
-        when(paginator.defineMaxResult()).thenReturn(MAX_RESULT);
-        when(courseService.getTotalCount()).thenReturn(TOTAL_COUNT);
-        command.prepareResponse();
-        verify(request).setAttribute("isTheFirstPage", FIRST_RESULT == 0);
-        verify(request).setAttribute("isTheLastPage", FIRST_RESULT + MAX_RESULT >= TOTAL_COUNT);
-    }
 
     @Test
     public void prepareResponseShouldSetPathsToProcessPaginationAndCourseLink() throws Exception {

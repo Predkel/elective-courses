@@ -5,7 +5,6 @@ import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.service.implementations.CourseServiceImpl;
 import by.it.academy.adorop.service.implementations.StudentServiceImpl;
 import by.it.academy.adorop.service.implementations.TeacherServiceImpl;
-import by.it.academy.adorop.web.utils.pagination.PaginatorImpl;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -68,7 +67,7 @@ public class CommandsFactory {
     }
 
     private static Command createMainCommand(HttpServletRequest request) {
-        return new MainCommand(request, CourseServiceImpl.getInstance(), new PaginatorImpl("course", request));
+        return new MainCommand(request, CourseServiceImpl.getInstance());
     }
 
     @SuppressWarnings("unchecked")
