@@ -29,21 +29,15 @@ public class AuthenticationCommand<T extends User> extends BasicCommandVerifying
         passwordParameter = request.getParameter("password");
     }
 
-
     @Override
     protected boolean requestIsValid() throws ServiceException {
-        return !RequestParamValidator.areEmpty(documentIdParameter, passwordParameter)
+        return !RequestParamValidator.hasEmpty(documentIdParameter, passwordParameter)
                 && userService.isValid(documentIdParameter, passwordParameter);
     }
 
     @Override
     protected void prepareResponse() throws ServiceException {
         putUserIntoSession();
-        setPathToProcessRegistration();
-    }
-
-    private void setPathToProcessRegistration() {
-        request.setAttribute("pathToProcessRegistration", PathBuilder.buildPath(request, OPERATION_REGISTER));
     }
 
     private void putUserIntoSession() throws ServiceException {
@@ -68,9 +62,14 @@ public class AuthenticationCommand<T extends User> extends BasicCommandVerifying
 
     @Override
     protected void setExplainingMessage() throws ServiceException {
-        if (!RequestParamValidator.areEmpty(documentIdParameter, passwordParameter)) {
+        if (!RequestParamValidator.hasEmpty(documentIdParameter, passwordParameter)) {
             request.setAttribute("message", INVALID_USER_MESSAGE);
         }
+        setPathToProcessRegistration();
+    }
+
+    private void setPathToProcessRegistration() {
+        request.setAttribute("pathToProcessRegistration", PathBuilder.buildPath(request, OPERATION_REGISTER));
     }
 
     @Override

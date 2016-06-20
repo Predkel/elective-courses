@@ -51,7 +51,7 @@ public abstract class BasicService<T, ID extends Serializable> implements Servic
     }
 
     @Override
-    public T save(T entity) throws ServiceException {
+    public T persist(T entity) throws ServiceException {
         try {
             transaction = HibernateUtils.beginTransaction();
             T savedEntity = getDAO().persist(entity);
