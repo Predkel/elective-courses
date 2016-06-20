@@ -7,13 +7,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.when;
 
 public class RequestParamValidatorTest {
     private static final String NOT_NUMERIC_STRING = "abc";
-    public static final String NUMERIC_STRING = "1";
+    private static final String NUMERIC_STRING = "1";
     @Mock
     Service service;
 

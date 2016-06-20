@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static by.it.academy.adorop.web.utils.Constants.*;
+import static by.it.academy.adorop.web.utils.Constants.ADD_COURSE_PAGE;
 
 public class AddCourseCommand extends BasicCommand {
 

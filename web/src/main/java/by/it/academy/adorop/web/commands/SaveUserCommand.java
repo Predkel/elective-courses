@@ -62,6 +62,7 @@ public class SaveUserCommand<T extends User> extends BasicCommandVerifyingReques
         setupSession(persistedUser);
     }
 
+    @SuppressWarnings("unchecked")
     private T buildNewUserFromRequest() {
         T user;
         if (isRequestFromStudent()) {

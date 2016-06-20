@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public abstract class BasicCommandVerifyingRequest extends BasicCommand {
 
-    HttpServletRequest request;
+    final HttpServletRequest request;
 
-    protected BasicCommandVerifyingRequest(HttpServletRequest request) {
+    BasicCommandVerifyingRequest(HttpServletRequest request) {
         super(request);
         this.request = request;
     }
@@ -38,7 +38,7 @@ public abstract class BasicCommandVerifyingRequest extends BasicCommand {
 
     protected abstract void move(HttpServletResponse response) throws IOException, ServletException;
 
-    protected abstract void setExplainingMessage() throws ServiceException;
+    protected abstract void setExplainingMessage();
 
     protected abstract void sendToRelevantPage(HttpServletResponse response) throws ServletException, IOException;
 

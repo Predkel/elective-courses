@@ -6,16 +6,16 @@ import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.powermock.api.mockito.PowerMockito;
 
 import static by.it.academy.adorop.web.utils.Constants.*;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.anyVararg;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -23,7 +23,11 @@ public class AuthenticationCommandTest extends BasicCommandVerifyingRequestTest 
 
     private static final String ANY_PATH = "any path";
     @Mock
+    private Logger logger;
+    @Mock
     UserService userService;
+    @Mock
+    Command errorCommand;
 
     @Before
     @SuppressWarnings("unchecked")

@@ -4,7 +4,6 @@ import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.TeacherService;
-import by.it.academy.adorop.service.implementations.MarkServiceImpl;
 import by.it.academy.adorop.web.utils.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,9 +18,9 @@ import static org.mockito.Mockito.when;
 
 public class EvaluateCommandTest extends BasicCommandVerifyingRequestTest {
 
-    public static final String COURSE_ID_PARAMETER = "1";
-    public static final String MARK_ID_PARAMETER = "2";
-    public static final String MARK_VALUE_PARAMETER = "3";
+    private static final String COURSE_ID_PARAMETER = "1";
+    private static final String MARK_ID_PARAMETER = "2";
+    private static final String MARK_VALUE_PARAMETER = "3";
     private static final String ANY_PATH = "any path";
     @Mock
     private TeacherService teacherService;
@@ -66,6 +65,7 @@ public class EvaluateCommandTest extends BasicCommandVerifyingRequestTest {
     public void testRequestIsValidOnPositiveScenario() throws Exception {
         PowerMockito.when(RequestParamValidator.isValidId(anyString(), anyObject())).thenReturn(true);
         PowerMockito.when(CourseSecurity.isTeacherOfTheCourse(anyObject(), anyObject())).thenReturn(true);
+        PowerMockito.when(RequestParamValidator.isNumberBetweenZeroAndTen(anyString())).thenReturn(true);
         assertTrue(command.requestIsValid());
     }
 

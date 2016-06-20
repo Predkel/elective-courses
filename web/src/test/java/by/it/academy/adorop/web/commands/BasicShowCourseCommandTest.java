@@ -1,15 +1,11 @@
 package by.it.academy.adorop.web.commands;
 
-import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
-import by.it.academy.adorop.web.utils.RequestParamValidator;
-import org.junit.Before;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;
 
-import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;

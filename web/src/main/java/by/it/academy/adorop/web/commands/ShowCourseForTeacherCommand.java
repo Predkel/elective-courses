@@ -1,24 +1,25 @@
 package by.it.academy.adorop.web.commands;
 
 import by.it.academy.adorop.model.Course;
-import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
-import by.it.academy.adorop.web.utils.*;
+import by.it.academy.adorop.web.utils.Constants;
+import by.it.academy.adorop.web.utils.CourseSecurity;
+import by.it.academy.adorop.web.utils.Dispatcher;
+import by.it.academy.adorop.web.utils.RequestParamValidator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 class ShowCourseForTeacherCommand extends BasicShowCourseCommand {
 
 
-    public static final String PATH_TO_CONTROLLER = "/teachers";
+    private static final String PATH_TO_CONTROLLER = "/teachers";
 
     public ShowCourseForTeacherCommand(HttpServletRequest request) {
         super(request);

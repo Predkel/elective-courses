@@ -12,7 +12,7 @@ public abstract class BasicCommand implements Command {
 
     final HttpServletRequest request;
 
-    protected BasicCommand(HttpServletRequest request) {
+    BasicCommand(HttpServletRequest request) {
         this.request = request;
     }
 

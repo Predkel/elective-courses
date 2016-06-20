@@ -10,20 +10,20 @@ import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.service.implementations.CourseServiceImpl;
 import by.it.academy.adorop.service.implementations.MarkServiceImpl;
 import by.it.academy.adorop.service.implementations.TeacherServiceImpl;
-import by.it.academy.adorop.web.utils.*;
+import by.it.academy.adorop.web.utils.CourseSecurity;
+import by.it.academy.adorop.web.utils.Dispatcher;
+import by.it.academy.adorop.web.utils.PathBuilder;
+import by.it.academy.adorop.web.utils.RequestParamValidator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 import static by.it.academy.adorop.web.utils.Constants.*;
 
 public class EvaluateCommand extends BasicCommandVerifyingRequest {
-    
-    private static final Logger LOGGER = Logger.getLogger(EvaluateCommand.class);
 
     private final TeacherService teacherService;
     private final CourseService courseService;
