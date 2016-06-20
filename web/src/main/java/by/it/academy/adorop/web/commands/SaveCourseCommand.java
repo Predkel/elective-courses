@@ -5,7 +5,6 @@ import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.service.implementations.TeacherServiceImpl;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import by.it.academy.adorop.web.utils.PathBuilder;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
@@ -14,10 +13,10 @@ import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
-import static by.it.academy.adorop.web.utils.Constants.*;
+import static by.it.academy.adorop.web.utils.Constants.OPERATION_ADD_COURSE;
+import static by.it.academy.adorop.web.utils.Constants.SHOULD_BE_NOT_EMPTY_MESSAGE;
 
 public class SaveCourseCommand extends BasicCommandVerifyingRequest {
 

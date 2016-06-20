@@ -19,7 +19,7 @@ public abstract class BasicShowCourseCommand extends BasicCommandVerifyingReques
     final CourseService courseService;
     final String courseIdParameter;
 
-    public BasicShowCourseCommand(HttpServletRequest request) {
+    BasicShowCourseCommand(HttpServletRequest request) {
         this(request, MarkServiceImpl.getInstance(), CourseServiceImpl.getInstance());
     }
 
@@ -31,7 +31,7 @@ public abstract class BasicShowCourseCommand extends BasicCommandVerifyingReques
     }
 
     @Override
-    protected void setExplainingMessage() throws ServiceException {
+    protected void setExplainingMessage() {
         request.setAttribute("message", Constants.FOLLOW_THE_LINK_MESSAGE);
     }
 

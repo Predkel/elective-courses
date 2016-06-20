@@ -14,7 +14,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.powermock.api.mockito.PowerMockito;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -22,7 +23,7 @@ import static org.mockito.Mockito.when;
 public class RegisterForTheCourseCommandTest extends BasicCommandVerifyingRequestTest {
 
     private static final String COURSE_ID_PARAMETER = "1";
-    public static final String ANY_PATH = "any path";
+    private static final String ANY_PATH = "any path";
     @Mock
     private CourseService courseService;
     @Mock

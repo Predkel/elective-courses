@@ -15,10 +15,10 @@ import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
-import static by.it.academy.adorop.web.utils.Constants.*;
+import static by.it.academy.adorop.web.utils.Constants.COURSE_FOR_STUDENTS_PAGE;
+import static by.it.academy.adorop.web.utils.Constants.OPERATION_REGISTER_FOR_THE_COURSE;
 
 class ShowCourseForStudentCommand extends BasicShowCourseCommand {
 

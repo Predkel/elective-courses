@@ -2,9 +2,9 @@ package by.it.academy.adorop.web.commands;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-public class BasicCommandVerifyingRequestTest extends CommandTest {
+public abstract class BasicCommandVerifyingRequestTest extends CommandTest {
 
     BasicCommandVerifyingRequest command;
 

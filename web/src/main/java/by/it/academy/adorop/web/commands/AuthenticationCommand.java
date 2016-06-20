@@ -61,7 +61,7 @@ public class AuthenticationCommand<T extends User> extends BasicCommandVerifying
     }
 
     @Override
-    protected void setExplainingMessage() throws ServiceException {
+    protected void setExplainingMessage() {
         if (!RequestParamValidator.hasEmpty(documentIdParameter, passwordParameter)) {
             request.setAttribute("message", INVALID_USER_MESSAGE);
         }

@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 public class AddCourseCommandTest extends BasicCommandTest {
 
-    public static final String PATH = "/teachers";
+    private static final String PATH = "/teachers";
 
     @Before
     public void setUp() throws Exception {

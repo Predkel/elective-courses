@@ -12,16 +12,15 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.powermock.api.mockito.PowerMockito;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.anyVararg;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class SaveUserCommandTest extends BasicCommandVerifyingRequestTest {
 
-    public static final String STUDENTS_SERVLET_PATH = "/students";
+    private static final String STUDENTS_SERVLET_PATH = "/students";
     @Mock
     UserService userService;
 

@@ -5,10 +5,12 @@ import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.service.implementations.CourseServiceImpl;
 import by.it.academy.adorop.service.implementations.StudentServiceImpl;
 import by.it.academy.adorop.service.implementations.TeacherServiceImpl;
+import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.pagination.PaginatorImpl;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static by.it.academy.adorop.web.utils.Constants.*;
 import static by.it.academy.adorop.web.utils.RequestParamValidator.isEmpty;
 
 public class CommandsFactory {
@@ -21,22 +23,21 @@ public class CommandsFactory {
         String operation = request.getParameter("operation");
         if (isEmpty(operation)) {
             command = new AuthenticationCommand<>(request, injectUserService(request));
-        } else if (operation.equals("main")) {
+        } else if (operation.equals(OPERATION_MAIN)) {
             command = createMainCommand(request);
-        } else if (operation.equals("showCourse")) {
+        } else if (operation.equals(OPERATION_SHOW_COURSE)) {
             command = createShowCourseCommand(request);
-        } else if (operation.equals("registerForTheCourse") && !requestIsFromTeacher(request)) {
+        } else if (operation.equals(OPERATION_REGISTER_FOR_THE_COURSE) && !requestIsFromTeacher(request)) {
             command = new RegisterForTheCourseCommand(request);
-        } else if (operation.equals("evaluate") && requestIsFromTeacher(request)) {
+        } else if (operation.equals(OPERATION_EVALUATE) && requestIsFromTeacher(request)) {
             command = new EvaluateCommand(request);
-        } else if (operation.equals("addCourse") && requestIsFromTeacher(request)) {
+        } else if (operation.equals(OPERATION_ADD_COURSE) && requestIsFromTeacher(request)) {
             command = new AddCourseCommand(request);
-        } else if (operation.equals("saveCourse") && requestIsFromTeacher(request)) {
+        } else if (operation.equals(OPERATION_SAVE_COURSE) && requestIsFromTeacher(request)) {
             command = new SaveCourseCommand(request);
-        } else if (operation.equals("register")) {
-            System.out.println("register");
+        } else if (operation.equals(OPERATION_REGISTER)) {
             command = new RegisterCommand(request);
-        } else if (operation.equals("saveUser")) {
+        } else if (operation.equals(OPERATION_SAVE_USER)) {
             command = new SaveUserCommand<>(request, injectUserService(request));
         } else {
             command = createMainCommand(request);

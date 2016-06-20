@@ -1,7 +1,5 @@
 package by.it.academy.adorop.web.commands;
 
-import by.it.academy.adorop.service.exceptions.ServiceException;
-import by.it.academy.adorop.web.utils.Constants;
 import by.it.academy.adorop.web.utils.Dispatcher;
 import org.apache.log4j.Logger;
 
@@ -10,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static by.it.academy.adorop.web.utils.Constants.*;
+import static by.it.academy.adorop.web.utils.Constants.REGISTRATION_PAGE;
 
 public class RegisterCommand extends BasicCommand {
 
