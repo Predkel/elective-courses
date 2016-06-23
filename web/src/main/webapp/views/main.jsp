@@ -5,25 +5,28 @@
     <title>Courses</title>
 </head>
 <body>
-  <form action="${requestScope.pathToProcessPagination}" method="post">
-    <input type="text" name="maxResult" value="${requestScope.maxResult}">
+  <form action="${requestScope.pathToToMain}" method="get">
     <input type="hidden" name="operation" value="main">
-    <input type="hidden" name="paginationType" value="previous">
+    <input type="text" name="maxResult" value="${requestScope.maxResult}">
+    <input type="hidden" name="firstResult" value="${requestScope.firstResult}">
+    <%--<input type="hidden" name="pageNumber" value="">--%>
     <input type="submit" value="Number of courses on the page">
   </form><br>
+  <c:forEach items="${requestScope.numbersOfPages}" var="pageNumber">
+    <c:choose>
+      <c:when test="${pageNumber == requestScope.currentPage}">
+        <c:out value="${pageNumber}"/>
+      </c:when>
+      <c:otherwise>
+        <a href="${requestScope.pathToMain}&pageNumber=${pageNumber}&maxResult=${requestScope.maxResult}">
+          <c:out value="${pageNumber}"/>
+        </a>
+      </c:otherwise>
+    </c:choose>
+  </c:forEach>
   <c:choose>
     <c:when test="${sessionScope.teacher != null}"><jsp:include page="mainTeachers.jsp"/></c:when>
     <c:when test="${sessionScope.student != null}"><jsp:include page="mainStudents.jsp"/></c:when>
   </c:choose>
-  <c:if test="${!requestScope.isTheFirstPage}">
-    <a href="${requestScope.pathToProcessPagination}&maxResult=${requestScope.maxResult}&paginationType=previous">
-      <-previous
-    </a>
-  </c:if>
-  <c:if test="${!requestScope.isTheLastPage}">
-    <a href="${requestScope.pathToProcessPagination}&maxResult=${requestScope.maxResult}&paginationType=next">
-      next->
-    </a>
-  </c:if>
 </body>
 </html>

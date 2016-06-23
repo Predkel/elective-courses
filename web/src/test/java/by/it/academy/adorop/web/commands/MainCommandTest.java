@@ -43,8 +43,6 @@ public class MainCommandTest extends BasicCommandTest {
         verify(courseService).getTotalCount();
     }
 
-
-
     @Test
     public void prepareResponseShouldPutCourses() throws Exception {
         List<Course> courses = new ArrayList<>();
@@ -55,11 +53,11 @@ public class MainCommandTest extends BasicCommandTest {
 
 
     @Test
-    public void prepareResponseShouldSetPathsToProcessPaginationAndCourseLink() throws Exception {
-        PowerMockito.when(PathBuilder.buildPath(request, OPERATION_MAIN)).thenReturn(PATH_TO_MAIN);
+    public void prepareResponseShouldSetPathsToControllerAndProcessCourseLink() throws Exception {
+        PowerMockito.when(PathBuilder.buildPathToMain(request)).thenReturn(PATH_TO_MAIN);
         PowerMockito.when(PathBuilder.buildPath(request, OPERATION_SHOW_COURSE)).thenReturn(PATH_TO_SHOW_COURSE);
         command.prepareResponse();
-        verify(request).setAttribute("pathToProcessPagination", PATH_TO_MAIN);
+        verify(request).setAttribute("pathToMain", PATH_TO_MAIN);
         verify(request).setAttribute("pathToProcessCourseLink", PATH_TO_SHOW_COURSE);
     }
 
