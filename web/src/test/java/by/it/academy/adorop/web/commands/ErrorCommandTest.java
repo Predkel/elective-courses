@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;
 
-public class ErrorCommandTest extends CommandTest {
+public class ErrorCommandTest extends BasicTest {
 
     private Command command;
 

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
-public abstract class BasicCommandTest extends CommandTest {
+public abstract class BasicCommandTest extends BasicTest {
 
     BasicCommand command;
 

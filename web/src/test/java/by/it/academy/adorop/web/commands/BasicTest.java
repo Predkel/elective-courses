@@ -20,12 +20,12 @@ import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({RequestParamValidator.class, PathBuilder.class, Dispatcher.class, CourseSecurity.class})
-public abstract class CommandTest {
+public abstract class BasicTest {
 
     @Mock
-    HttpServletRequest request;
+    protected HttpServletRequest request;
     @Mock
-    HttpServletResponse response;
+    protected HttpServletResponse response;
     @Mock
     HttpSession session;
 
