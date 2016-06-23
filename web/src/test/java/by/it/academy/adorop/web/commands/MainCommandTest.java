@@ -22,9 +22,7 @@ import static org.mockito.Mockito.when;
 
 public class MainCommandTest extends BasicCommandTest {
 
-    private final int FIRST_RESULT = 1;
     private final long TOTAL_COUNT = 1L;
-    private final int MAX_RESULT = 2;
     private static final String PATH_TO_MAIN = "any path";
     private static final String PATH_TO_SHOW_COURSE = "path to show course";
     @Mock
