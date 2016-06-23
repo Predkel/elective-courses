@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Paginator {
 
-    public static final int DEFAULT_RANGE_OF_LEFT_SIDE = 3;
-    public static final int DEFAULT_RANGE_OF_RIGHT_SIDE = 3;
+    private static final int DEFAULT_RANGE_OF_LEFT_SIDE = 3;
+    private static final int DEFAULT_RANGE_OF_RIGHT_SIDE = 3;
     private final HttpServletRequest request;
     private int firstResult;
     private int maxResult;
@@ -71,8 +71,8 @@ public class Paginator {
         return rangeOfRightSide;
     }
 
-    private boolean addFirstPage(List<Integer> numbersOfPages) {
-        return numbersOfPages.add(1);
+    private void addFirstPage(List<Integer> numbersOfPages) {
+        numbersOfPages.add(1);
     }
 
     private int defineNumberOfLastPage(Long totalCountOfEntities) {

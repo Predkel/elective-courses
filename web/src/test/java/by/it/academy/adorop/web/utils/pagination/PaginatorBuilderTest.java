@@ -13,8 +13,8 @@ import static org.mockito.Mockito.when;
 
 public class PaginatorBuilderTest {
 
-    public static final String ANY_STRING = "anyString";
-    PaginatorBuilder builder;
+    private static final String ANY_STRING = "anyString";
+    private PaginatorBuilder builder;
     @Mock
     private Paginator paginator;
     @Mock
