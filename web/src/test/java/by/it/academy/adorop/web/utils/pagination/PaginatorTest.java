@@ -10,12 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class PaginatorTest {
 
-    Paginator paginator;
+    private Paginator paginator;
     @Mock
     HttpServletRequest request;
 

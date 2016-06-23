@@ -9,7 +9,6 @@
     <input type="hidden" name="operation" value="main">
     <input type="text" name="maxResult" value="${requestScope.maxResult}">
     <input type="hidden" name="firstResult" value="${requestScope.firstResult}">
-    <%--<input type="hidden" name="pageNumber" value="">--%>
     <input type="submit" value="Number of courses on the page">
   </form><br>
   <c:forEach items="${requestScope.numbersOfPages}" var="pageNumber">
