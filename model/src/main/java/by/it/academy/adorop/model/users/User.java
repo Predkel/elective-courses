@@ -1,5 +1,7 @@
 package by.it.academy.adorop.model.users;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,10 +11,14 @@ public abstract class User {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty(message = "{message.notEmpty}")
     private String firstName;
+    @NotEmpty(message = "{message.notEmpty}")
     private String lastName;
+    @NotEmpty(message = "{message.notEmpty}")
     @Column(unique = true)
     private String documentId;
+    @NotEmpty(message = "{message.notEmpty}")
     private String password;
 
     public Long getId() {

@@ -1,18 +1,14 @@
 package by.it.academy.adorop.model;
 
 import by.it.academy.adorop.model.users.Teacher;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Immutable;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Immutable
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"teacher_id", "title"}))
 @Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 6986606233112251779L;
@@ -20,6 +16,7 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty(message = "{message.notEmpty}")
     @Column(nullable = false)
     private String title;
     @Lob

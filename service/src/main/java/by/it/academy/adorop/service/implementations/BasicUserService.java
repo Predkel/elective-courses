@@ -1,42 +1,29 @@
 package by.it.academy.adorop.service.implementations;
 
 import by.it.academy.adorop.dao.api.UserDAO;
-import by.it.academy.adorop.dao.exceptions.DaoException;
-import by.it.academy.adorop.dao.utils.HibernateUtils;
 import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.UserService;
-import by.it.academy.adorop.service.exceptions.ServiceException;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public abstract class BasicUserService<T extends User> extends BasicService<T, Long> implements UserService<T> {
 
     UserDAO<T> userDAO;
 
     @Override
-    public boolean isValid(String documentId, String password) throws ServiceException {
-        try {
-            transaction = HibernateUtils.beginTransaction();
-            T retrievedUser = userDAO.getByDocumentId(documentId);
-            transaction.commit();
-            return !(retrievedUser == null || !retrievedUser.getPassword().equals(password));
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
+    public boolean isValid(String documentId, String password) {
+        T retrievedUser = userDAO.getByDocumentId(documentId);
+        return !(retrievedUser == null || !retrievedUser.getPassword().equals(password));
     }
 
     @Override
-    public T getByDocumentId(String documentId) throws ServiceException {
-        try {
-            transaction = HibernateUtils.beginTransaction();
-            T user = userDAO.getByDocumentId(documentId);
-            transaction.commit();
-            return user;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
+    public T getByDocumentId(String documentId) {
+        return userDAO.getByDocumentId(documentId);
     }
 
     @Override
-    public boolean isAlreadyExists(String documentId) throws ServiceException {
+    public boolean isAlreadyExists(String documentId) {
         return getByDocumentId(documentId) != null;
     }
 }

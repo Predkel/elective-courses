@@ -1,7 +1,6 @@
 package by.it.academy.adorop.web.utils;
 
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.service.exceptions.ServiceException;
 
 public class RequestParamValidator {
 
@@ -30,7 +29,7 @@ public class RequestParamValidator {
     }
 
     @SuppressWarnings("unchecked")
-    public static boolean isValidId(String idParameter, Service service) throws ServiceException {
+    public static boolean isValidId(String idParameter, Service service) {
         return isPositiveInt(idParameter) && service.find(Long.valueOf(idParameter)) != null;
     }
 }
