@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Exception.class)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public abstract class BasicService<T, ID extends Serializable> implements Service<T, ID> {
 
     @Override

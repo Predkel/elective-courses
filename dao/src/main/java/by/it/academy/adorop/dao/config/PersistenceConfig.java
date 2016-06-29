@@ -2,6 +2,7 @@ package by.it.academy.adorop.dao.config;
 
 import com.jolbox.bonecp.BoneCPDataSource;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.*;
 import org.springframework.cache.CacheManager;
@@ -52,22 +53,24 @@ public class PersistenceConfig {
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.current_session_context_class", "thread");
         return properties;
     }
 
     @Bean
-    @Scope(proxyMode = ScopedProxyMode.DEFAULT)
+    public SessionFactory sessionFactory() {
+        return sessionFactoryBean().getObject();
+    }
+
+    @Bean
+    @Scope("prototype")
     public Session session() {
-        return sessionFactoryBean().getObject().getCurrentSession();
+        return sessionFactory().openSession();
     }
 
     @Bean
     public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
-
         EhCacheManagerFactoryBean ehCacheManagerFactoryBean = new EhCacheManagerFactoryBean();
         ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
-
         return ehCacheManagerFactoryBean;
     }
 
