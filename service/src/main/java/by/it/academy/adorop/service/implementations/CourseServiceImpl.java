@@ -14,13 +14,11 @@ import java.util.List;
 @Service
 public class CourseServiceImpl extends BasicService<Course, Long> implements CourseService {
 
+    private final CourseDAO courseDAO;
+
     @Autowired
-    private CourseDAO courseDAO;
-//TODO
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public List<Course> getBunch(int firstResult, int maxResult) {
-        return super.getBunch(firstResult, maxResult);
+    public CourseServiceImpl(CourseDAO courseDAO) {
+        this.courseDAO = courseDAO;
     }
 
     @Override
