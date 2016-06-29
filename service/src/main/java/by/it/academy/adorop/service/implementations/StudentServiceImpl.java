@@ -2,61 +2,36 @@ package by.it.academy.adorop.service.implementations;
 
 import by.it.academy.adorop.dao.api.DAO;
 import by.it.academy.adorop.dao.api.MarkDAO;
-import by.it.academy.adorop.dao.exceptions.DaoException;
-import by.it.academy.adorop.dao.implementations.MarkDAOImpl;
-import by.it.academy.adorop.dao.implementations.StudentDAO;
-import by.it.academy.adorop.dao.utils.HibernateUtils;
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.StudentService;
-import by.it.academy.adorop.service.exceptions.ServiceException;
-import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+@Transactional(rollbackFor = Exception.class)
 public class StudentServiceImpl extends BasicUserService<Student> implements StudentService {
 
-    private final MarkDAO markDAO;
+    @Autowired
+    private MarkDAO markDAO;
 
-    private StudentServiceImpl() {
-        userDAO = StudentDAO.getInstance();
-        markDAO = MarkDAOImpl.getInstance();
-    }
-
-    public static StudentServiceImpl getInstance() {
-        return InstanceHolder.INSTANCE;
+    @Override
+    public void registerForTheCourse(Student student, Course course) {
+        markDAO.persist(new Mark(student, course));
     }
 
     @Override
-    public void registerForTheCourse(Student student, Course course) throws ServiceException {
-        try {
-            transaction = HibernateUtils.beginTransaction();
-            markDAO.persist(new Mark(student, course));
-            transaction.commit();
-        } catch (DaoException e) {
-            catchDaoException(e);
-        }
-    }
-
-    @Override
-    public boolean isCourseListener(Student student, Course course) throws ServiceException {
-        boolean isCourseListener = false;
-        try {
-            Transaction transaction = HibernateUtils.beginTransaction();
-            Mark mark = markDAO.getByStudentAndCourse(student, course);
-            transaction.commit();
-            isCourseListener = mark != null;
-        } catch (DaoException e) {
-            catchDaoException(e);
-        }
-        return isCourseListener;
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
+    public boolean isCourseListener(Student student, Course course) {
+        Mark mark = markDAO.getByStudentAndCourse(student, course);
+        return mark != null;
     }
 
     @Override
     protected DAO<Student, Long> getDAO() {
         return userDAO;
-    }
-
-    private static class InstanceHolder {
-        static final StudentServiceImpl INSTANCE = new StudentServiceImpl();
     }
 }
