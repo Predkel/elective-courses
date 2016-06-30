@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/teachers")
+@RequestMapping("/teachers/test")
 public class MainController {
 
     @Autowired
@@ -20,6 +20,7 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET)
     public String test(Model model) {
         List<Course> courses = courseService.getBunch(0, 10);
+        courses.addAll(courseService.getBunch(10, 10));
         model.addAttribute("courses", courses);
         return "test";
     }
