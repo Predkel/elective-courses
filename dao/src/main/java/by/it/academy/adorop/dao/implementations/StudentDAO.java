@@ -2,6 +2,7 @@ package by.it.academy.adorop.dao.implementations;
 
 import by.it.academy.adorop.model.users.Student;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Repository;
 public class StudentDAO extends BasicUserDAO<Student> {
 
     @Autowired
-    public StudentDAO(Session session) {
-        super(session);
+    public StudentDAO(SessionFactory sessionFactory) {
+        super(sessionFactory);
     }
 
     @Override

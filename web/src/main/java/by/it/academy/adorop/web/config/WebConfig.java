@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+//TODO LocaleResolver, ExceptionHandler
 @Configuration
 @EnableWebMvc
 @ComponentScan("by.it.academy.adorop.web.controllers")
@@ -15,11 +16,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebConfig {
     @Bean
     public InternalResourceViewResolver viewResolver() {
-
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
-
         return viewResolver;
     }
 }

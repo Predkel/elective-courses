@@ -62,12 +62,6 @@ public class PersistenceConfig {
     }
 
     @Bean
-    @Scope("prototype")
-    public Session session() {
-        return sessionFactory().openSession();
-    }
-
-    @Bean
     public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
         EhCacheManagerFactoryBean ehCacheManagerFactoryBean = new EhCacheManagerFactoryBean();
         ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
