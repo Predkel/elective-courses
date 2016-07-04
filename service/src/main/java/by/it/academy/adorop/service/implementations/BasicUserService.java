@@ -9,7 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public abstract class BasicUserService<T extends User> extends BasicService<T, Long> implements UserService<T> {
 
-    UserDAO<T> userDAO;
+    final UserDAO<T> userDAO;
+
+    public BasicUserService(UserDAO<T> userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @Override
     public boolean isValid(String documentId, String password) {

@@ -30,7 +30,9 @@ public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID>
 
     @Override
     public T get(ID id) {
-        return currentSession().get(getPersistedClass(), id);
+        Session session = currentSession();
+        System.out.println(session.hashCode() + "      " + session);
+        return session.get(getPersistedClass(), id);
     }
 
     @Override
@@ -62,7 +64,7 @@ public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID>
     @SuppressWarnings("unchecked")
     public List<T> getBunch(int firstResult, int maxResult) {
         Session session = currentSession();
-        System.out.println(session.hashCode() + "      " + session);
+
         return session.createCriteria(getPersistedClass())
                 .setFirstResult(firstResult)
                 .setMaxResults(maxResult)

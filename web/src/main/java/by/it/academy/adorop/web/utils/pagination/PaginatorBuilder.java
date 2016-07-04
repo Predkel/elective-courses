@@ -17,8 +17,12 @@ public class PaginatorBuilder {
     private final String pageNumberParameter;
     private final String firstResultParameter;
 
-    public PaginatorBuilder(HttpServletRequest request) {
+    PaginatorBuilder(HttpServletRequest request) {
         this(request, new Paginator(request));
+    }
+
+    public static PaginatorBuilder newInstance(HttpServletRequest request) {
+        return new PaginatorBuilder(request);
     }
 
     PaginatorBuilder(HttpServletRequest request, Paginator paginator) {
