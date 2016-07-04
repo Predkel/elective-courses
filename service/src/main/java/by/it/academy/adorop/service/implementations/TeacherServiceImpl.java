@@ -2,6 +2,7 @@ package by.it.academy.adorop.service.implementations;
 
 import by.it.academy.adorop.dao.api.DAO;
 import by.it.academy.adorop.dao.api.MarkDAO;
+import by.it.academy.adorop.dao.api.UserDAO;
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
@@ -14,8 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 public class TeacherServiceImpl extends BasicUserService<Teacher> implements TeacherService {
 
+    private final MarkDAO markDAO;
     @Autowired
-    private MarkDAO markDAO;
+    public TeacherServiceImpl(UserDAO<Teacher> userDAO, MarkDAO markDAO) {
+        super(userDAO);
+        this.markDAO = markDAO;
+    }
+
 
     @Override
     public void evaluate(Mark mark) {

@@ -17,21 +17,16 @@ public class Paginator {
         this.request = request;
     }
 
-    public void setPagesNumbersIntoRequest(Long totalCountOfEntities) {
+    public List<Integer> getPagesNumbers(Long totalCountOfEntities) {
         List<Integer> numbersOfPages = new ArrayList<>();
         addFirstPage(numbersOfPages);
-
         int rangeOfRightSide = fillRangeOfLeftSide(numbersOfPages);
-
         int numberOfLastPage = defineNumberOfLastPage(totalCountOfEntities);
-
         rangeOfRightSide = addCurrentPage(numbersOfPages, rangeOfRightSide, numberOfLastPage);
-
         fillRangeOfRightSide(numbersOfPages, rangeOfRightSide, numberOfLastPage);
-
         addLastPage(numbersOfPages, numberOfLastPage);
-
         request.setAttribute("numbersOfPages", numbersOfPages);
+        return numbersOfPages;
     }
 
     private void addLastPage(List<Integer> numbersOfPages, int numberOfLastPage) {
@@ -93,10 +88,6 @@ public class Paginator {
 
     void setMaxResult(int maxResult) {
         this.maxResult = maxResult;
-    }
-
-    int getCurrentPage() {
-        return currentPage;
     }
 
     void setCurrentPage(int currentPage) {

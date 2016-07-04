@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 
 public class PaginatorTest {
@@ -26,21 +27,16 @@ public class PaginatorTest {
 
     //TODO название срочно!!!!!
     @Test
-    public void testSetPagesNumbersIntoRequestWhenCurrentPageIsOneAndLastPageIsGreaterThanRange() throws Exception {
+    public void testGetPagesNumbersWhenCurrentPageIsOneAndLastPageIsGreaterThanRange() throws Exception {
         when_CurrentPage_And_MaxResult_Are(1, 3);
-
-        paginator.setPagesNumbersIntoRequest(30L);
-
-        verifySetPagesNumbers(1, 2, 3, 4, 5, 6, 7, 8, 10);
+        assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 10), paginator.getPagesNumbers(30L));
     }
 
     @Test
-    public void testSetPagesNumbersIntoRequestWhenCurrentPageIsTwoAndLastPageIsLessThenRange() throws Exception {
+    public void testGetPagesNumbersWhenCurrentPageIsTwoAndLastPageIsLessThenRange() throws Exception {
         when_CurrentPage_And_MaxResult_Are(1, 3);
 
-        paginator.setPagesNumbersIntoRequest(20L);
-
-        verifySetPagesNumbers(1, 2, 3, 4, 5, 6, 7);
+        assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6, 7), paginator.getPagesNumbers(20L));
     }
 
     private void verifySetPagesNumbers(Integer... expectedPagesNumbers) {
@@ -49,12 +45,9 @@ public class PaginatorTest {
     }
 
     @Test
-    public void testSetPagesNumbersIntoRequestWhenCurrentPageIsInTheCenter() throws Exception {
+    public void testGetPagesNumbersWhenCurrentPageIsInTheCenter() throws Exception {
         when_CurrentPage_And_MaxResult_Are(5, 2);
-
-        paginator.setPagesNumbersIntoRequest(18L);
-
-        verifySetPagesNumbers(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9), paginator.getPagesNumbers(18L));
     }
 
     private void when_CurrentPage_And_MaxResult_Are(int currentPage, int maxResult) {

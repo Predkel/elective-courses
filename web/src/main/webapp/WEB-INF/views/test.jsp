@@ -7,6 +7,8 @@
 <body>
   <c:forEach items="${courses}" var="course">
     <c:out value="${course.title}"/>
-  </c:forEach>
+  </c:forEach><br>
+  <c:out value="${course2.title}"/>
+  <c:out value="${course3.title}"/>
 </body>
 </html>

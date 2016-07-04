@@ -1,16 +1,14 @@
 package by.it.academy.adorop.dao.config;
 
 import com.jolbox.bonecp.BoneCPDataSource;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.context.spi.CurrentSessionContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.*;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.*;
-import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -53,6 +51,7 @@ public class PersistenceConfig {
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+//        properties.setProperty("hibernate.current_session_context_class", "thread");
         return properties;
     }
 
