@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,12 +65,12 @@ public class StudentController {
     }
 
     @RequestMapping("/course/{courseId}")
-    public String showCourse(Model model, @AuthenticationPrincipal Student student, @PathVariable("courseId") Long courseId) {
+    public String showCourse(Model model, @AuthenticationPrincipal Student student, @PathVariable Long courseId) {
         setContent(model, student, courseId);
         return "course/student";
     }
 
-    private void setContent(Model model, @AuthenticationPrincipal Student student, @PathVariable("courseId") Long courseId) {
+    private void setContent(Model model, Student student, Long courseId) {
         Course course = courseService.find(courseId);
         model.addAttribute("course", course);
         boolean isCourseListener = studentService.isCourseListener(student, course);
@@ -77,5 +78,19 @@ public class StudentController {
         if (isCourseListener) {
             model.addAttribute("mark", markService.getByStudentAndCourse(student, course));
         }
+    }
+
+    @RequestMapping("/registerForTheCourse/{courseId}")
+    public String registerForTheCourse(@PathVariable Long courseId, @AuthenticationPrincipal Student student) {
+        registerStudent(courseId, student);
+        return redirectToShowCourse(courseId);
+    }
+
+    private void registerStudent(Long courseId, Student student) {
+        studentService.registerForTheCourse(student, courseService.find(courseId));
+    }
+
+    private String redirectToShowCourse(@PathVariable Long courseId) {
+        return "redirect:/students/course/" + courseId;
     }
 }
