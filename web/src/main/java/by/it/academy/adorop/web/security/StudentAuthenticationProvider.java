@@ -22,12 +22,12 @@ public class StudentAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        Student student = retrieveStudent(authentication);
+        Student student = retrieveStudentByGivenParameters(authentication);
         verifyValidness(authentication, student);
         return getCustomAuthentication(student);
     }
 
-    private Student retrieveStudent(Authentication authentication) {
+    private Student retrieveStudentByGivenParameters(Authentication authentication) {
         String documentId = authentication.getName();
         return studentService.getByDocumentId(documentId);
     }
