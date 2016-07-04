@@ -34,6 +34,7 @@ import static org.mockito.Mockito.when;
 @PrepareForTest(PaginatorBuilder.class)
 public class StudentControllerTest {
 
+    public static final long ANY_LONG = 1L;
     private StudentController controller;
     @Mock
     private StudentService studentService;
@@ -49,6 +50,7 @@ public class StudentControllerTest {
     private Paginator paginator;
     @Mock
     private Model model;
+    public static final Student SOME_STUDENT = new Student();
 
     @Before
     public void setUp() throws Exception {
@@ -92,8 +94,7 @@ public class StudentControllerTest {
     }
 
     private String showCourse() {
-        Student student = new Student();
-        return controller.showCourse(model, student, 1L);
+        return controller.showCourse(model, SOME_STUDENT, ANY_LONG);
     }
 
     @Test
@@ -107,15 +108,29 @@ public class StudentControllerTest {
     @Test
     public void testShowCourseWhenStudentIsCourseListener() throws Exception {
         boolean isCourseListener = true;
-        isStudentCourseListener(isCourseListener);
-        Mark expectedMark = new Mark();
-        when(markService.getByStudentAndCourse(anyObject(), anyObject())).thenReturn(expectedMark);
+        when(studentService.isCourseListener(anyObject(), anyObject())).thenReturn(isCourseListener);
+        Mark expectedMark = getExpectedMark();
         showCourse();
         verify(model).addAttribute("isCourseListener", isCourseListener);
         verify(model).addAttribute("mark", expectedMark);
     }
 
-    private void isStudentCourseListener(boolean isCourseListener) {
-        when(studentService.isCourseListener(anyObject(), anyObject())).thenReturn(isCourseListener);
+    private Mark getExpectedMark() {
+        Mark expectedMark = new Mark();
+        when(markService.getByStudentAndCourse(anyObject(), anyObject())).thenReturn(expectedMark);
+        return expectedMark;
+    }
+
+    @Test
+    public void registerForTheCourseShouldRedirectToShowCourse() throws Exception {
+        assertEquals("redirect:/students/course/" + ANY_LONG, controller.registerForTheCourse(ANY_LONG, SOME_STUDENT));
+    }
+
+    @Test
+    public void registerForTheCourseShouldRegisterStudentForTheCourse() throws Exception {
+        Course requestedCourse = new Course();
+        when(courseService.find(ANY_LONG)).thenReturn(requestedCourse);
+        controller.registerForTheCourse(ANY_LONG, SOME_STUDENT);
+        verify(studentService).registerForTheCourse(SOME_STUDENT, requestedCourse);
     }
 }
