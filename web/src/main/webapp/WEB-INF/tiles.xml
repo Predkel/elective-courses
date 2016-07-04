@@ -15,4 +15,5 @@
     <definition name="test" template="/WEB-INF/views/test.jsp"/>
     <definition name="login" template="/WEB-INF/views/authentication.jsp"/>
     <definition name="course/student" template="/WEB-INF/views/courseForStudent.jsp"/>
+    <definition name="register" template="/WEB-INF/views/registration.jsp"/>
 </tiles-definitions>
