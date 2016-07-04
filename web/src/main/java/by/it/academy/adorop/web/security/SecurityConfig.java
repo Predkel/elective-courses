@@ -1,17 +1,16 @@
 package by.it.academy.adorop.web.security;
 
-import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.config.ServiceConfig;
+import by.it.academy.adorop.web.security.authentication.providers.StudentAuthenticationProvider;
+import by.it.academy.adorop.web.security.authentication.providers.TeacherAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -20,31 +19,38 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    AuthenticationProvider authenticationProvider;
-
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider);
-//    }
+    StudentAuthenticationProvider studentAuthenticationProvider;
+    @Autowired
+    TeacherAuthenticationProvider teacherAuthenticationProvider;
+    @Autowired
+    AuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authenticationProvider(authenticationProvider)
+        http.authenticationProvider(studentAuthenticationProvider)
                 .authorizeRequests()
                 .antMatchers("/students/new")
                 .permitAll()
-                .and()
+            .and()
                 .authorizeRequests()
                 .antMatchers("/students/**")
                 .authenticated()
-                .and()
+            .and()
+                .authenticationProvider(teacherAuthenticationProvider)
+                .authorizeRequests()
+                .antMatchers("/teachers/new")
+                .permitAll()
+            .and()
+                .authorizeRequests()
+                .antMatchers("/teachers/**")
+                .authenticated()
+            .and()
                 .formLogin()
-                .loginPage("/students/login")
+                .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .permitAll()
-                .defaultSuccessUrl("/students");
+                .successHandler(authenticationSuccessHandler);
     }
 }

@@ -1,23 +1,23 @@
-package by.it.academy.adorop.web.security;
+package by.it.academy.adorop.web.security.authentication;
 
-import by.it.academy.adorop.model.users.Student;
+import by.it.academy.adorop.model.users.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import java.util.Collection;
 
-public class StudentAuthentication implements Authentication {
+public class UserAuthentication<T extends User> implements Authentication {
 
-    private final Student student;
+    private final T user;
     private boolean authenticated;
 
-    private StudentAuthentication(Student student) {
-        this.student = student;
+    private UserAuthentication(T user) {
+        this.user = user;
     }
 
-    public static Authentication newInstance(Student student) {
-        return new StudentAuthentication(student);
+    public static<T extends User> UserAuthentication<T> newInstance(T user) {
+        return new UserAuthentication<>(user);
     }
 
     @Override
@@ -27,17 +27,17 @@ public class StudentAuthentication implements Authentication {
 
     @Override
     public Object getCredentials() {
-        return student.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public Object getDetails() {
-        return student;
+        return user;
     }
 
     @Override
     public Object getPrincipal() {
-        return student;
+        return user;
     }
 
     @Override
@@ -52,6 +52,6 @@ public class StudentAuthentication implements Authentication {
 
     @Override
     public String getName() {
-        return student.getDocumentId();
+        return user.getDocumentId();
     }
 }

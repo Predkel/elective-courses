@@ -88,17 +88,6 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void testLogin() throws Exception {
-        assertEquals("login", controller.login(model));
-    }
-
-    @Test
-    public void loginShouldPutPathToController() throws Exception {
-        controller.login(model);
-        verify(model).addAttribute("pathToController", "/students");
-    }
-
-    @Test
     public void testShowCourse() throws Exception {
         assertEquals("course/student", showCourse());
     }
