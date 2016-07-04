@@ -2,6 +2,8 @@ package by.it.academy.adorop.web.security;
 
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.StudentService;
+import by.it.academy.adorop.web.security.authentication.providers.StudentAuthenticationProviderImpl;
+import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +14,6 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import static org.junit.Assert.assertSame;
@@ -23,20 +24,20 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(StudentAuthentication.class)
+@PrepareForTest(UserAuthentication.class)
 public class StudentAuthenticationProviderTest {
     private static final String ANY_PASSWORD = "any password";
-    private StudentAuthenticationProvider authenticationProvider;
+    private StudentAuthenticationProviderImpl authenticationProvider;
     @Mock
     private StudentService studentService;
     @Mock
-    private Authentication authentication;
+    private UserAuthentication authentication;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        PowerMockito.mockStatic(StudentAuthentication.class);
-        authenticationProvider = new StudentAuthenticationProvider(studentService);
+        PowerMockito.mockStatic(UserAuthentication.class);
+        authenticationProvider = new StudentAuthenticationProviderImpl(studentService);
     }
 
     @Test(expected = UsernameNotFoundException.class)
@@ -66,7 +67,7 @@ public class StudentAuthenticationProviderTest {
     @Test
     public void authenticateShould() throws Exception {
         whenAuthenticationAttemptIsSuccessful();
-        PowerMockito.when(StudentAuthentication.newInstance(anyObject())).thenReturn(authentication);
+        PowerMockito.when(UserAuthentication.newInstance(anyObject())).thenReturn(authentication);
         assertSame(authentication, authenticationProvider.authenticate(authentication));
         verify(authentication).setAuthenticated(true);
     }

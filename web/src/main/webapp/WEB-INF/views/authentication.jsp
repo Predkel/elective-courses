@@ -28,7 +28,9 @@
            value="${_csrf.token}"/>
     <button type="submit" class="btn">Log in</button>
 </form>
-<s:url value="${pathToController}/new" var="registration"/>
-<a href="${registration}">Registration</a>
+<s:url value="/students/new" var="studentsRegistration"/>
+<a href="${studentsRegistration}">Register as student</a><br>
+<s:url value="/teachers/new" var="teachersRegistration"/>
+<a href="${teachersRegistration}">Register as teacher</a>
 </body>
 </html>

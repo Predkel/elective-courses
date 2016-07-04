@@ -62,14 +62,9 @@ public class StudentController {
         return paginatorBuilder.buildPaginator();
     }
 
-    @RequestMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("pathToController", "/students");
-        return "login";
-    }
-
     @RequestMapping("/course/{courseId}")
     public String showCourse(Model model, @AuthenticationPrincipal Student student, @PathVariable Long courseId) {
+        System.out.println(student);
         setContent(model, student, courseId);
         return "course/student";
     }
@@ -84,6 +79,7 @@ public class StudentController {
         }
     }
 
+    //TODO: idValidation
     @RequestMapping("/registerForTheCourse/{courseId}")
     public String registerForTheCourse(@PathVariable Long courseId, @AuthenticationPrincipal Student student) {
         registerStudent(courseId, student);
