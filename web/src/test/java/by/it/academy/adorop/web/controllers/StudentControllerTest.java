@@ -16,7 +16,10 @@ import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,18 +27,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.anyObject;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PaginatorBuilder.class)
 public class StudentControllerTest {
 
-    public static final long ANY_LONG = 1L;
+    private static final long ANY_LONG = 1L;
+    private static final Student SOME_STUDENT = new Student();
     private StudentController controller;
+
     @Mock
     private StudentService studentService;
     @Mock
@@ -50,7 +54,8 @@ public class StudentControllerTest {
     private Paginator paginator;
     @Mock
     private Model model;
-    public static final Student SOME_STUDENT = new Student();
+    @Mock
+    private BindingResult bindingResult;
 
     @Before
     public void setUp() throws Exception {
@@ -84,12 +89,17 @@ public class StudentControllerTest {
 
     @Test
     public void testLogin() throws Exception {
-        assertEquals("login", controller.login());
+        assertEquals("login", controller.login(model));
+    }
+
+    @Test
+    public void loginShouldPutPathToController() throws Exception {
+        controller.login(model);
+        verify(model).addAttribute("pathToController", "/students");
     }
 
     @Test
     public void testShowCourse() throws Exception {
-
         assertEquals("course/student", showCourse());
     }
 
@@ -132,5 +142,31 @@ public class StudentControllerTest {
         when(courseService.find(ANY_LONG)).thenReturn(requestedCourse);
         controller.registerForTheCourse(ANY_LONG, SOME_STUDENT);
         verify(studentService).registerForTheCourse(SOME_STUDENT, requestedCourse);
+    }
+
+    @Test
+    public void testRegister() throws Exception {
+        assertEquals("register", controller.register(model));
+    }
+
+    @Test
+    public void testSaveNewStudentWhenRequestIsValid() throws Exception {
+        when(bindingResult.hasErrors()).thenReturn(false);
+        when(studentService.isAlreadyExists(anyString())).thenReturn(false);
+        assertEquals("redirect:/students", controller.saveNewStudent(SOME_STUDENT, bindingResult, model));
+        verify(studentService).persist(SOME_STUDENT);
+    }
+
+    @Test
+    public void testSaveNewStudentWhenRequestIsNotValid() throws Exception {
+        when(bindingResult.hasErrors()).thenReturn(true);
+        assertEquals("register", controller.saveNewStudent(SOME_STUDENT, bindingResult, model));
+    }
+
+    @Test
+    public void testSaveNewStudentWhenUserAlreadyExists() throws Exception {
+        when(bindingResult.hasErrors()).thenReturn(false);
+        when(studentService.isAlreadyExists(anyString())).thenReturn(true);
+        assertEquals("register", controller.saveNewStudent(SOME_STUDENT, bindingResult, model));
     }
 }

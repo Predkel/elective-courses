@@ -1,17 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Registration</title>
 </head>
 <body>
 ${message}
-<form method="post" action="${requestScope.processFormPath}">
-  Document Id:   <input type="text" name="documentId"><br>
-  Password:      <input type="password" name="password"><br>
-  First Name:    <input type="text" name="firstName"><br>
-  Last Name:     <input type="text" name="lastName">
-                 <input type="hidden" name="operation" value="saveUser">
+<sf:form modelAttribute="user" method="post">
+  Document Id:   <sf:input path="documentId"/><br>
+                 <sf:errors path="documentId"/>
+  Password:      <sf:input path="password"/><br>
+                 <sf:errors path="password"/>
+  First Name:    <sf:input path="firstName"/><br>
+                 <sf:errors path="firstName"/>
+  Last Name:     <sf:input path="lastName"/>
+                 <sf:errors path="lastName"/><br>
+
                  <input type="submit" value="Register">
-</form>
+</sf:form>
 </body>
 </html>

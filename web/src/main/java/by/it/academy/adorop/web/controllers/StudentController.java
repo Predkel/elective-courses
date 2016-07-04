@@ -11,18 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping("/students")
 public class StudentController {
 
+    private static final String USER_ALREADY_EXISTS_MESSAGE = "User with the same document id already exists";
     private final CourseService courseService;
     private final StudentService studentService;
     private final MarkService markService;
@@ -60,7 +63,8 @@ public class StudentController {
     }
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("pathToController", "/students");
         return "login";
     }
 
@@ -92,5 +96,39 @@ public class StudentController {
 
     private String redirectToShowCourse(@PathVariable Long courseId) {
         return "redirect:/students/course/" + courseId;
+    }
+
+    @RequestMapping("/new")
+    public String register(Model model) {
+        model.addAttribute("user", new Student());
+        return "register";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String saveNewStudent(@Valid Student student, BindingResult bindingResult, Model model) {
+        String path = definePath(student, bindingResult);
+        processRequest(student, bindingResult, model);
+        return path;
+    }
+
+    private void processRequest(Student student, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("user", student);
+        } else if (studentService.isAlreadyExists(student.getDocumentId())) {
+            model.addAttribute("message", USER_ALREADY_EXISTS_MESSAGE);
+            model.addAttribute("user", student);
+        } else {
+            studentService.persist(student);
+        }
+    }
+
+    private String definePath(Student student, BindingResult bindingResult) {
+        String path;
+        if (bindingResult.hasErrors() || studentService.isAlreadyExists(student.getDocumentId())) {
+            path = "register";
+        } else {
+            path = "redirect:/students";
+        }
+        return path;
     }
 }
