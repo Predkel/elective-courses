@@ -3,12 +3,15 @@ package by.it.academy.adorop.web.controllers;
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.CourseService;
+import by.it.academy.adorop.service.api.MarkService;
+import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.web.utils.pagination.Paginator;
 import by.it.academy.adorop.web.utils.pagination.PaginatorBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,28 +21,24 @@ import java.util.List;
 @Controller
 @RequestMapping("/students")
 public class StudentController {
+
     private final CourseService courseService;
+    private final StudentService studentService;
+    private final MarkService markService;
 
     @Autowired
-    public StudentController(CourseService courseService) {
+    public StudentController(CourseService courseService, StudentService studentService, MarkService markService) {
         this.courseService = courseService;
-    }
-
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
+        this.studentService = studentService;
+        this.markService = markService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String main(Model model, HttpServletRequest request) {
-        setContent(model, request);
-        return "main/students";
-    }
-
-    private void setContent(Model model, HttpServletRequest request) {
         Paginator paginator = getPaginator(request);
         putCourses(model, paginator);
         putPagesNumbers(model, paginator);
+        return "main/students";
     }
 
     private void putPagesNumbers(Model model, Paginator paginator) {
@@ -59,16 +58,24 @@ public class StudentController {
         return paginatorBuilder.buildPaginator();
     }
 
-    @RequestMapping("/test")
-    public String testCurrentSession(Model model, @AuthenticationPrincipal Student student) {
-        List<Course> courses = courseService.getBunch(0, 10);
-        courses.addAll(courseService.getBunch(10, 10));
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
 
-        model.addAttribute("courses", courses);
+    @RequestMapping("/course/{courseId}")
+    public String showCourse(Model model, @AuthenticationPrincipal Student student, @PathVariable("courseId") Long courseId) {
+        setContent(model, student, courseId);
+        return "course/student";
+    }
 
-        model.addAttribute("course2", courseService.find(2L));
-        model.addAttribute("course3", courseService.find(3L));
-        System.out.println(student);
-        return "test";
+    private void setContent(Model model, @AuthenticationPrincipal Student student, @PathVariable("courseId") Long courseId) {
+        Course course = courseService.find(courseId);
+        model.addAttribute("course", course);
+        boolean isCourseListener = studentService.isCourseListener(student, course);
+        model.addAttribute("isCourseListener", isCourseListener);
+        if (isCourseListener) {
+            model.addAttribute("mark", markService.getByStudentAndCourse(student, course));
+        }
     }
 }

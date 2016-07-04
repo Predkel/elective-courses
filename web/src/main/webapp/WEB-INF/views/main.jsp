@@ -17,7 +17,7 @@
         <c:out value="${pageNumber}"/>
       </c:when>
       <c:otherwise>
-        <a href="${requestScope.pathToMain}?pageNumber=${pageNumber}&maxResult=${requestScope.maxResult}">
+        <a href="?pageNumber=${pageNumber}&maxResult=${requestScope.maxResult}">
           <c:out value="${pageNumber}"/>
         </a>
       </c:otherwise>
