@@ -20,6 +20,8 @@
 
     <definition name="course/add" template="/WEB-INF/views/addCourseForm.jsp"/>
 
+    <definition name="teachers/course" template="/WEB-INF/views/courseForTeacher.jsp"/>
+
     <definition name="test" template="/WEB-INF/views/test.jsp"/>
     <definition name="login" template="/WEB-INF/views/authentication.jsp"/>
     <definition name="register" template="/WEB-INF/views/registration.jsp"/>

@@ -3,6 +3,7 @@ package by.it.academy.adorop.web.controllers;
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
+import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,11 +25,13 @@ public class TeacherController {
 
     private final CourseService courseService;
     private final TeacherService teacherService;
+    private final MarkService markService;
 
     @Autowired
-    public TeacherController(CourseService courseService, TeacherService teacherService) {
+    public TeacherController(CourseService courseService, TeacherService teacherService, MarkService markService) {
         this.courseService = courseService;
         this.teacherService = teacherService;
+        this.markService = markService;
     }
 
     @RequestMapping
@@ -52,5 +56,12 @@ public class TeacherController {
         }
         teacherService.addCourse(teacher, course);
         return "redirect:/teachers";
+    }
+
+    @RequestMapping("/course/{courseId}")
+    public String showCourse(@PathVariable Long courseId, Model model) {
+        Course requestedCourse = courseService.find(courseId);
+        model.addAttribute("marks", markService.getByCourse(requestedCourse));
+        return "teachers/course";
     }
 }
