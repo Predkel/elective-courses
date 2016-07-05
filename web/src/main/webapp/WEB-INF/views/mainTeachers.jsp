@@ -9,12 +9,12 @@
 <body>
 <h1>Courses</h1><br>
 ${message}
-<sec:authentication property="username" var="teacherDocumentId"/>
+<sec:authentication property="principal" var="currentTeacher"/>
 <ul>
     <c:forEach items="${courses}" var="course">
         <li>
             <c:choose>
-                <c:when test="${course.teacher.documentId.equals(teacherDocumentId)}">
+                <c:when test="${course.teacher.equals(currentTeacher)}">
                     <s:url value="/teachers/course/${course.id}" var="showCourse"/>
                     <a href="${showCourse}">
                         <c:out value="${course.title}"/>
