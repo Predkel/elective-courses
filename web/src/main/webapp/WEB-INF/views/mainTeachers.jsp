@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Courses</title>
@@ -7,12 +9,14 @@
 <body>
 <h1>Courses</h1><br>
 ${message}
+<sec:authentication property="username" var="teacherDocumentId"/>
 <ul>
-    <c:forEach items="${requestScope.courses}" var="course">
+    <c:forEach items="${courses}" var="course">
         <li>
             <c:choose>
-                <c:when test="${course.teacher.equals(sessionScope.teacher)}">
-                    <a href="${requestScope.pathToProcessCourseLink}&courseId=${course.id}">
+                <c:when test="${course.teacher.documentId.equals(teacherDocumentId)}">
+                    <s:url value="/teachers/course/${course.id}" var="showCourse"/>
+                    <a href="${showCourse}">
                         <c:out value="${course.title}"/>
                     </a>
                 </c:when>
@@ -21,6 +25,6 @@ ${message}
         </li>
     </c:forEach>
 </ul>
-<a href="<c:url value="/teachers?operation=addCourse"/>">Add course</a><br>
+<a href="<c:url value="/teachers/add"/>">Add course</a><br>
 </body>
 </html>

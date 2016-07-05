@@ -12,6 +12,10 @@
         <put-attribute name="content" value="/WEB-INF/views/mainStudents.jsp"/>
     </definition>
 
+    <definition name="main/teachers" extends="pagination">
+        <put-attribute name="content" value="/WEB-INF/views/mainTeachers.jsp"/>
+    </definition>
+
     <definition name="test" template="/WEB-INF/views/test.jsp"/>
     <definition name="login" template="/WEB-INF/views/authentication.jsp"/>
     <definition name="course/student" template="/WEB-INF/views/courseForStudent.jsp"/>

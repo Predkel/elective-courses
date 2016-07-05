@@ -25,7 +25,6 @@ public class Paginator {
         rangeOfRightSide = addCurrentPage(numbersOfPages, rangeOfRightSide, numberOfLastPage);
         fillRangeOfRightSide(numbersOfPages, rangeOfRightSide, numberOfLastPage);
         addLastPage(numbersOfPages, numberOfLastPage);
-        request.setAttribute("numbersOfPages", numbersOfPages);
         return numbersOfPages;
     }
 

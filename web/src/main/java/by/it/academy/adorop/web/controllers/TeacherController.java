@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/teachers")
 public class TeacherController {
-    @RequestMapping
-    public String test(@AuthenticationPrincipal Teacher teacher) {
-        System.out.println(teacher);
-        return "test";
+
+    public String showCourses() {
+        return "main/teachers";
     }
 }
