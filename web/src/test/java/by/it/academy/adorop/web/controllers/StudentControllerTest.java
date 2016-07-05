@@ -63,7 +63,7 @@ public class StudentControllerTest {
 
     @Test
     public void testShowCourse() throws Exception {
-        assertEquals("course/student", showCourse());
+        assertEquals("students/course", showCourse());
     }
 
     private String showCourse() {

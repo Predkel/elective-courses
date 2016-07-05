@@ -12,12 +12,15 @@
         <put-attribute name="content" value="/WEB-INF/views/mainStudents.jsp"/>
     </definition>
 
+    <definition name="students/course" template="/WEB-INF/views/courseForStudent.jsp"/>
+
     <definition name="main/teachers" extends="pagination">
         <put-attribute name="content" value="/WEB-INF/views/mainTeachers.jsp"/>
     </definition>
 
+    <definition name="course/add" template="/WEB-INF/views/addCourseForm.jsp"/>
+
     <definition name="test" template="/WEB-INF/views/test.jsp"/>
     <definition name="login" template="/WEB-INF/views/authentication.jsp"/>
-    <definition name="course/student" template="/WEB-INF/views/courseForStudent.jsp"/>
     <definition name="register" template="/WEB-INF/views/registration.jsp"/>
 </tiles-definitions>
