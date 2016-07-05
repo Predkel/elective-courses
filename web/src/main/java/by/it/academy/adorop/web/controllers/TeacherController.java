@@ -26,4 +26,9 @@ public class TeacherController {
         PaginationContentPutter.putPaginationContent(request, courseService, "courses");
         return "main/teachers";
     }
+
+    @RequestMapping("/add")
+    public String addCourse() {
+        return "";
+    }
 }

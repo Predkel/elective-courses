@@ -47,7 +47,7 @@ public class StudentController {
     @RequestMapping("/course/{courseId}")
     public String showCourse(Model model, @AuthenticationPrincipal Student student, @PathVariable Long courseId) {
         setContent(model, student, courseId);
-        return "course/student";
+        return "students/course";
     }
 
     private void setContent(Model model, Student student, Long courseId) {
