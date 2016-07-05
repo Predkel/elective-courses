@@ -1,17 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Add course</title>
 </head>
 <body>
-<form method="post" action="${requestScope.processFormPath}">
-  Title:        <input type="text" name="title">
-  ${message}
+<sf:form method="post" modelAttribute="course">
+  Title:        <sf:input path="title"/>
   <br>
-  Description:  <textarea cols="20" rows="20" name="description"></textarea><br>
-  <input type="hidden" name="operation" value="saveCourse">
+  Description:  <sf:textarea path="description"/><br>
   <input type="submit" value="Add course">
-</form>
+</sf:form>
 </body>
 </html>
