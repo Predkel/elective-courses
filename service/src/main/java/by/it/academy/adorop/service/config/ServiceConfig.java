@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan("by.it.academy.adorop.service")
 @Import(PersistenceConfig.class)
-public class ServiceConfig {
+public class  ServiceConfig {
 
     @Bean
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {

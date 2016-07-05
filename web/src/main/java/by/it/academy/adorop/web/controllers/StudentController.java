@@ -5,6 +5,7 @@ import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.StudentService;
+import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import by.it.academy.adorop.web.utils.pagination.Paginator;
 import by.it.academy.adorop.web.utils.pagination.PaginatorBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,33 +39,13 @@ public class StudentController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String main(Model model, HttpServletRequest request) {
-        Paginator paginator = getPaginator(request);
-        putCourses(model, paginator);
-        putPagesNumbers(model, paginator);
+    public String showCourses(HttpServletRequest request) {
+        PaginationContentPutter.putPaginationContent(request, courseService, "courses");
         return "main/students";
-    }
-
-    private void putPagesNumbers(Model model, Paginator paginator) {
-        Long totalCount = courseService.getTotalCount();
-        List<Integer> pagesNumbers = paginator.getPagesNumbers(totalCount);
-        model.addAttribute("numbersOfPages", pagesNumbers);
-    }
-
-    private void putCourses(Model model, Paginator paginator) {
-        int firstResult = paginator.getFirstResult();
-        int maxResult = paginator.getMaxResult();
-        model.addAttribute("courses", courseService.getBunch(firstResult, maxResult));
-    }
-
-    private Paginator getPaginator(HttpServletRequest request) {
-        PaginatorBuilder paginatorBuilder = PaginatorBuilder.newInstance(request);
-        return paginatorBuilder.buildPaginator();
     }
 
     @RequestMapping("/course/{courseId}")
     public String showCourse(Model model, @AuthenticationPrincipal Student student, @PathVariable Long courseId) {
-        System.out.println(student);
         setContent(model, student, courseId);
         return "course/student";
     }
@@ -106,7 +87,7 @@ public class StudentController {
         processRequest(student, bindingResult, model);
         return path;
     }
-
+//TODO name
     private void processRequest(Student student, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", student);
