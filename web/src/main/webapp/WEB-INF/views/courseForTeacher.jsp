@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title><c:out value="${requestScope.course.title}"/></title>
@@ -14,13 +15,12 @@
         <td>
           <c:choose>
             <c:when test="${mark.value == null}">
-              <form action="${requestScope.pathToTeachersController}" method="post">
+              <sf:form action="/teachers/evaluate" method="post">
                 <input type="text" name="markValue">
                 <input type="hidden" name="markId" value="${mark.id}">
                 <input type="hidden" name="courseId" value="${mark.course.id}">
-                <input type="hidden" name="operation" value="evaluate">
                 <input type="submit" value="Evaluate">
-              </form>
+              </sf:form>
             </c:when>
             <c:otherwise><c:out value="${mark.value}"/></c:otherwise>
           </c:choose>

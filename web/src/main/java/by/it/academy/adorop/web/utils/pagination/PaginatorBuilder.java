@@ -83,17 +83,17 @@ public class PaginatorBuilder {
     }
 
     private boolean goalOfRequestIsToChangeMaxResult() {
-        return RequestParamValidator.isPositiveInt(firstResultParameter) &&
+        return RequestParamValidator.isPositiveNumber(firstResultParameter) &&
                 RequestParamValidator.isEmpty(pageNumberParameter);
     }
 
     private boolean goalOfRequestIsToMoveToPage() {
-        return RequestParamValidator.isPositiveInt(pageNumberParameter) &&
+        return RequestParamValidator.isPositiveNumber(pageNumberParameter) &&
                 RequestParamValidator.isEmpty(firstResultParameter);
     }
 
     private int defineMaxResult() {
-        return RequestParamValidator.isPositiveInt(maxResultParameter) ? Integer.parseInt(maxResultParameter)
+        return RequestParamValidator.isPositiveNumber(maxResultParameter) ? Integer.parseInt(maxResultParameter)
                 : DEFAULT_MAX_RESULT;
     }
 }

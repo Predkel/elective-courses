@@ -21,7 +21,6 @@ import org.springframework.validation.BindingResult;
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyObject;
@@ -34,7 +33,9 @@ public class TeacherControllerTest {
 
     private static final Course SOME_COURSE = new Course();
     private static final Teacher CURRENT_TEACHER = new Teacher();
-    public static final long ANY_LONG = 1L;
+    private static final long ANY_LONG = 1L;
+    private static final Mark SOME_MARK = new Mark();
+    private static final int ANY_INT = 1;
 
     private TeacherController controller;
     @Mock
@@ -98,5 +99,12 @@ public class TeacherControllerTest {
         when(markService.getByCourse(anyObject())).thenReturn(expectedMarks);
         controller.showCourse(ANY_LONG, model);
         verify(model).addAttribute("marks", expectedMarks);
+    }
+
+
+    @Test
+    public void testEvaluateOnPositiveScenario() throws Exception {
+        assertEquals("redirect:/teachers/course/" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, ANY_INT));
+        verify(teacherService).evaluate(SOME_MARK);
     }
 }
