@@ -102,9 +102,9 @@ public class TeacherControllerTest {
     }
 
 
-    @Test
-    public void testEvaluateOnPositiveScenario() throws Exception {
-        assertEquals("redirect:/teachers/course/" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, ANY_INT));
-        verify(teacherService).evaluate(SOME_MARK);
-    }
+//    @Test
+//    public void testEvaluateOnPositiveScenario() throws Exception {
+//        assertEquals("redirect:/teachers/course/" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, ANY_INT));
+//        verify(teacherService).evaluate(SOME_MARK);
+//    }
 }

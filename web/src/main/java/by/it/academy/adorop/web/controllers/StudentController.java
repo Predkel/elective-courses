@@ -60,7 +60,7 @@ public class StudentController {
         }
     }
 
-    //TODO: idValidation
+    //TODO: idValidation(replace with ModelById)
     @RequestMapping("/registerForTheCourse/{courseId}")
     public String registerForTheCourse(@PathVariable Long courseId, @AuthenticationPrincipal Student student) {
         registerStudent(courseId, student);
