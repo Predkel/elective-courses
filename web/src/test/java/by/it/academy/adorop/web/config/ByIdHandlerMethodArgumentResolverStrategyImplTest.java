@@ -1,8 +1,9 @@
 package by.it.academy.adorop.web.config;
 
 import by.it.academy.adorop.model.Mark;
-import by.it.academy.adorop.service.api.MarkService;
-import by.it.academy.adorop.web.utils.RequestParamValidator;
+import by.it.academy.adorop.service.api.Service;
+import by.it.academy.adorop.web.config.handlers.implementations.ByIdHandlerMethodArgumentResolverStrategyImpl;
+import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,17 +20,18 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyLong;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ResponseEntity.class})
-public class MarkByIdHandlerMethodArgumentResolverImplTest {
+public class ByIdHandlerMethodArgumentResolverStrategyImplTest {
     public static final String NOT_NUMERIC_STRING = "abc";
     private static final String NUMERIC_STRING = "10";
-    private MarkByIdHandlerMethodArgumentResolver resolver;
+    private ByIdHandlerMethodArgumentResolverStrategyImpl resolver;
     @Mock
-    private MarkService markService;
+    private Service service;
     @Mock
     private MethodParameter methodParameter;
     @Mock
@@ -38,12 +40,15 @@ public class MarkByIdHandlerMethodArgumentResolverImplTest {
     private NativeWebRequest request;
     @Mock
     private WebDataBinderFactory factory;
+    @Mock
+    private ModelById modelById;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         PowerMockito.mockStatic(ResponseEntity.class);
-        resolver = new MarkByIdHandlerMethodArgumentResolverImpl(markService);
+        resolver = new ByIdHandlerMethodArgumentResolverStrategyImpl();
+        resolver.setService(service);
     }
 
     @Test
@@ -54,9 +59,10 @@ public class MarkByIdHandlerMethodArgumentResolverImplTest {
         ResponseEntity.badRequest();
     }
     @Test
+    @SuppressWarnings("unchecked")
     public void resolveArgumentShouldReturnBadRequestResponseCodeWhenMarkWithGivenIdDoesNotExist() throws Exception {
         when(request.getParameter(anyString())).thenReturn(NUMERIC_STRING);
-        when(markService.find(anyLong())).thenReturn(null);
+        when(service.find(anyLong())).thenReturn(null);
         invokeResolveArgument();
         PowerMockito.verifyStatic();
         ResponseEntity.badRequest();
@@ -66,11 +72,13 @@ public class MarkByIdHandlerMethodArgumentResolverImplTest {
     public void testResolveArgumentShouldReturnMarkIfRequestIsValid() throws Exception {
         when(request.getParameter(anyString())).thenReturn(NUMERIC_STRING);
         Mark expectedMark = new Mark();
-        when(markService.find(anyLong())).thenReturn(expectedMark);
+        when(service.find(anyLong())).thenReturn(expectedMark);
         assertEquals(expectedMark, invokeResolveArgument());
     }
 
     private Object invokeResolveArgument() throws Exception {
+        when(methodParameter.getParameterAnnotation(anyObject())).thenReturn(modelById);
+        when(modelById.nameOfIdParameter()).thenReturn(NOT_NUMERIC_STRING);
         return resolver.resolveArgument(methodParameter, modelAndViewContainer, request, factory);
     }
 }
