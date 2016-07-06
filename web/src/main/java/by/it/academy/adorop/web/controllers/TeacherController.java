@@ -57,11 +57,10 @@ public class TeacherController {
         return "redirect:/teachers";
     }
 
-    @RequestMapping("/course/{courseId}")
-    public String showCourse(@PathVariable Long courseId, Model model) {
-        Course requestedCourse = courseService.find(courseId);
-        model.addAttribute("course", requestedCourse);
-        model.addAttribute("marks", markService.getByCourse(requestedCourse));
+    @RequestMapping("/course")
+    public String showCourse(@ModelById(nameOfIdParameter = "courseId") Course course, Model model) {
+        model.addAttribute("course", course);
+        model.addAttribute("marks", markService.getByCourse(course));
         return "teachers/course";
     }
 
@@ -72,6 +71,6 @@ public class TeacherController {
                            @RequestParam Integer markValue) {
         mark.setValue(markValue);
         teacherService.evaluate(mark);
-        return "redirect:/teachers/course/" + courseId;
+        return "redirect:/teachers/course?courseId=" + courseId;
     }
 }

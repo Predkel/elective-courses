@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.config;
+package by.it.academy.adorop.web.config.handlers.implementations;
 
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.service.api.Service;

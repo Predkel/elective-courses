@@ -90,14 +90,14 @@ public class TeacherControllerTest {
 
     @Test
     public void testShowCourse() throws Exception {
-        assertEquals("teachers/course", controller.showCourse(ANY_LONG, model));
+        assertEquals("teachers/course", controller.showCourse(SOME_COURSE, model));
     }
 
     @Test
     public void showCourseShouldPutMarksByRequestedCourse() throws Exception {
         ArrayList<Mark> expectedMarks = new ArrayList<>();
         when(markService.getByCourse(anyObject())).thenReturn(expectedMarks);
-        controller.showCourse(ANY_LONG, model);
+        controller.showCourse(SOME_COURSE, model);
         verify(model).addAttribute("marks", expectedMarks);
     }
 

@@ -17,21 +17,9 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
-public class MarkByIdHandlerMethodArgumentResolverImplTest {
+public class MarkByIdHandlerMethodArgumentResolverImplTest extends AbstractByIdHandlerMethodArgumentResolverImplTest {
 
     private MarkByIdHandlerMethodArgumentResolver resolver;
-    @Mock
-    private ByIdHandlerMethodArgumentResolverStrategy strategy;
-    @Mock
-    private MethodParameter methodParameter;
-    @Mock
-    private ModelAndViewContainer modelAndViewContainer;
-    @Mock
-    private NativeWebRequest request;
-    @Mock
-    private WebDataBinderFactory factory;
-    @Mock
-    private ModelById modelById;
     @Mock
     private MarkService markService;
 
