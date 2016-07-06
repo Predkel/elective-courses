@@ -6,7 +6,7 @@ import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.TeacherService;
-import by.it.academy.adorop.web.config.ModelById;
+import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/teachers")
@@ -68,7 +67,9 @@ public class TeacherController {
 
     //TODO markValue validation
     @RequestMapping(value = "/evaluate", method = RequestMethod.POST)
-    public String evaluate(@ModelById Mark mark, @RequestParam Long courseId, @RequestParam Integer markValue) {
+    public String evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark,
+                           @RequestParam Long courseId,
+                           @RequestParam Integer markValue) {
         mark.setValue(markValue);
         teacherService.evaluate(mark);
         return "redirect:/teachers/course/" + courseId;

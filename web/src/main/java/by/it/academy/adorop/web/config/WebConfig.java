@@ -1,6 +1,7 @@
 package by.it.academy.adorop.web.config;
 
 import by.it.academy.adorop.service.config.ServiceConfig;
+import by.it.academy.adorop.web.config.handlers.api.MarkByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
