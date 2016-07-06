@@ -15,7 +15,7 @@ ${message}
         <li>
             <c:choose>
                 <c:when test="${course.teacher.equals(currentTeacher)}">
-                    <s:url value="/teachers/course/${course.id}" var="showCourse"/>
+                    <s:url value="/teachers/course?courseId=${course.id}" var="showCourse"/>
                     <a href="${showCourse}">
                         <c:out value="${course.title}"/>
                     </a>

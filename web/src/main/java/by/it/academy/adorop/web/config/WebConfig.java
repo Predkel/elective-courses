@@ -1,6 +1,7 @@
 package by.it.academy.adorop.web.config;
 
 import by.it.academy.adorop.service.config.ServiceConfig;
+import by.it.academy.adorop.web.config.handlers.api.CourseByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.config.handlers.api.MarkByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     MarkByIdHandlerMethodArgumentResolver markByIdHandlerMethodArgumentResolver;
+    @Autowired
+    CourseByIdHandlerMethodArgumentResolver courseByIdHandlerMethodArgumentResolver;
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(markByIdHandlerMethodArgumentResolver);
+        argumentResolvers.add(courseByIdHandlerMethodArgumentResolver);
     }
 
     @Bean
