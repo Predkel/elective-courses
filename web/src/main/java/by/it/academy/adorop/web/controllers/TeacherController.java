@@ -9,6 +9,7 @@ import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,6 +59,7 @@ public class TeacherController {
     }
 
     @RequestMapping("/course")
+    @PreAuthorize("#course.teacher.equals(principal)")
     public String showCourse(@ModelById(nameOfIdParameter = "courseId") Course course, Model model) {
         model.addAttribute("course", course);
         model.addAttribute("marks", markService.getByCourse(course));

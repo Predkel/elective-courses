@@ -22,7 +22,7 @@ public class ByIdHandlerMethodArgumentResolverStrategyImpl implements ByIdHandle
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterAnnotation(ModelById.class) != null && parameter.getParameterType().equals(parameterClass);
     }
-
+//TODO BadRequestException
     @Override
     @SuppressWarnings("unchecked")
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
