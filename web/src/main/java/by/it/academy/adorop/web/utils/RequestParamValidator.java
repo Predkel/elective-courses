@@ -11,7 +11,11 @@ public class RequestParamValidator {
         return param == null || param.equals("");
     }
 
-    public static boolean isPositiveInt(String param) {
+    public static boolean isPositiveNumber(String param) {
         return !isEmpty(param) && param.matches("[0-9]+");
+    }
+
+    public static boolean isNumberBetweenZeroAndTen(String param) {
+        return !isEmpty(param) && param.matches("[0-9]|(10)");
     }
 }

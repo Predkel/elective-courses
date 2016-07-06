@@ -1,23 +1,23 @@
 package by.it.academy.adorop.web.controllers;
 
 import by.it.academy.adorop.model.Course;
+import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.web.config.ModelById;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/teachers")
@@ -61,7 +61,16 @@ public class TeacherController {
     @RequestMapping("/course/{courseId}")
     public String showCourse(@PathVariable Long courseId, Model model) {
         Course requestedCourse = courseService.find(courseId);
+        model.addAttribute("course", requestedCourse);
         model.addAttribute("marks", markService.getByCourse(requestedCourse));
         return "teachers/course";
+    }
+
+    //TODO markValue validation
+    @RequestMapping(value = "/evaluate", method = RequestMethod.POST)
+    public String evaluate(@ModelById Mark mark, @RequestParam Long courseId, @RequestParam Integer markValue) {
+        mark.setValue(markValue);
+        teacherService.evaluate(mark);
+        return "redirect:/teachers/course/" + courseId;
     }
 }

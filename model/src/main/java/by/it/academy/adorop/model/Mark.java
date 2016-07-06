@@ -3,6 +3,8 @@ package by.it.academy.adorop.model;
 import by.it.academy.adorop.model.users.Student;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Entity
@@ -17,6 +19,7 @@ public class Mark implements Serializable {
     private Student student;
     @ManyToOne(fetch = FetchType.EAGER)
     private Course course;
+//    @Pattern(regexp = "[0-9]|(10)", message = "should be a number from zero to ten")
     @Column
     private Integer value;
 

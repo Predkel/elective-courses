@@ -25,6 +25,12 @@ public class TeacherServiceImpl extends BasicUserService<Teacher> implements Tea
 
     @Override
     public void evaluate(Mark mark) {
+        if (mark.getId() == null) {
+            throw new IllegalArgumentException("mark id should be not null");
+        }
+        if (mark.getCourse() == null || mark.getStudent() == null) {
+            mark = markDAO.get(mark.getId());
+        }
         markDAO.update(mark);
     }
 
