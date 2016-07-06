@@ -13,12 +13,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class LoginControllerTest {
-    private static final String PATH_TO_CONTROLLER = "path to controller";
-    LoginController loginController;
+
+    private LoginController loginController;
     @Mock
-    HttpServletRequest request;
+    private HttpServletRequest request;
     @Mock
-    Model model;
+    private Model model;
 
     @Before
     public void setUp() throws Exception {

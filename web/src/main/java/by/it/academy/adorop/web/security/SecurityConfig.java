@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan("by.it.academy.adorop.web.security")
 @Import(ServiceConfig.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

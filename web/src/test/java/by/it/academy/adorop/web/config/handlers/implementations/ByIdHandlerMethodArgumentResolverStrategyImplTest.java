@@ -12,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -51,16 +52,14 @@ public class ByIdHandlerMethodArgumentResolverStrategyImplTest {
         resolver.setService(service);
     }
 
-    @Test
-    public void resolveArgumentShouldReturnBadRequestResponseCodeWhenMarkIdIsNotPositiveNumber() throws Exception {
+    @Test(expected = TypeMismatchException.class)
+    public void resolveArgumentShouldThrowTypeMismatchExceptionWhenMarkIdIsNotPositiveNumber() throws Exception {
         when(request.getParameter(anyString())).thenReturn(NOT_NUMERIC_STRING);
         invokeResolveArgument();
-        PowerMockito.verifyStatic();
-        ResponseEntity.badRequest();
     }
-    @Test
+    @Test(expected = TypeMismatchException.class)
     @SuppressWarnings("unchecked")
-    public void resolveArgumentShouldReturnBadRequestResponseCodeWhenMarkWithGivenIdDoesNotExist() throws Exception {
+    public void resolveArgumentShouldThrowTypeMismatchExceptionWhenMarkWithGivenIdDoesNotExist() throws Exception {
         when(request.getParameter(anyString())).thenReturn(NUMERIC_STRING);
         when(service.find(anyLong())).thenReturn(null);
         invokeResolveArgument();
