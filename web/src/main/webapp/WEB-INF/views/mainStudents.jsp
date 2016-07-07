@@ -10,7 +10,7 @@
 <ul>
   <c:forEach items="${requestScope.courses}" var="course">
     <li>
-      <s:url value="/students/course/${course.id}" var="showCourse"/>
+      <s:url value="/students/course?courseId=${course.id}" var="showCourse"/>
       <a href="${showCourse}"><c:out value="${course.title}"/></a>
     </li>
   </c:forEach>

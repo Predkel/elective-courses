@@ -29,7 +29,7 @@
     </tr>
   </table>
 <c:if test="${!requestScope.isCourseListener}">
-  <s:url value="/students/registerForTheCourse/${course.id}" var="registerForTheCourse"/>
+  <s:url value="/students/registerForTheCourse?courseId=${course.id}" var="registerForTheCourse"/>
   <a href="${registerForTheCourse}">Register for the course</a>
 </c:if>
 </body>
