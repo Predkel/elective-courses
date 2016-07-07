@@ -18,7 +18,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
-
+//TODO это не стратегия
 @Component
 public class ByIdHandlerMethodArgumentResolverStrategyImpl implements ByIdHandlerMethodArgumentResolverStrategy {
 

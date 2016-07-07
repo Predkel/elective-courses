@@ -18,13 +18,6 @@ public class  ServiceConfig {
 
     @Bean
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-//        transactionManager.setHibernateManagedSession(true);
-        return transactionManager;
+        return new HibernateTransactionManager(sessionFactory);
     }
-
-//    @Bean
-//    public CurrentSessionContext currentSessionContext() {
-//        return new CustomCurrentSessionContext();
-//    }
 }
