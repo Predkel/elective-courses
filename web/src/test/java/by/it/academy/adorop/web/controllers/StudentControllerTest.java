@@ -32,6 +32,7 @@ public class StudentControllerTest {
 
     private static final long ANY_LONG = 1L;
     private static final Student SOME_STUDENT = new Student();
+    public static final Course SOME_COURSE = new Course();
     private StudentController controller;
 
     @Mock
@@ -67,7 +68,7 @@ public class StudentControllerTest {
     }
 
     private String showCourse() {
-        return controller.showCourse(model, SOME_STUDENT, ANY_LONG);
+        return controller.showCourse(model, SOME_STUDENT, SOME_COURSE);
     }
 
     @Test
@@ -96,14 +97,15 @@ public class StudentControllerTest {
 
     @Test
     public void registerForTheCourseShouldRedirectToShowCourse() throws Exception {
-        assertEquals("redirect:/students/course/" + ANY_LONG, controller.registerForTheCourse(ANY_LONG, SOME_STUDENT));
+        SOME_COURSE.setId(ANY_LONG);
+        assertEquals("redirect:/students/course?courseId=" + ANY_LONG, controller.registerForTheCourse(SOME_COURSE, SOME_STUDENT));
     }
 
     @Test
     public void registerForTheCourseShouldRegisterStudentForTheCourse() throws Exception {
         Course requestedCourse = new Course();
         when(courseService.find(ANY_LONG)).thenReturn(requestedCourse);
-        controller.registerForTheCourse(ANY_LONG, SOME_STUDENT);
+        controller.registerForTheCourse(SOME_COURSE, SOME_STUDENT);
         verify(studentService).registerForTheCourse(SOME_STUDENT, requestedCourse);
     }
 
