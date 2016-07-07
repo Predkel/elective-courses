@@ -1,8 +1,11 @@
 package by.it.academy.adorop.web.security;
 
 import by.it.academy.adorop.model.users.Student;
+import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.StudentService;
-import by.it.academy.adorop.web.security.authentication.providers.StudentAuthenticationProviderImpl;
+import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.service.api.UserService;
+import by.it.academy.adorop.web.security.authentication.providers.AuthenticationProviderImpl;
 import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,11 +28,13 @@ import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(UserAuthentication.class)
-public class StudentAuthenticationProviderTest {
+public class AuthenticationProviderImplTest {
     private static final String ANY_PASSWORD = "any password";
-    private StudentAuthenticationProviderImpl authenticationProvider;
+    private AuthenticationProviderImpl authenticationProvider;
     @Mock
     private StudentService studentService;
+    @Mock
+    private TeacherService teacherService;
     @Mock
     private UserAuthentication authentication;
 
@@ -37,7 +42,7 @@ public class StudentAuthenticationProviderTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         PowerMockito.mockStatic(UserAuthentication.class);
-        authenticationProvider = new StudentAuthenticationProviderImpl(studentService);
+        authenticationProvider = new AuthenticationProviderImpl(studentService, teacherService);
     }
 
     @Test(expected = UsernameNotFoundException.class)

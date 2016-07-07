@@ -19,7 +19,7 @@
       <td><c:out value="${course.teacher.firstName} "/>
         <c:out value="${course.teacher.lastName}"/></td>
       <td><c:out value="${course.description}"/></td>
-      <c:if test="${risCourseListener}">
+      <c:if test="${isCourseListener}">
         <td>
           <c:if test="${mark.value != null}">
             <c:out value="${requestScope.mark.value}"/>
