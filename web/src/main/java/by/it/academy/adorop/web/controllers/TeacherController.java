@@ -6,6 +6,7 @@ import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,11 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/teachers")
-public class TeacherController {
+public class TeacherController extends AbstractUserController<Teacher> {
 
-    public static final String SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN = "Should be a number between zero and ten";
+    private static final String SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN = "Should be a number between zero and ten";
+    private static final String PATH_TO_CONTROLLER = "/teachers";
+
     private final CourseService courseService;
     private final TeacherService teacherService;
     private final MarkService markService;
@@ -92,5 +95,21 @@ public class TeacherController {
     private void evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark, @RequestParam Integer markValue) {
         mark.setValue(markValue);
         teacherService.evaluate(mark);
+    }
+
+    @RequestMapping("/new")
+    public String register(Model model, @ModelAttribute Teacher teacher) {
+        model.addAttribute("user", teacher);
+        return "register";
+    }
+
+    @Override
+    protected String getPathToController() {
+        return PATH_TO_CONTROLLER;
+    }
+
+    @Override
+    protected UserService<Teacher> getUserService() {
+        return teacherService;
     }
 }

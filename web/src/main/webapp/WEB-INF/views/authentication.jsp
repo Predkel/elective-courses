@@ -29,8 +29,8 @@
     <button type="submit" class="btn">Log in</button>
 </form>
 <s:url value="/students/new" var="studentsRegistration"/>
-<a href="${studentsRegistration}">Register as student</a><br>
+<a href="${studentsRegistration}">Registration for students</a><br>
 <s:url value="/teachers/new" var="teachersRegistration"/>
-<a href="${teachersRegistration}">Register as teacher</a>
+<a href="${teachersRegistration}">Registration for teachers</a>
 </body>
 </html>
