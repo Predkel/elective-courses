@@ -23,21 +23,11 @@ public class StudentController extends AbstractUserController<Student> {
 
     public static final String PATH_TO_CONTROLLER = "/students";
     private final StudentService studentService;
-    private final CourseService courseService;
-    private final MarkService markService;
 
     @Autowired
     public StudentController(StudentService studentService, CourseService courseService, MarkService markService) {
+        super(courseService, markService);
         this.studentService = studentService;
-        this.courseService = courseService;
-        this.markService = markService;
-    }
-
-
-    @RequestMapping(method = RequestMethod.GET)
-    public String showCourses(HttpServletRequest request) {
-        PaginationContentPutter.putPaginationContent(request, courseService, "courses");
-        return "main/students";
     }
 
     @RequestMapping("/course")
