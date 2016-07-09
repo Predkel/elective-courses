@@ -115,4 +115,21 @@ public class TeacherControllerTest {
         assertEquals("redirect:/teachers/course?courseId=" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, INT_ONE, model));
         verify(teacherService).evaluate(SOME_MARK);
     }
+
+    @Test
+    public void testRegister() throws Exception {
+        Teacher teacherModelAttribute = new Teacher();
+        assertEquals("register", controller.register(model, teacherModelAttribute));
+        verify(model).addAttribute("user", teacherModelAttribute);
+    }
+
+    @Test
+    public void getUserServiceShouldReturnNotNull() throws Exception {
+        assertNotNull(controller.getUserService());
+    }
+
+    @Test
+    public void testGetPathToController() throws Exception {
+        assertEquals("/teachers", controller.getPathToController());
+    }
 }

@@ -14,8 +14,4 @@ public class RequestParamValidator {
     public static boolean isPositiveNumber(String param) {
         return !isEmpty(param) && param.matches("[0-9]+");
     }
-//TODO test
-    public static boolean isNumberBetweenZeroAndTen(String param) {
-        return !isEmpty(param) && param.matches("[0-9]|(10)");
-    }
 }

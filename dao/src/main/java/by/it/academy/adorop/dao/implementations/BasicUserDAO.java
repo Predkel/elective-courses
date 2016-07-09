@@ -20,4 +20,11 @@ public abstract class BasicUserDAO<T extends User> extends BasicDAO<T, Long> imp
                 .add(Restrictions.eq("documentId", documentId))
                 .uniqueResult();
     }
+
+    @Override
+    public boolean isAlreadyExists(String documentId) {
+        return currentSession().createCriteria(User.class)
+                .add(Restrictions.eq("documentId", documentId))
+                .uniqueResult() != null;
+    }
 }

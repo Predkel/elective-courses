@@ -28,6 +28,6 @@ public abstract class BasicUserService<T extends User> extends BasicService<T, L
 
     @Override
     public boolean isAlreadyExists(String documentId) {
-        return getByDocumentId(documentId) != null;
+        return userDAO.isAlreadyExists(documentId);
     }
 }

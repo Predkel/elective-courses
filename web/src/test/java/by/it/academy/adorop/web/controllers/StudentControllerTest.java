@@ -7,7 +7,6 @@ import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
-import by.it.academy.adorop.web.utils.pagination.PaginatorBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,7 +51,7 @@ public class StudentControllerTest {
     public void setUp() throws Exception {
         PowerMockito.mockStatic(PaginationContentPutter.class);
         MockitoAnnotations.initMocks(this);
-        controller = new StudentController(courseService, studentService, markService);
+        controller = new StudentController(studentService, courseService, markService);
     }
 
     @Test
@@ -118,20 +117,20 @@ public class StudentControllerTest {
     public void testSaveNewStudentWhenRequestIsValid() throws Exception {
         when(bindingResult.hasErrors()).thenReturn(false);
         when(studentService.isAlreadyExists(anyString())).thenReturn(false);
-        assertEquals("redirect:/students", controller.saveNewStudent(SOME_STUDENT, bindingResult, model));
+        assertEquals("redirect:/students", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
         verify(studentService).persist(SOME_STUDENT);
     }
 
     @Test
     public void testSaveNewStudentWhenRequestIsNotValid() throws Exception {
         when(bindingResult.hasErrors()).thenReturn(true);
-        assertEquals("register", controller.saveNewStudent(SOME_STUDENT, bindingResult, model));
+        assertEquals("register", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
     }
 
     @Test
     public void testSaveNewStudentWhenUserAlreadyExists() throws Exception {
         when(bindingResult.hasErrors()).thenReturn(false);
         when(studentService.isAlreadyExists(anyString())).thenReturn(true);
-        assertEquals("register", controller.saveNewStudent(SOME_STUDENT, bindingResult, model));
+        assertEquals("register", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
     }
 }
