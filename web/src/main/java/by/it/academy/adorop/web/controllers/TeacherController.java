@@ -23,6 +23,7 @@ import javax.validation.Valid;
 @RequestMapping("/teachers")
 public class TeacherController {
 
+    public static final String SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN = "Should be a number between zero and ten";
     private final CourseService courseService;
     private final TeacherService teacherService;
     private final MarkService markService;
@@ -70,9 +71,26 @@ public class TeacherController {
     @RequestMapping(value = "/evaluate", method = RequestMethod.POST)
     public String evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark,
                            @RequestParam Long courseId,
-                           @RequestParam Integer markValue) {
+                           @RequestParam Integer markValue,
+                           Model model) {
+        if (!isNumberBetweenZeroAndTen(markValue)) {
+            return sendToShowCourse(mark, model);
+        }
+        evaluate(mark, markValue);
+        return "redirect:/teachers/course?courseId=" + courseId;
+    }
+
+    private boolean isNumberBetweenZeroAndTen(Integer markValue) {
+        return markValue >= 0 && markValue <= 10;
+    }
+
+    private String sendToShowCourse(@ModelById(nameOfIdParameter = "markId") Mark mark, Model model) {
+        model.addAttribute("message", SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN);
+        return showCourse(mark.getCourse(), model);
+    }
+
+    private void evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark, @RequestParam Integer markValue) {
         mark.setValue(markValue);
         teacherService.evaluate(mark);
-        return "redirect:/teachers/course?courseId=" + courseId;
     }
 }

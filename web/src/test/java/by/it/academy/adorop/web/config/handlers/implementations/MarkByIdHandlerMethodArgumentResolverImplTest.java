@@ -7,7 +7,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 
 import static org.mockito.Mockito.verify;
 
-public class MarkByIdHandlerMethodArgumentResolverImplTest extends AbstractByIdHandlerMethodArgumentResolverImplTest {
+public class MarkByIdHandlerMethodArgumentResolverImplTest extends AbstractModelByIdHandlerMethodArgumentResolverTest {
 
     @Mock
     private MarkService markService;
