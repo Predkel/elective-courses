@@ -27,21 +27,12 @@ public class TeacherController extends AbstractUserController<Teacher> {
     private static final String SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN = "Should be a number between zero and ten";
     private static final String PATH_TO_CONTROLLER = "/teachers";
 
-    private final CourseService courseService;
     private final TeacherService teacherService;
-    private final MarkService markService;
 
     @Autowired
     public TeacherController(CourseService courseService, TeacherService teacherService, MarkService markService) {
-        this.courseService = courseService;
+        super(courseService, markService);
         this.teacherService = teacherService;
-        this.markService = markService;
-    }
-
-    @RequestMapping
-    public String showCourses(HttpServletRequest request) {
-        PaginationContentPutter.putPaginationContent(request, courseService, "courses");
-        return "main/teachers";
     }
 
     @RequestMapping("/add")

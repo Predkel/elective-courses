@@ -1,17 +1,35 @@
 package by.it.academy.adorop.web.controllers;
 
 import by.it.academy.adorop.model.users.User;
+import by.it.academy.adorop.service.api.CourseService;
+import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.UserService;
+import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 public abstract class AbstractUserController<T extends User> {
 
     private static final String USER_ALREADY_EXISTS_MESSAGE = "User with the same document id already exists";
+
+    protected final CourseService courseService;
+    protected final MarkService markService;
+
+    protected AbstractUserController(CourseService courseService, MarkService markService) {
+        this.courseService = courseService;
+        this.markService = markService;
+    }
+
+    @RequestMapping
+    public String showCourses(HttpServletRequest request) {
+        PaginationContentPutter.putPaginationContent(request, courseService, "courses");
+        return "main" + getPathToController();
+    }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String saveNewUser(@Valid T user, BindingResult bindingResult, Model model) {
