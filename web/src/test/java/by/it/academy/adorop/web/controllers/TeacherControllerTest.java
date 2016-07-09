@@ -35,7 +35,8 @@ public class TeacherControllerTest {
     private static final Teacher CURRENT_TEACHER = new Teacher();
     private static final long ANY_LONG = 1L;
     private static final Mark SOME_MARK = new Mark();
-    private static final int ANY_INT = 1;
+    private static final int INT_ONE = 1;
+    public static final int INT_ELEVEN = 11;
 
     private TeacherController controller;
     @Mock
@@ -101,10 +102,17 @@ public class TeacherControllerTest {
         verify(model).addAttribute("marks", expectedMarks);
     }
 
+    @Test
+    public void evaluateShouldReturnOnShowCoursePageWhenMarkValueIsNotNumberBetweenZeroAndTen() throws Exception {
+        Long courseId = ANY_LONG;
+        Integer markValue = INT_ELEVEN;
+        assertEquals("teachers/course", controller.evaluate(SOME_MARK, courseId, markValue, model));
+        verify(model).addAttribute("message", "Should be a number between zero and ten");
+    }
 
-//    @Test
-//    public void testEvaluateOnPositiveScenario() throws Exception {
-//        assertEquals("redirect:/teachers/course/" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, ANY_INT));
-//        verify(teacherService).evaluate(SOME_MARK);
-//    }
+        @Test
+    public void testEvaluateOnPositiveScenario() throws Exception {
+        assertEquals("redirect:/teachers/course?courseId=" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, INT_ONE, model));
+        verify(teacherService).evaluate(SOME_MARK);
+    }
 }

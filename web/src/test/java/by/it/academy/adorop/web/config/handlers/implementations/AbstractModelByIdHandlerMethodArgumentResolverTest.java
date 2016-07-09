@@ -30,7 +30,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ResponseEntity.class})
-public abstract class AbstractByIdHandlerMethodArgumentResolverImplTest {
+public abstract class AbstractModelByIdHandlerMethodArgumentResolverTest {
     public static final String NOT_NUMERIC_STRING = "abc";
     private static final String NUMERIC_STRING = "10";
 

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MarkByIdHandlerMethodArgumentResolverImpl extends AbstractByIdHandlerMethodArgumentResolver implements MarkByIdHandlerMethodArgumentResolver {
+public class MarkByIdHandlerMethodArgumentResolverImpl extends AbstractModelByIdHandlerMethodArgumentResolver implements MarkByIdHandlerMethodArgumentResolver {
 
     private final MarkService markService;
 
