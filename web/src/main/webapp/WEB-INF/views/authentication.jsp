@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Authentication</title>
@@ -8,7 +8,7 @@
 <body>
 <h1>Authentication</h1>
 
-<c:url value="/login" var="loginUrl"/>
+<s:url value="/login" var="loginUrl"/>
 <form action="${loginUrl}" method="post">
     <c:if test="${param.error != null}"> ·
         <p>
@@ -16,17 +16,17 @@
         </p>
     </c:if>
     <p>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"/> ¹
+        <label for="username"><s:message code="users.document.id"/> </label>
+        <input type="text" id="username" name="username"/>
     </p>
     <p>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password"/> º
+        <label for="password"><s:message code="users.password"/> </label>
+        <input type="password" id="password" name="password"/>
     </p>
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
-    <button type="submit" class="btn">Log in</button>
+    <button type="submit" class="btn"><s:message code="users.login"/> </button>
 </form>
 <s:url value="/students/new" var="studentsRegistration"/>
 <a href="${studentsRegistration}">Registration for students</a><br>
