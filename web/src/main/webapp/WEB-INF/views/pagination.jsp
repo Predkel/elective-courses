@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
 <head>
-    <title>Courses</title>
+  <title>Courses</title>
 </head>
 <body>
   <form method="get">
@@ -23,7 +23,6 @@
       </c:otherwise>
     </c:choose>
   </c:forEach>
-
   <tiles:insertAttribute name="content"/>
 </body>
 </html>

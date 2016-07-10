@@ -4,25 +4,41 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-    <definition name="pagination" template="/WEB-INF/views/main.jsp">
+    <definition name="defaultLayout" template="/WEB-INF/views/defaultLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="body"/>
+    </definition>
+
+    <definition name="pagination" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/views/pagination.jsp"/>
         <put-attribute name="content"/>
     </definition>
 
     <definition name="main/students" extends="pagination">
-        <put-attribute name="content" value="/WEB-INF/views/mainStudents.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/mainStudents.jsp" cascade="true"/>
     </definition>
-
-    <definition name="students/course" template="/WEB-INF/views/courseForStudent.jsp"/>
 
     <definition name="main/teachers" extends="pagination">
-        <put-attribute name="content" value="/WEB-INF/views/mainTeachers.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/mainTeachers.jsp" cascade="true"/>
     </definition>
 
-    <definition name="course/add" template="/WEB-INF/views/addCourseForm.jsp"/>
+    <definition name="students/course" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/views/courseForStudent.jsp"/>
+    </definition>
 
-    <definition name="teachers/course" template="/WEB-INF/views/courseForTeacher.jsp"/>
+    <definition name="course/add" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/views/addCourseForm.jsp"/>
+    </definition>
 
-    <definition name="test" template="/WEB-INF/views/test.jsp"/>
-    <definition name="login" template="/WEB-INF/views/authentication.jsp"/>
-    <definition name="register" template="/WEB-INF/views/registration.jsp"/>
+    <definition name="teachers/course" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/views/courseForTeacher.jsp"/>
+    </definition>
+
+    <definition name="login" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/views/authentication.jsp"/>
+    </definition>
+
+    <definition name="register" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
+    </definition>
 </tiles-definitions>
