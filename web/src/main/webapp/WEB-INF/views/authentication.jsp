@@ -6,7 +6,7 @@
     <title>Authentication</title>
 </head>
 <body>
-<h1>Authentication</h1>
+<h1><s:message code="users.authentication"/> </h1>
 
 <s:url value="/login" var="loginUrl"/>
 <form action="${loginUrl}" method="post">

@@ -9,6 +9,7 @@ import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -61,7 +62,6 @@ public class TeacherController extends AbstractUserController<Teacher> {
         return "teachers/course";
     }
 
-    //TODO markValue validation
     @RequestMapping(value = "/evaluate", method = RequestMethod.POST)
     public String evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark,
                            @RequestParam Long courseId,
