@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,8 +64,7 @@ public class StudentController extends AbstractUserController<Student> {
     }
 
     @RequestMapping("/new")
-    public String register(Model model) {
-        model.addAttribute("user", new Student());
+    public String register(@ModelAttribute("user") Student student) {
         return "registration";
     }
 

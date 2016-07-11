@@ -11,14 +11,14 @@ public abstract class User {
     @Id
     @GeneratedValue
     private Long id;
-    @NotEmpty(message = "{message.notEmpty}")
+    @NotEmpty
     private String firstName;
-    @NotEmpty(message = "{message.notEmpty}")
+    @NotEmpty
     private String lastName;
-    @NotEmpty(message = "{message.notEmpty}")
+    @NotEmpty
     @Column(unique = true)
     private String documentId;
-    @NotEmpty(message = "{message.notEmpty}")
+    @NotEmpty
     private String password;
 
     public Long getId() {

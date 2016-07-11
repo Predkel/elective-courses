@@ -16,7 +16,7 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @NotEmpty(message = "${message.notEmpty}")
+    @NotEmpty
     @Column(nullable = false)
     private String title;
     @Lob

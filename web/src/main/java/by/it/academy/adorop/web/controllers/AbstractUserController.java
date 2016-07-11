@@ -11,12 +11,15 @@ import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 public abstract class AbstractUserController<T extends User> {
 
@@ -37,7 +40,7 @@ public abstract class AbstractUserController<T extends User> {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String saveNewUser(@Valid T user, BindingResult bindingResult, Model model) {
+    public String saveNewUser(@ModelAttribute("user") @Valid T user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return sendToRegisterForm(user, model);
         }
@@ -48,11 +51,6 @@ public abstract class AbstractUserController<T extends User> {
         return redirectToMain();
     }
 
-    private String sendToRegisterFormWithMessage(T user, Model model) {
-        model.addAttribute("message", USER_ALREADY_EXISTS_MESSAGE);
-        return sendToRegisterForm(user, model);
-    }
-
     private boolean alreadyExists(T user) {
         return getUserService().isAlreadyExists(user.getDocumentId());
     }
@@ -60,6 +58,11 @@ public abstract class AbstractUserController<T extends User> {
     private String sendToRegisterForm(T user, Model model) {
         model.addAttribute("user", user);
         return "registration";
+    }
+
+    private String sendToRegisterFormWithMessage(T user, Model model) {
+        model.addAttribute("message", USER_ALREADY_EXISTS_MESSAGE);
+        return sendToRegisterForm(user, model);
     }
 
     private String redirectToMain() {
