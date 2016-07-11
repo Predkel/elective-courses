@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.config;
+package by.it.academy.adorop.web.infrostructure;
 
 import org.hibernate.HibernateException;
 import org.junit.Test;

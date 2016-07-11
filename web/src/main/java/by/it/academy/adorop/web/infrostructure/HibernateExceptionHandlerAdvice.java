@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.config;
+package by.it.academy.adorop.web.infrostructure;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;

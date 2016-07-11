@@ -1,9 +1,9 @@
-package by.it.academy.adorop.web.config.handlers.implementations;
+package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
 
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.web.config.handlers.api.MarkByIdHandlerMethodArgumentResolver;
+import by.it.academy.adorop.web.infrostructure.resolvers.api.MarkByIdHandlerMethodArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

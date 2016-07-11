@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.config.handlers.api;
+package by.it.academy.adorop.web.infrostructure.resolvers.api;
 
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 

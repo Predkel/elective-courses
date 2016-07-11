@@ -1,10 +1,8 @@
-package by.it.academy.adorop.web.config.handlers.implementations;
+package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
 
 import by.it.academy.adorop.model.Course;
-import by.it.academy.adorop.model.Mark;
-import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
+import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
