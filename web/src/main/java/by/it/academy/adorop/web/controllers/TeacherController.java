@@ -89,8 +89,7 @@ public class TeacherController extends AbstractUserController<Teacher> {
     }
 
     @RequestMapping("/new")
-    public String register(Model model, @ModelAttribute Teacher teacher) {
-        model.addAttribute("user", teacher);
+    public String register(@ModelAttribute("user") Teacher teacher) {
         return "registration";
     }
 

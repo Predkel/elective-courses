@@ -110,7 +110,7 @@ public class StudentControllerTest {
 
     @Test
     public void testRegister() throws Exception {
-        assertEquals("registration", controller.register(model));
+        assertEquals("registration", controller.register(SOME_STUDENT));
     }
 
     @Test

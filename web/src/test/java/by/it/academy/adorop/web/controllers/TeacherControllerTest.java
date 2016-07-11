@@ -119,8 +119,7 @@ public class TeacherControllerTest {
     @Test
     public void testRegister() throws Exception {
         Teacher teacherModelAttribute = new Teacher();
-        assertEquals("registration", controller.register(model, teacherModelAttribute));
-        verify(model).addAttribute("user", teacherModelAttribute);
+        assertEquals("registration", controller.register(teacherModelAttribute));
     }
 
     @Test
