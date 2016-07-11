@@ -5,6 +5,8 @@ import by.it.academy.adorop.web.config.handlers.api.CourseByIdHandlerMethodArgum
 import by.it.academy.adorop.web.config.handlers.api.MarkByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
 import org.hibernate.validator.HibernateValidator;
+import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
+import org.hibernate.validator.resourceloading.PlatformResourceBundleLocator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -24,10 +27,11 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Locale;
 
-//TODO LocaleResolver, ExceptionHandler
 @Configuration
 @EnableWebMvc
 @ComponentScan("by.it.academy.adorop.web")
@@ -52,7 +56,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(localeChangeInterceptor);
     }
 
-
     @Bean
     public TilesViewResolver viewResolver() {
         return new TilesViewResolver();
@@ -66,9 +69,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ReloadableResourceBundleMessageSource messageSource() {
+    public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource = new ReloadableResourceBundleMessageSource();
-        reloadableResourceBundleMessageSource.setBasenames("classpath:i18n/messages", "classpath:i18/ValidationMessages");
+        reloadableResourceBundleMessageSource.setBasenames("classpath:i18n/messages");
         reloadableResourceBundleMessageSource.setDefaultEncoding("UTF-8");
         return reloadableResourceBundleMessageSource;
     }

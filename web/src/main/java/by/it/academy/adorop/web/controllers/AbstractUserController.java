@@ -1,12 +1,17 @@
 package by.it.academy.adorop.web.controllers;
 
+import by.it.academy.adorop.model.Course;
+import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
+import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,30 +38,32 @@ public abstract class AbstractUserController<T extends User> {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String saveNewUser(@Valid T user, BindingResult bindingResult, Model model) {
-        String path = definePath(user, bindingResult);
-        processModel(user, bindingResult, model);
-        return path;
-    }
-
-    private void processModel(T user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("user", user);
-        } else if (getUserService().isAlreadyExists(user.getDocumentId())) {
-            model.addAttribute("message", USER_ALREADY_EXISTS_MESSAGE);
-            model.addAttribute("user", user);
-        } else {
-            getUserService().persist(user);
+            return sendToRegisterForm(user, model);
         }
+        if (alreadyExists(user)) {
+            return sendToRegisterFormWithMessage(user, model);
+        }
+        getUserService().persist(user);
+        return redirectToMain();
     }
 
-    private String definePath(T user, BindingResult bindingResult) {
-        String path;
-        if (bindingResult.hasErrors() || getUserService().isAlreadyExists(user.getDocumentId())) {
-            path = "registration";
-        } else {
-            path = "redirect:" + getPathToController();
-        }
-        return path;
+    private String sendToRegisterFormWithMessage(T user, Model model) {
+        model.addAttribute("message", USER_ALREADY_EXISTS_MESSAGE);
+        return sendToRegisterForm(user, model);
+    }
+
+    private boolean alreadyExists(T user) {
+        return getUserService().isAlreadyExists(user.getDocumentId());
+    }
+
+    private String sendToRegisterForm(T user, Model model) {
+        model.addAttribute("user", user);
+        return "registration";
+    }
+
+    private String redirectToMain() {
+        return "redirect:" + getPathToController();
     }
 
     protected abstract String getPathToController();

@@ -6,7 +6,7 @@
     <title>Add course</title>
 </head>
 <body>
-<sf:form method="post" modelAttribute="course">
+<sf:form modelAttribute="course" method="post">
   Title:        <sf:input path="title"/>
                 <sf:errors path="title"/>
   <br>

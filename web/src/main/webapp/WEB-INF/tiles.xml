@@ -41,4 +41,6 @@
     <definition name="registration" extends="defaultLayout">
         <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
     </definition>
+
+    <definition name="error" template="/WEB-INF/views/error.jsp"/>
 </tiles-definitions>

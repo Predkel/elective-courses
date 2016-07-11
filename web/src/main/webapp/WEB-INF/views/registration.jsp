@@ -8,8 +8,8 @@
 ${message}
 <sf:form modelAttribute="user" method="post">
   Document Id:   <sf:input path="documentId"/>
-                 <sf:errors path="documentId" cssClass="error"/><br>
-  Password:      <sf:input path="password"/>
+                 <sf:errors path="documentId"/><br>
+  Password:      <sf:password path="password"/>
                  <sf:errors path="password"/><br>
   First Name:    <sf:input path="firstName"/>
                  <sf:errors path="firstName"/><br>
