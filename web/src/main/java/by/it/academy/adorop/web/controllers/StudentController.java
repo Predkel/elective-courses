@@ -65,7 +65,7 @@ public class StudentController extends AbstractUserController<Student> {
     @RequestMapping("/new")
     public String register(Model model) {
         model.addAttribute("user", new Student());
-        return "register";
+        return "registration";
     }
 
     @Override

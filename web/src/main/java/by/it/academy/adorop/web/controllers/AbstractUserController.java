@@ -34,11 +34,11 @@ public abstract class AbstractUserController<T extends User> {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String saveNewUser(@Valid T user, BindingResult bindingResult, Model model) {
         String path = definePath(user, bindingResult);
-        processRequest(user, bindingResult, model);
+        processModel(user, bindingResult, model);
         return path;
     }
-    //TODO name
-    private void processRequest(T user, BindingResult bindingResult, Model model) {
+
+    private void processModel(T user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", user);
         } else if (getUserService().isAlreadyExists(user.getDocumentId())) {
@@ -52,7 +52,7 @@ public abstract class AbstractUserController<T extends User> {
     private String definePath(T user, BindingResult bindingResult) {
         String path;
         if (bindingResult.hasErrors() || getUserService().isAlreadyExists(user.getDocumentId())) {
-            path = "register";
+            path = "registration";
         } else {
             path = "redirect:" + getPathToController();
         }

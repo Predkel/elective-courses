@@ -110,7 +110,7 @@ public class StudentControllerTest {
 
     @Test
     public void testRegister() throws Exception {
-        assertEquals("register", controller.register(model));
+        assertEquals("registration", controller.register(model));
     }
 
     @Test
@@ -124,13 +124,13 @@ public class StudentControllerTest {
     @Test
     public void testSaveNewStudentWhenRequestIsNotValid() throws Exception {
         when(bindingResult.hasErrors()).thenReturn(true);
-        assertEquals("register", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
+        assertEquals("registration", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
     }
 
     @Test
     public void testSaveNewStudentWhenUserAlreadyExists() throws Exception {
         when(bindingResult.hasErrors()).thenReturn(false);
         when(studentService.isAlreadyExists(anyString())).thenReturn(true);
-        assertEquals("register", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
+        assertEquals("registration", controller.saveNewUser(SOME_STUDENT, bindingResult, model));
     }
 }

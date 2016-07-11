@@ -23,6 +23,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
@@ -85,11 +86,16 @@ public abstract class AbstractModelByIdHandlerMethodArgumentResolverTest {
         return resolver.resolveArgument(methodParameter, modelAndViewContainer, request, factory);
     }
 
-    protected abstract HandlerMethodArgumentResolver getResolver();
+    protected abstract AbstractModelByIdHandlerMethodArgumentResolver getResolver();
 
     @Test
     public void supportsShouldReturnFalseWhenMethodParameterIsNotAnnotatedWithModelById() throws Exception {
         when(methodParameter.getParameterAnnotation(anyObject())).thenReturn(null);
         assertFalse(getResolver().supportsParameter(methodParameter));
+    }
+
+    @Test
+    public void testGetClassOfParameter() throws Exception {
+        assertNotNull(getResolver().getClassOfParameter());
     }
 }

@@ -4,10 +4,10 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Courses</title>
+    <title><s:message code="courses"/> </title>
 </head>
 <body>
-<h1>Courses</h1><br>
+<h1><s:message code="courses"/></h1><br>
 ${message}
 <sec:authentication property="principal" var="currentTeacher"/>
 <ul>
@@ -25,6 +25,6 @@ ${message}
         </li>
     </c:forEach>
 </ul>
-<a href="<c:url value="/teachers/add"/>">Add course</a><br>
+<a href="<c:url value="/teachers/add"/>"><s:message code="course.add"/> </a><br>
 </body>
 </html>
