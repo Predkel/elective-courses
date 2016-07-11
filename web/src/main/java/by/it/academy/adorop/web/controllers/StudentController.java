@@ -6,17 +6,13 @@ import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.UserService;
-import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
-import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
+import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/students")

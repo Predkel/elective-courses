@@ -7,9 +7,7 @@ import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
-import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
-import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
-import org.hibernate.HibernateException;
+import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller

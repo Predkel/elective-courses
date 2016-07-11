@@ -1155,3 +1155,5 @@ java.lang.IllegalStateException: Neither BindingResult nor plain target object f
 2016-07-11 21:38:39,981 INFO  - Shutting down EhCache CacheManager
 2016-07-11 21:38:39,991 INFO  - Shutting down connection pool...
 2016-07-11 21:38:39,994 INFO  - Connection pool has been shutdown.
+2016-07-11 21:43:45,491 ERROR - org.hibernate.HibernateException: 
+2016-07-11 21:51:36,650 ERROR - org.hibernate.HibernateException: 

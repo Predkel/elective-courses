@@ -1,7 +1,7 @@
-package by.it.academy.adorop.web.config.handlers.implementations;
+package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
 
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.web.config.handlers.annotations.ModelById;
+import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.MethodParameter;

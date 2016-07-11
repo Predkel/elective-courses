@@ -1,10 +1,8 @@
-package by.it.academy.adorop.web.config.handlers.implementations;
+package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
 
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.Service;
-import org.junit.Test;
 import org.mockito.Mock;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 
 import static org.mockito.Mockito.verify;
 

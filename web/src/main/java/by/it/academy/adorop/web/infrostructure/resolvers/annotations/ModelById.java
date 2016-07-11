@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.config.handlers.annotations;
+package by.it.academy.adorop.web.infrostructure.resolvers.annotations;
 
 import java.lang.annotation.*;
 

@@ -1,12 +1,9 @@
-package by.it.academy.adorop.web.config;
+package by.it.academy.adorop.web.infrostructure;
 
 import by.it.academy.adorop.service.config.ServiceConfig;
-import by.it.academy.adorop.web.config.handlers.api.CourseByIdHandlerMethodArgumentResolver;
-import by.it.academy.adorop.web.config.handlers.api.MarkByIdHandlerMethodArgumentResolver;
+import by.it.academy.adorop.web.infrostructure.resolvers.api.CourseByIdHandlerMethodArgumentResolver;
+import by.it.academy.adorop.web.infrostructure.resolvers.api.MarkByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
-import org.hibernate.validator.HibernateValidator;
-import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
-import org.hibernate.validator.resourceloading.PlatformResourceBundleLocator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -14,21 +11,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
 import java.util.List;
 import java.util.Locale;
 
