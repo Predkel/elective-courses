@@ -8,6 +8,7 @@
 <body>
 <sf:form method="post" modelAttribute="course">
   Title:        <sf:input path="title"/>
+                <sf:errors path="title"/>
   <br>
   Description:  <sf:textarea path="description"/><br>
   <input type="submit" value="Add course">

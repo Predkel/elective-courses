@@ -17,7 +17,7 @@ public class CourseByIdHandlerMethodArgumentResolverImplTest extends AbstractMod
     }
 
     @Override
-    protected HandlerMethodArgumentResolver getResolver() {
+    protected AbstractModelByIdHandlerMethodArgumentResolver getResolver() {
         return new CourseByIdHandlerMethodArgumentResolverImpl(courseService);
     }
 }

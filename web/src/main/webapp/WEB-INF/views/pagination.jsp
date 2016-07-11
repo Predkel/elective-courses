@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
-<head>
-  <title>Courses</title>
-</head>
 <body>
   <form method="get">
     <input type="text" name="maxResult" value="${requestScope.maxResult}">

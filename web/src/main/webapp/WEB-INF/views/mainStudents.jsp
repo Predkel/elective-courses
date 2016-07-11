@@ -3,10 +3,10 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title>Courses</title>
+    <title><s:message code="courses"/></title>
 </head>
 <body>
-<h1>Courses</h1>
+<h1><s:message code="courses"/></h1>
 <ul>
   <c:forEach items="${requestScope.courses}" var="course">
     <li>

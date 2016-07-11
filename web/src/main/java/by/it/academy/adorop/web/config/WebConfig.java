@@ -4,6 +4,7 @@ import by.it.academy.adorop.service.config.ServiceConfig;
 import by.it.academy.adorop.web.config.handlers.api.CourseByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.config.handlers.api.MarkByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
+import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -49,6 +52,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(localeChangeInterceptor);
     }
 
+
     @Bean
     public TilesViewResolver viewResolver() {
         return new TilesViewResolver();
@@ -64,7 +68,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource = new ReloadableResourceBundleMessageSource();
-        reloadableResourceBundleMessageSource.setBasename("classpath:i18n/messages");
+        reloadableResourceBundleMessageSource.setBasenames("classpath:i18n/messages", "classpath:i18/ValidationMessages");
+        reloadableResourceBundleMessageSource.setDefaultEncoding("UTF-8");
         return reloadableResourceBundleMessageSource;
     }
 

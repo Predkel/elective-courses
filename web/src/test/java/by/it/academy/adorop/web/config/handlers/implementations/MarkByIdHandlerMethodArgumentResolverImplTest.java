@@ -2,6 +2,7 @@ package by.it.academy.adorop.web.config.handlers.implementations;
 
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.Service;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 
@@ -18,7 +19,7 @@ public class MarkByIdHandlerMethodArgumentResolverImplTest extends AbstractModel
     }
 
     @Override
-    protected HandlerMethodArgumentResolver getResolver() {
+    protected AbstractModelByIdHandlerMethodArgumentResolver getResolver() {
         return new MarkByIdHandlerMethodArgumentResolverImpl(markService);
     }
 }

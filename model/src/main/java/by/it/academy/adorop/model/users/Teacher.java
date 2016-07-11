@@ -1,6 +1,7 @@
 package by.it.academy.adorop.model.users;
 
 import by.it.academy.adorop.model.Course;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,13 +27,13 @@ public class Teacher extends User implements Serializable {
         this.courses = courses;
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" + super.toString();
-    }
-
     public void addCourse(Course course) {
         course.setTeacher(this);
         courses.add(course);
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" + super.toString();
     }
 }
