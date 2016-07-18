@@ -7,6 +7,8 @@ import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.service.exceptions.ServiceException;
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +38,9 @@ public class TeacherServiceImpl extends BasicUserService<Teacher> implements Tea
 
     @Override
     public void addCourse(Teacher teacher, Course course) {
-        teacher.addCourse(course);
-        userDAO.update(teacher);
+        throw new ServiceException(new HibernateException(""));
+//        teacher.addCourse(course);
+//        userDAO.update(teacher);
     }
 
     @Override
