@@ -42,5 +42,7 @@
         <put-attribute name="body" value="/WEB-INF/views/registration.jsp"/>
     </definition>
 
+    <definition name="badRequest" template="/WEB-INF/views/badRequestPage.jsp"/>
+
     <definition name="error" template="/WEB-INF/views/error.jsp"/>
 </tiles-definitions>
