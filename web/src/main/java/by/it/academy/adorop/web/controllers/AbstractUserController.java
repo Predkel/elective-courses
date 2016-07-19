@@ -1,25 +1,18 @@
 package by.it.academy.adorop.web.controllers;
 
-import by.it.academy.adorop.model.Course;
-import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
-import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 
 public abstract class AbstractUserController<T extends User> {
 

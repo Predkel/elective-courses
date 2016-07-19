@@ -1,17 +1,15 @@
 package by.it.academy.adorop.web.infrostructure;
 
 import by.it.academy.adorop.service.exceptions.ServiceException;
-import org.hibernate.HibernateException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.TypeMismatchException;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class HibernateExceptionHandlerAdviceTest {
 

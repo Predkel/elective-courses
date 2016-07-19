@@ -38,9 +38,8 @@ public class TeacherServiceImpl extends BasicUserService<Teacher> implements Tea
 
     @Override
     public void addCourse(Teacher teacher, Course course) {
-        throw new ServiceException(new HibernateException(""));
-//        teacher.addCourse(course);
-//        userDAO.update(teacher);
+        teacher.addCourse(course);
+        userDAO.update(teacher);
     }
 
     @Override

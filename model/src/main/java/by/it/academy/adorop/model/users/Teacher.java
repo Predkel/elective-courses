@@ -1,7 +1,6 @@
 package by.it.academy.adorop.model.users;
 
 import by.it.academy.adorop.model.Course;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

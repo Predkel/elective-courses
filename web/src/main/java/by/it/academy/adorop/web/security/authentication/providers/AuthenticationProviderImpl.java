@@ -1,10 +1,8 @@
 package by.it.academy.adorop.web.security.authentication.providers;
 
-import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.TeacherService;
-import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

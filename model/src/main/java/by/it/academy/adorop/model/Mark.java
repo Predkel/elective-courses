@@ -3,8 +3,6 @@ package by.it.academy.adorop.model;
 import by.it.academy.adorop.model.users.Student;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Entity

@@ -1,7 +1,6 @@
 package by.it.academy.adorop.web.utils.pagination;
 
 import by.it.academy.adorop.service.api.Service;
-import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;

@@ -1,12 +1,10 @@
 package by.it.academy.adorop.web.security;
 
 import by.it.academy.adorop.model.users.Student;
-import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.TeacherService;
-import by.it.academy.adorop.service.api.UserService;
-import by.it.academy.adorop.web.security.authentication.providers.AuthenticationProviderImpl;
 import by.it.academy.adorop.web.security.authentication.UserAuthentication;
+import by.it.academy.adorop.web.security.authentication.providers.AuthenticationProviderImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
