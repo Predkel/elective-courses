@@ -2,7 +2,6 @@ package by.it.academy.adorop.dao.implementations;
 
 import by.it.academy.adorop.dao.api.CourseDAO;
 import by.it.academy.adorop.model.Course;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;

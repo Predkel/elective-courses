@@ -2,7 +2,6 @@ package by.it.academy.adorop.web.security;
 
 import by.it.academy.adorop.service.config.ServiceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

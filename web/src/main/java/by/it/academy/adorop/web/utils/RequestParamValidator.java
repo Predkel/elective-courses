@@ -1,7 +1,5 @@
 package by.it.academy.adorop.web.utils;
 
-import by.it.academy.adorop.service.api.Service;
-
 public class RequestParamValidator {
 
     private RequestParamValidator() {

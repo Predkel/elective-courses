@@ -2,7 +2,6 @@ package by.it.academy.adorop.service.config;
 
 import by.it.academy.adorop.dao.config.PersistenceConfig;
 import org.hibernate.SessionFactory;
-import org.hibernate.context.spi.CurrentSessionContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

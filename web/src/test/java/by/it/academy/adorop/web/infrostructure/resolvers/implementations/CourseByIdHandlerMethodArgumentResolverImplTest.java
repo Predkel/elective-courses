@@ -4,8 +4,6 @@ import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.Service;
 import org.mockito.Mock;
 
-import static org.mockito.Mockito.verify;
-
 public class CourseByIdHandlerMethodArgumentResolverImplTest extends AbstractModelByIdHandlerMethodArgumentResolverTest {
     @Mock
     private CourseService courseService;
