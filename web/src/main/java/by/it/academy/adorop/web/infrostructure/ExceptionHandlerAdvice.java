@@ -23,7 +23,7 @@ public class ExceptionHandlerAdvice {
     }
 
     @ExceptionHandler(TypeMismatchException.class)
-    public String catchBadRequestException(Exception e, Model model, HttpServletRequest request) {
+    public String catchTypeMismatchException(Exception e, Model model, HttpServletRequest request) {
         return sendToBadRequestPage(model, request);
     }
 

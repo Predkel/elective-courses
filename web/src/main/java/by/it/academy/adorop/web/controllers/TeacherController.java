@@ -63,15 +63,16 @@ public class TeacherController extends AbstractUserController<Teacher> {
     }
 
     @RequestMapping(value = "/evaluate", method = RequestMethod.POST)
+    @PreAuthorize("#course.teacher.equals(principal)")
     public String evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark,
-                           @RequestParam Long courseId,
+                           @ModelById(nameOfIdParameter = "courseId") Course course,
                            @RequestParam Integer markValue,
                            Model model) {
         if (!isNumberBetweenZeroAndTen(markValue)) {
             return sendToShowCourse(mark, model);
         }
         evaluate(mark, markValue);
-        return "redirect:/teachers/course?courseId=" + courseId;
+        return "redirect:/teachers/course?courseId=" + course.getId();
     }
 
     private boolean isNumberBetweenZeroAndTen(Integer markValue) {

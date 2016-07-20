@@ -215,3 +215,40 @@
 2016-07-20 17:53:22,854 INFO  - Shutting down EhCache CacheManager
 2016-07-20 17:53:22,860 INFO  - Shutting down connection pool...
 2016-07-20 17:53:22,863 INFO  - Connection pool has been shutdown.
+2016-07-20 18:02:45,139 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Throwable
+2016-07-20 18:06:13,617 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Throwable
+2016-07-20 18:06:51,139 INFO  - FrameworkServlet 'dispatcher': initialization started
+2016-07-20 18:06:51,146 INFO  - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Jul 20 18:06:51 EET 2016]; root of context hierarchy
+2016-07-20 18:06:51,249 INFO  - Registering annotated classes: [class by.it.academy.adorop.web.infrostructure.WebConfig]
+2016-07-20 18:06:52,912 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-07-20 18:06:52,915 INFO  - HHH000206: hibernate.properties not found
+2016-07-20 18:06:52,917 INFO  - HHH000021: Bytecode provider name : javassist
+2016-07-20 18:06:52,989 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-07-20 18:06:54,743 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-07-20 18:06:55,421 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-07-20 18:06:57,262 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33858866, org.springframework.security.web.context.SecurityContextPersistenceFilter@618df7f5, org.springframework.security.web.header.HeaderWriterFilter@4474fc67, org.springframework.security.web.csrf.CsrfFilter@4fdeccf1, org.springframework.security.web.authentication.logout.LogoutFilter@d8bff48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@74316d4e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5fd13b4c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c42951e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b15df25, org.springframework.security.web.session.SessionManagementFilter@1d8bd1f2, org.springframework.security.web.access.ExceptionTranslationFilter@25a7f86, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@684bea65]
+2016-07-20 18:06:57,296 INFO  - Initializing EhCache CacheManager
+2016-07-20 18:06:57,491 INFO  - Using DataSource [JDBC URL = jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8, Username = root, partitions = 1, max (per partition) = 10, min (per partition) = 0, idle max age = 60 min, idle test period = 240 min, strategy = DEFAULT] of Hibernate SessionFactory for HibernateTransactionManager
+2016-07-20 18:06:57,616 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-07-20 18:06:57,869 INFO  - Mapped "{[/login]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+2016-07-20 18:06:57,874 INFO  - Mapped "{[/students/new]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.register(by.it.academy.adorop.model.users.Student)
+2016-07-20 18:06:57,875 INFO  - Mapped "{[/students/course]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.showCourse(org.springframework.ui.Model,by.it.academy.adorop.model.users.Student,by.it.academy.adorop.model.Course)
+2016-07-20 18:06:57,875 INFO  - Mapped "{[/students/registerForTheCourse],methods=[POST]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.registerForTheCourse(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-07-20 18:06:57,875 INFO  - Mapped "{[/students]}" onto public java.lang.String by.it.academy.adorop.web.controllers.AbstractUserController.showCourses(javax.servlet.http.HttpServletRequest)
+2016-07-20 18:06:57,876 INFO  - Mapped "{[/students/new],methods=[POST]}" onto public java.lang.String by.it.academy.adorop.web.controllers.AbstractUserController.saveNewUser(T,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2016-07-20 18:06:57,882 INFO  - Mapped "{[/teachers/new]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.register(by.it.academy.adorop.model.users.Teacher)
+2016-07-20 18:06:57,882 INFO  - Mapped "{[/teachers/course]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.showCourse(by.it.academy.adorop.model.Course,org.springframework.ui.Model)
+2016-07-20 18:06:57,883 INFO  - Mapped "{[/teachers/add]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.addCourse(org.springframework.ui.Model,by.it.academy.adorop.model.Course)
+2016-07-20 18:06:57,883 INFO  - Mapped "{[/teachers/add],methods=[POST]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.saveNewCourse(by.it.academy.adorop.model.Course,org.springframework.validation.BindingResult,org.springframework.ui.Model,by.it.academy.adorop.model.users.Teacher)
+2016-07-20 18:06:57,883 INFO  - Mapped "{[/teachers/evaluate],methods=[POST]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.evaluate(by.it.academy.adorop.model.Mark,by.it.academy.adorop.model.Course,java.lang.Integer,org.springframework.ui.Model)
+2016-07-20 18:06:57,883 INFO  - Mapped "{[/teachers]}" onto public java.lang.String by.it.academy.adorop.web.controllers.AbstractUserController.showCourses(javax.servlet.http.HttpServletRequest)
+2016-07-20 18:06:57,884 INFO  - Mapped "{[/teachers/new],methods=[POST]}" onto public java.lang.String by.it.academy.adorop.web.controllers.AbstractUserController.saveNewUser(T,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2016-07-20 18:06:57,939 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-07-20 18:06:58,004 INFO  - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Jul 20 18:06:51 EET 2016]; root of context hierarchy
+2016-07-20 18:06:58,271 INFO  - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
+2016-07-20 18:06:58,408 INFO  - FrameworkServlet 'dispatcher': initialization completed in 7268 ms
+2016-07-20 18:08:09,952 INFO  - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Jul 20 18:06:51 EET 2016]; root of context hierarchy
+2016-07-20 18:08:09,962 INFO  - Removing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
+2016-07-20 18:08:09,964 INFO  - Shutting down EhCache CacheManager
+2016-07-20 18:08:09,970 INFO  - Shutting down connection pool...
+2016-07-20 18:08:09,976 INFO  - Connection pool has been shutdown.

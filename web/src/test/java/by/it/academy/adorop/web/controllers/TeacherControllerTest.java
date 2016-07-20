@@ -31,7 +31,7 @@ import static org.mockito.Mockito.when;
 @PrepareForTest(PaginationContentPutter.class)
 public class TeacherControllerTest {
 
-    private static final Course SOME_COURSE = new Course();
+    private Course someCourse;
     private static final Teacher CURRENT_TEACHER = new Teacher();
     private static final long ANY_LONG = 1L;
     private static final Mark SOME_MARK = new Mark();
@@ -57,6 +57,7 @@ public class TeacherControllerTest {
         MockitoAnnotations.initMocks(this);
         PowerMockito.mockStatic(PaginationContentPutter.class);
         controller = new TeacherController(courseService, teacherService, markService);
+        someCourse = new Course();
     }
 
     @Test
@@ -73,46 +74,46 @@ public class TeacherControllerTest {
 
     @Test
     public void testAddCourse() throws Exception {
-        assertEquals("course/add", controller.addCourse(model, SOME_COURSE));
-        verify(model).addAttribute("course", SOME_COURSE);
+        assertEquals("course/add", controller.addCourse(model, someCourse));
+        verify(model).addAttribute("course", someCourse);
     }
 
     @Test
     public void saveNewCourseShouldReturnOnAddCoursePage() throws Exception {
         when(bindingResult.hasErrors()).thenReturn(true);
-        assertEquals("course/add", controller.saveNewCourse(SOME_COURSE, bindingResult, model, CURRENT_TEACHER));
+        assertEquals("course/add", controller.saveNewCourse(someCourse, bindingResult, model, CURRENT_TEACHER));
     }
 
     @Test
     public void testSaveNewCourseOnPositiveScenario() throws Exception {
-        assertEquals("redirect:/teachers", controller.saveNewCourse(SOME_COURSE, bindingResult, model, CURRENT_TEACHER));
-        verify(teacherService).addCourse(CURRENT_TEACHER, SOME_COURSE);
+        assertEquals("redirect:/teachers", controller.saveNewCourse(someCourse, bindingResult, model, CURRENT_TEACHER));
+        verify(teacherService).addCourse(CURRENT_TEACHER, someCourse);
     }
 
     @Test
     public void testShowCourse() throws Exception {
-        assertEquals("teachers/course", controller.showCourse(SOME_COURSE, model));
+        assertEquals("teachers/course", controller.showCourse(someCourse, model));
     }
 
     @Test
     public void showCourseShouldPutMarksByRequestedCourse() throws Exception {
         ArrayList<Mark> expectedMarks = new ArrayList<>();
         when(markService.getByCourse(anyObject())).thenReturn(expectedMarks);
-        controller.showCourse(SOME_COURSE, model);
+        controller.showCourse(someCourse, model);
         verify(model).addAttribute("marks", expectedMarks);
     }
 
     @Test
     public void evaluateShouldReturnOnShowCoursePageWhenMarkValueIsNotNumberBetweenZeroAndTen() throws Exception {
-        Long courseId = ANY_LONG;
         Integer markValue = INT_ELEVEN;
-        assertEquals("teachers/course", controller.evaluate(SOME_MARK, courseId, markValue, model));
+        assertEquals("teachers/course", controller.evaluate(SOME_MARK, someCourse, markValue, model));
         verify(model).addAttribute("message", "Should be a number between zero and ten");
     }
 
-        @Test
+    @Test
     public void testEvaluateOnPositiveScenario() throws Exception {
-        assertEquals("redirect:/teachers/course?courseId=" + ANY_LONG, controller.evaluate(SOME_MARK, ANY_LONG, INT_ONE, model));
+        someCourse.setId(ANY_LONG);
+        assertEquals("redirect:/teachers/course?courseId=" + ANY_LONG, controller.evaluate(SOME_MARK, someCourse, INT_ONE, model));
         verify(teacherService).evaluate(SOME_MARK);
     }
 
