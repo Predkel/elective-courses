@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-public class HibernateExceptionHandlerAdviceTest {
+public class ExceptionHandlerAdviceTest {
 
     private ExceptionHandlerAdvice handlerAdvice = new ExceptionHandlerAdvice();
     @Mock
@@ -30,12 +32,16 @@ public class HibernateExceptionHandlerAdviceTest {
     }
 
     @Test
-    public void catchBadRequestExceptionShouldReturnBadRequestPage() throws Exception {
-        assertEquals("badRequest", handlerAdvice.catchBadRequestException(new Exception(), model, request));
+    public void catchTypeMismatchExceptionShouldReturnBadRequestPage() throws Exception {
+        when(request.getServletPath()).thenReturn("teachers");
+        assertEquals("badRequest", handlerAdvice.catchTypeMismatchException(new Exception(), model, request));
+        verify(model).addAttribute("pathToMain", "/teachers");
     }
 
     @Test
     public void catchAccessDeniedExceptionShouldReturnBadRequestPage() throws Exception {
+        when(request.getServletPath()).thenReturn("students");
         assertEquals("badRequest", handlerAdvice.catchAccessDeniedException(new Exception(), model, request));
+        verify(model).addAttribute("pathToMain", "/students");
     }
 }
