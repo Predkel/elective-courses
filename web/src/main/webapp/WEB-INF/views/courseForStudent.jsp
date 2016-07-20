@@ -29,8 +29,13 @@
     </tr>
   </table>
 <c:if test="${!requestScope.isCourseListener}">
-  <s:url value="/students/registerForTheCourse?courseId=${course.id}" var="registerForTheCourse"/>
-  <a href="${registerForTheCourse}">Register for the course</a>
+  <form action="<c:url value="/students/registerForTheCourse"/>" method="post">
+    <input type="hidden" name="courseId" value="${course.id}">
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+    <input type="submit" value="Register for the course">
+  </form>
 </c:if>
 </body>
 </html>
