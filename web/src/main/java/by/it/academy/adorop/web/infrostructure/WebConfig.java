@@ -4,6 +4,7 @@ import by.it.academy.adorop.service.config.ServiceConfig;
 import by.it.academy.adorop.web.infrostructure.resolvers.implementations.ModelByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,6 +31,7 @@ import java.util.Locale;
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
+    @Qualifier("modelByIdHandlerArgumentResolver")
     HandlerMethodArgumentResolver resolver;
 
     @Override
