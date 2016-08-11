@@ -56,7 +56,7 @@ public class TeacherController extends AbstractUserController<Teacher> {
 
     @RequestMapping("/course")
     @PreAuthorize("#course.teacher.equals(principal)")
-    public String showCourse(@ModelById(nameOfIdParameter = "courseId") Course course, Model model) {
+    public String showCourse(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course, Model model) {
         model.addAttribute("course", course);
         model.addAttribute("marks", markService.getByCourse(course));
         return "teachers/course";
@@ -64,8 +64,8 @@ public class TeacherController extends AbstractUserController<Teacher> {
 
     @RequestMapping(value = "/evaluate", method = RequestMethod.POST)
     @PreAuthorize("#course.teacher.equals(principal)")
-    public String evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark,
-                           @ModelById(nameOfIdParameter = "courseId") Course course,
+    public String evaluate(@ModelById(nameOfIdParameter = "markId", serviceClass = MarkService.class) Mark mark,
+                           @ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course,
                            @RequestParam Integer markValue,
                            Model model) {
         if (!isNumberBetweenZeroAndTen(markValue)) {
@@ -79,12 +79,14 @@ public class TeacherController extends AbstractUserController<Teacher> {
         return markValue >= 0 && markValue <= 10;
     }
 
-    private String sendToShowCourse(@ModelById(nameOfIdParameter = "markId") Mark mark, Model model) {
+    private String sendToShowCourse(@ModelById(nameOfIdParameter = "markId", serviceClass = MarkService.class) Mark mark,
+                                    Model model) {
         model.addAttribute("message", SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN);
         return showCourse(mark.getCourse(), model);
     }
 
-    private void evaluate(@ModelById(nameOfIdParameter = "markId") Mark mark, @RequestParam Integer markValue) {
+    private void evaluate(@ModelById(nameOfIdParameter = "markId", serviceClass = MarkService.class) Mark mark,
+                          @RequestParam Integer markValue) {
         mark.setValue(markValue);
         teacherService.evaluate(mark);
     }

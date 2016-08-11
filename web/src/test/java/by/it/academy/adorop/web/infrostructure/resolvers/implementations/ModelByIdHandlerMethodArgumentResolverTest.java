@@ -1,7 +1,10 @@
 package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
 
 import by.it.academy.adorop.model.Course;
+import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.Service;
+import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +15,8 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.beans.TypeMismatchException;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -23,13 +28,13 @@ import static org.junit.Assert.*;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ResponseEntity.class})
-public abstract class AbstractModelByIdHandlerMethodArgumentResolverTest {
+public class ModelByIdHandlerMethodArgumentResolverTest {
     public static final String NOT_NUMERIC_STRING = "abc";
     private static final String NUMERIC_STRING = "10";
+    public static final Course ANY_ENTITY = new Course();
+    public static final Class<Service> ANY_CLASS = Service.class;
 
-    private HandlerMethodArgumentResolver resolver;
+    private ModelByIdHandlerMethodArgumentResolver resolver;
 
     @Mock
     private MethodParameter methodParameter;
@@ -41,55 +46,38 @@ public abstract class AbstractModelByIdHandlerMethodArgumentResolverTest {
     private WebDataBinderFactory factory;
     @Mock
     private ModelById modelById;
+    @Mock
+    Service service;
+    @Mock
+    ApplicationContext applicationContext;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        PowerMockito.mockStatic(ResponseEntity.class);
-        resolver = getResolver();
+        resolver = new ModelByIdHandlerMethodArgumentResolver(applicationContext);
     }
-
-    protected abstract Service getService();
 
     @Test(expected = TypeMismatchException.class)
     public void resolveArgumentShouldThrowTypeMismatchExceptionWhenMarkIdIsNotPositiveNumber() throws Exception {
         when(request.getParameter(anyString())).thenReturn(NOT_NUMERIC_STRING);
         invokeResolveArgument();
     }
-    @Test(expected = TypeMismatchException.class)
-    @SuppressWarnings("unchecked")
-    public void resolveArgumentShouldThrowTypeMismatchExceptionWhenMarkWithGivenIdDoesNotExist() throws Exception {
+
+    private void whenEntityWithGivenIdDoesNotExist() {
         when(request.getParameter(anyString())).thenReturn(NUMERIC_STRING);
-        when(getService().find(anyLong())).thenReturn(null);
-        invokeResolveArgument();
-        PowerMockito.verifyStatic();
-        ResponseEntity.badRequest();
+        when(service.find(anyLong())).thenReturn(null);
     }
 
-    @Test
-    public void testResolveArgumentShouldReturnMarkIfRequestIsValid() throws Exception {
-        when(request.getParameter(anyString())).thenReturn(NUMERIC_STRING);
-        Course expectedCourse = new Course();
-        when(getService().find(anyLong())).thenReturn(expectedCourse);
-        assertEquals(expectedCourse, invokeResolveArgument());
-    }
 
     private Object invokeResolveArgument() throws Exception {
         when(methodParameter.getParameterAnnotation(anyObject())).thenReturn(modelById);
-        when(modelById.nameOfIdParameter()).thenReturn(NOT_NUMERIC_STRING);
+        when(modelById.nameOfIdParameter()).thenReturn(anyString());
         return resolver.resolveArgument(methodParameter, modelAndViewContainer, request, factory);
     }
-
-    protected abstract AbstractModelByIdHandlerMethodArgumentResolver getResolver();
 
     @Test
     public void supportsShouldReturnFalseWhenMethodParameterIsNotAnnotatedWithModelById() throws Exception {
         when(methodParameter.getParameterAnnotation(anyObject())).thenReturn(null);
-        assertFalse(getResolver().supportsParameter(methodParameter));
-    }
-
-    @Test
-    public void testGetClassOfParameter() throws Exception {
-        assertNotNull(getResolver().getClassOfParameter());
+        assertFalse(resolver.supportsParameter(methodParameter));
     }
 }
