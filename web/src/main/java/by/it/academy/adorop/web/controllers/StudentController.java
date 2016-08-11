@@ -31,7 +31,7 @@ public class StudentController extends AbstractUserController<Student> {
     @RequestMapping("/course")
     public String showCourse(Model model,
                              @AuthenticationPrincipal Student student,
-                             @ModelById(nameOfIdParameter = "courseId") Course course) {
+                             @ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course) {
         setContent(model, student, course);
         return "students/course";
     }
@@ -46,7 +46,7 @@ public class StudentController extends AbstractUserController<Student> {
     }
 
     @RequestMapping(value = "/registerForTheCourse", method = RequestMethod.POST)
-    public String registerForTheCourse(@ModelById(nameOfIdParameter = "courseId") Course course,
+    public String registerForTheCourse(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course,
                                        @AuthenticationPrincipal Student student) {
         register(course, student);
         return redirectToShowCourse(course);
