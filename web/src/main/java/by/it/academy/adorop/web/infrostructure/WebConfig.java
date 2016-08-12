@@ -26,7 +26,7 @@ import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("by.it.academy.adorop.web")
+@ComponentScan(value = "by.it.academy.adorop.web", excludeFilters = {@ComponentScan.Filter(classes = Configuration.class)})
 @Import({ServiceConfig.class, SecurityConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 

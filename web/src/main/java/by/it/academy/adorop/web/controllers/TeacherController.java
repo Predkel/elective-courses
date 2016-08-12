@@ -56,7 +56,8 @@ public class TeacherController extends AbstractUserController<Teacher> {
 
     @RequestMapping("/course")
     @PreAuthorize("#course.teacher.equals(principal)")
-    public String showCourse(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course, Model model) {
+    public String showCourse(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course,
+                             Model model) {
         model.addAttribute("course", course);
         model.addAttribute("marks", markService.getByCourse(course));
         return "teachers/course";
