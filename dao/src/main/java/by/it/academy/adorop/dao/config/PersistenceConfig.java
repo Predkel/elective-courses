@@ -7,10 +7,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -22,6 +19,7 @@ import java.util.Properties;
 @ComponentScan("by.it.academy.adorop.dao")
 @PropertySource("classpath:db.properties")
 @EnableCaching
+@EnableAspectJAutoProxy
 public class PersistenceConfig {
 
     @Autowired
