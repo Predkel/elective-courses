@@ -53,7 +53,10 @@ public class PersistenceConfig {
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-//        properties.setProperty("hibernate.current_session_context_class", "thread");
+        if (environment.acceptsProfiles("debug")) {
+            properties.setProperty("hibernate.show_sql", "true");
+            properties.setProperty("hibernate.format_sql", "true");
+        }
         return properties;
     }
 
