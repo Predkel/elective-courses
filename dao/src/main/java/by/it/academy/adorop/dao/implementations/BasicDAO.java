@@ -1,11 +1,13 @@
 package by.it.academy.adorop.dao.implementations;
 
 import by.it.academy.adorop.dao.api.DAO;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 
 public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID> {
@@ -61,9 +63,8 @@ public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID>
     @Override
     @SuppressWarnings("unchecked")
     public List<T> getBunch(int firstResult, int maxResult) {
-        Session session = currentSession();
-
-        return session.createCriteria(getPersistedClass())
+        return currentSession()
+                .createCriteria(getPersistedClass())
                 .setFirstResult(firstResult)
                 .setMaxResults(maxResult)
                 .list();
