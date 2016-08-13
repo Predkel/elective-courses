@@ -80,14 +80,12 @@ public class TeacherController extends AbstractUserController<Teacher> {
         return markValue >= 0 && markValue <= 10;
     }
 
-    private String sendToShowCourse(@ModelById(nameOfIdParameter = "markId", serviceClass = MarkService.class) Mark mark,
-                                    Model model) {
+    private String sendToShowCourse(Mark mark, Model model) {
         model.addAttribute("message", SHOULD_BE_A_NUMBER_BETWEEN_ZERO_AND_TEN);
         return showCourse(mark.getCourse(), model);
     }
 
-    private void evaluate(@ModelById(nameOfIdParameter = "markId", serviceClass = MarkService.class) Mark mark,
-                          @RequestParam Integer markValue) {
+    private void evaluate(Mark mark, Integer markValue) {
         mark.setValue(markValue);
         teacherService.evaluate(mark);
     }
