@@ -11,14 +11,14 @@ import static org.mockito.Matchers.anyVararg;
 import static org.mockito.Mockito.when;
 
 public class ExceptionHandlerTest {
-    private ExceptionHandler exceptionHandler;
+    private DaoLayerExceptionHandler exceptionHandler;
     @Mock
     ProceedingJoinPoint proceedingJoinPoint;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        exceptionHandler = new ExceptionHandler();
+        exceptionHandler = new DaoLayerExceptionHandler();
     }
 
     @Test(expected = DaoException.class)
