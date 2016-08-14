@@ -4,6 +4,7 @@ import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.UserService;
+import by.it.academy.adorop.web.utils.pagination.Pagination;
 import by.it.academy.adorop.web.utils.pagination.PaginationContentPutter;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,8 +28,8 @@ public abstract class AbstractUserController<T extends User> {
     }
 
     @RequestMapping
+    @Pagination(bunchAttributeName = "courses")
     public String showCourses(HttpServletRequest request) {
-        PaginationContentPutter.putPaginationContent(request, courseService, "courses");
         return "main" + getPathToController();
     }
 
