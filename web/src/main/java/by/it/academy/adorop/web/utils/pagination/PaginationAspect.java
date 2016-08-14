@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @Aspect
 public class PaginationAspect {
-    @Autowired
+
     private CourseService courseService;
+    @Autowired
+    public PaginationAspect(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     @Before("@annotation(pagination) && args(request)")
     public void putPaginationContent(Pagination pagination, HttpServletRequest request){

@@ -55,13 +55,6 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void showCoursesShouldPutPaginationContent() throws Exception {
-        controller.showCourses(request);
-        PowerMockito.verifyStatic();
-        PaginationContentPutter.putPaginationContent(request, courseService, "courses");
-    }
-
-    @Test
     public void testShowCourse() throws Exception {
         assertEquals("students/course", showCourse());
     }
