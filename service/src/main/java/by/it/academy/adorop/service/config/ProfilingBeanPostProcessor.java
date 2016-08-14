@@ -28,15 +28,12 @@ public class ProfilingBeanPostProcessor implements BeanPostProcessor, Ordered {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Class<?> beanClass = bean.getClass();
         if (serviceBeanNames.contains(beanName)) {
-            return Proxy.newProxyInstance(beanClass.getClassLoader(), beanClass.getInterfaces(), new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    long before = System.nanoTime();
-                    Object retVal = method.invoke(bean, args);
-                    long invocationTime = System.nanoTime() - before;
-                    System.out.println(method.getName() + ": " + invocationTime);
-                    return retVal;
-                }
+            return Proxy.newProxyInstance(beanClass.getClassLoader(), beanClass.getInterfaces(), (proxy, method, args) -> {
+                long before = System.nanoTime();
+                Object retVal = method.invoke(bean, args);
+                long invocationTime = System.nanoTime() - before;
+                System.out.println(method.getName() + ": " + invocationTime);
+                return retVal;
             });
         }
         return bean;
