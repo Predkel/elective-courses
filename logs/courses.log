@@ -1250,3 +1250,4 @@ Caused by: java.lang.NullPointerException
 2016-08-13 18:32:58,853 INFO  - Shutting down EhCache CacheManager
 2016-08-13 18:32:58,862 INFO  - Shutting down connection pool...
 2016-08-13 18:32:58,864 INFO  - Connection pool has been shutdown.
+2016-08-14 12:01:52,115 ERROR - by.it.academy.adorop.service.exceptions.ServiceException: java.lang.Throwable
