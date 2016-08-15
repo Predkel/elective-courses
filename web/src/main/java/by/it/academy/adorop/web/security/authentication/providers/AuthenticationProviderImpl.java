@@ -19,6 +19,7 @@ import java.util.List;
 
 @Component
 public class AuthenticationProviderImpl implements AuthenticationProvider {
+
     private List<UserService> userServices;
 
     @Autowired
