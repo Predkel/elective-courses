@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.infrostructure.resolvers.annotations;
+package by.it.academy.adorop.web.infrastructure.resolvers.annotations;
 
 import by.it.academy.adorop.service.api.Service;
 

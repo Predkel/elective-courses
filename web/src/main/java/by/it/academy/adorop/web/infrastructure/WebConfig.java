@@ -1,7 +1,6 @@
-package by.it.academy.adorop.web.infrostructure;
+package by.it.academy.adorop.web.infrastructure;
 
 import by.it.academy.adorop.service.config.ServiceConfig;
-import by.it.academy.adorop.web.infrostructure.resolvers.implementations.ModelByIdHandlerMethodArgumentResolver;
 import by.it.academy.adorop.web.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
