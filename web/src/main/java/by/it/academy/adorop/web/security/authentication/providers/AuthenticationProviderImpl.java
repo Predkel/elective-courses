@@ -1,8 +1,10 @@
 package by.it.academy.adorop.web.security.authentication.providers;
 
 import by.it.academy.adorop.model.users.User;
+import by.it.academy.adorop.service.api.Service;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -13,16 +15,16 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AuthenticationProviderImpl implements AuthenticationProvider {
 
-    private final StudentService studentService;
-    private final TeacherService teacherService;
+    private List<UserService> userServices;
 
     @Autowired
-    public AuthenticationProviderImpl(StudentService studentService, TeacherService teacherService) {
-        this.studentService = studentService;
-        this.teacherService = teacherService;
+    public AuthenticationProviderImpl(List<UserService> userServices) {
+        this.userServices = userServices;
     }
 
     @Override
@@ -34,8 +36,14 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
 
     private User getUserByGivenParameters(Authentication authentication) {
         String documentId = authentication.getName();
-        User user = teacherService.getByDocumentId(documentId);
-        return user != null ? user : studentService.getByDocumentId(documentId);
+        User user = null;
+        for (UserService userService : userServices) {
+            user = userService.getByDocumentId(documentId);
+            if (user != null) {
+                break;
+            }
+        }
+        return user;
     }
 
     private void verifyValidness(Authentication authentication, User user) {

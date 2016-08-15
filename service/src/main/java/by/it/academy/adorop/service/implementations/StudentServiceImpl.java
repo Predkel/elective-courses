@@ -8,11 +8,13 @@ import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Order(10)
 @Transactional(rollbackFor = Exception.class)
 public class StudentServiceImpl extends BasicUserService<Student> implements StudentService {
     private final MarkDAO markDAO;

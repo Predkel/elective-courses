@@ -10,10 +10,12 @@ import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Order(9)
 @Transactional(rollbackFor = Exception.class)
 public class TeacherServiceImpl extends BasicUserService<Teacher> implements TeacherService {
 
@@ -23,7 +25,6 @@ public class TeacherServiceImpl extends BasicUserService<Teacher> implements Tea
         super(userDAO);
         this.markDAO = markDAO;
     }
-
 
     @Override
     public void evaluate(Mark mark) {
