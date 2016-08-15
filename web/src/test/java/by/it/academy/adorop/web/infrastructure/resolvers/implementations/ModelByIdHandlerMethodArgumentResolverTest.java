@@ -1,27 +1,17 @@
-package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
+package by.it.academy.adorop.web.infrastructure.resolvers.implementations;
 
 import by.it.academy.adorop.model.Course;
-import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.service.api.TeacherService;
-import by.it.academy.adorop.service.api.UserService;
-import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
+import by.it.academy.adorop.web.infrastructure.resolvers.annotations.ModelById;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.beans.TypeMismatchException;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.MethodParameter;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import static org.junit.Assert.*;

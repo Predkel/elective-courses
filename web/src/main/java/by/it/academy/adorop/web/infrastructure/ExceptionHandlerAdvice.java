@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.infrostructure;
+package by.it.academy.adorop.web.infrastructure;
 
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import org.apache.log4j.Logger;

@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.infrostructure;
+package by.it.academy.adorop.web.infrastructure;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

@@ -1,14 +1,12 @@
-package by.it.academy.adorop.web.infrostructure.resolvers.implementations;
+package by.it.academy.adorop.web.infrastructure.resolvers.implementations;
 
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.web.infrostructure.resolvers.annotations.ModelById;
+import by.it.academy.adorop.web.infrastructure.resolvers.annotations.ModelById;
 import by.it.academy.adorop.web.utils.RequestParamValidator;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
