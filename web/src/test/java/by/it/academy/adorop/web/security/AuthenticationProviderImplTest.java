@@ -1,8 +1,10 @@
 package by.it.academy.adorop.web.security;
 
 import by.it.academy.adorop.model.users.Student;
+import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.TeacherService;
+import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import by.it.academy.adorop.web.security.authentication.providers.AuthenticationProviderImpl;
 import org.junit.Before;
@@ -16,6 +18,9 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -40,7 +45,8 @@ public class AuthenticationProviderImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         PowerMockito.mockStatic(UserAuthentication.class);
-        authenticationProvider = new AuthenticationProviderImpl(studentService, teacherService);
+        List<UserService> userServices = Arrays.asList(studentService, teacherService);
+        authenticationProvider = new AuthenticationProviderImpl(userServices);
     }
 
     @Test(expected = UsernameNotFoundException.class)
