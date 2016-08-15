@@ -23,10 +23,14 @@
           <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/securiry/SecurityConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/securiry/SecurityConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/security/SecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/infrastructure/WebConfig.java</file>
         </fileset>
         <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/security/SecurityConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/infrostructure/WebConfig.java</file>
+        </fileset>
+        <fileset id="fileset3" name="Spring Application Context (3)" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/by/it/academy/adorop/web/infrastructure/WebConfig.java</file>
         </fileset>
       </configuration>
     </facet>
