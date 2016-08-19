@@ -44,11 +44,11 @@ public class PersistenceConfig {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan("by.it.academy.adorop.model");
-        sessionFactoryBean.setHibernateProperties(getHibernateProperties());
+        sessionFactoryBean.setHibernateProperties(hibernateProperties());
         return sessionFactoryBean;
     }
 
-    private Properties getHibernateProperties() {
+    private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         if (environment.acceptsProfiles("debug")) {
@@ -58,10 +58,10 @@ public class PersistenceConfig {
         return properties;
     }
 
-    @Bean
-    public SessionFactory sessionFactory() {
-        return sessionFactoryBean().getObject();
-    }
+//    @Bean
+//    public SessionFactory sessionFactory() {
+//        return sessionFactoryBean().getObject();
+//    }
 
     @Bean
     public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
