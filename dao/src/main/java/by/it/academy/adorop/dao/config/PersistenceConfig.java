@@ -51,17 +51,16 @@ public class PersistenceConfig {
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        if (environment.acceptsProfiles("debug")) {
+        if (showSqlIsNeeded()) {
             properties.setProperty("hibernate.show_sql", "true");
             properties.setProperty("hibernate.format_sql", "true");
         }
         return properties;
     }
 
-//    @Bean
-//    public SessionFactory sessionFactory() {
-//        return sessionFactoryBean().getObject();
-//    }
+    protected boolean showSqlIsNeeded() {
+        return environment.acceptsProfiles("debug");
+    }
 
     @Bean
     public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {

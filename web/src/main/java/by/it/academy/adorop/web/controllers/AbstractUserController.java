@@ -29,7 +29,17 @@ public abstract class AbstractUserController<T extends User> {
     @RequestMapping
     public String showCourses(HttpServletRequest request) {
         PaginationContentPutter.putPaginationContent(request, courseService, "courses");
-        return "main" + getPathToController();
+        return definePathToShowCourses(request);
+    }
+
+    private String definePathToShowCourses(HttpServletRequest request) {
+        String requestURI = request.getRequestURI();
+        int beginExtensionIndex = requestURI.lastIndexOf('.');
+        if (beginExtensionIndex == -1) {
+            return "main" + getPathToController();
+        } else {
+            return "xls";
+        }
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)

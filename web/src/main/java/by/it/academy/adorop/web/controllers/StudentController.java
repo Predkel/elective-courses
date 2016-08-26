@@ -8,12 +8,11 @@ import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.infrastructure.resolvers.annotations.ModelById;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/students")
@@ -28,7 +27,7 @@ public class StudentController extends AbstractUserController<Student> {
         this.studentService = studentService;
     }
 
-    @RequestMapping("/course")
+    @RequestMapping(value = "/course", produces = MediaType.TEXT_HTML_VALUE, method = RequestMethod.GET)
     public String showCourse(Model model,
                              @AuthenticationPrincipal Student student,
                              @ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course) {

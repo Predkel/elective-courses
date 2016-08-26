@@ -26,5 +26,19 @@ ${message}
     </c:forEach>
 </ul>
 <a href="<c:url value="/teachers/add"/>"><s:message code="course.add"/> </a><br>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    document.ready($.ajax({
+                url : "teachers/test-ajax",
+                type : "GET",
+                dataType : "json"
+            }
+    )
+            .done(function (teacher) {
+                $( "<p>" ).text( teacher.firstName ).appendTo( "body" );
+                $( "<p>" ).text( teacher.lastName ).appendTo( "body" );
+            }));
+
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package by.it.academy.adorop.web.controllers;
 
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
+import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
@@ -9,15 +10,13 @@ import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.infrastructure.resolvers.annotations.ModelById;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -93,6 +92,12 @@ public class TeacherController extends AbstractUserController<Teacher> {
     @RequestMapping("/new")
     public String register(@ModelAttribute("user") Teacher teacher) {
         return "registration";
+    }
+
+    @RequestMapping(value = "/test-ajax", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Teacher getPrincipal(@AuthenticationPrincipal Teacher teacher) {
+        return teacher;
     }
 
     @Override

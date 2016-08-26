@@ -1,7 +1,9 @@
 package by.it.academy.adorop.web.infrastructure;
 
 import by.it.academy.adorop.service.config.ServiceConfig;
+import by.it.academy.adorop.web.infrastructure.excel.ExcelView;
 import by.it.academy.adorop.web.security.SecurityConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -10,13 +12,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
+import org.springframework.web.servlet.view.XmlViewResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
@@ -53,6 +56,18 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public TilesViewResolver viewResolver() {
         return new TilesViewResolver();
+    }
+
+    @Bean
+    public ResourceBundleViewResolver resourceBundleViewResolver() {
+        ResourceBundleViewResolver resourceBundleViewResolver = new ResourceBundleViewResolver();
+        resourceBundleViewResolver.setBasename("views");
+        return resourceBundleViewResolver;
+    }
+
+    @Bean
+    public MappingJackson2JsonView mappingJackson2JsonView() {
+        return new MappingJackson2JsonView();
     }
 
     @Bean
