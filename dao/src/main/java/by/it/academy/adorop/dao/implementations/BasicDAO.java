@@ -1,6 +1,8 @@
 package by.it.academy.adorop.dao.implementations;
 
 import by.it.academy.adorop.dao.api.DAO;
+import by.it.academy.adorop.dao.exceptions.DaoException;
+import by.it.academy.adorop.dao.utils.CatchAndRethrow;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +12,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
+@CatchAndRethrow(exceptionToCatch = RuntimeException.class, rethrow = DaoException.class)
 public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID> {
 
     private final SessionFactory sessionFactory;
@@ -31,7 +34,6 @@ public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID>
     @Override
     public T get(ID id) {
         Session session = currentSession();
-//        System.out.println(session.hashCode() + "      " + session);
         return session.get(getPersistedClass(), id);
     }
 

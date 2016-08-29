@@ -1,6 +1,7 @@
 package by.it.academy.adorop.service.config;
 
 import by.it.academy.adorop.dao.config.PersistenceConfig;
+import by.it.academy.adorop.dao.utils.CatchAndRethrowAnnotationHandlerBeanPostProcessor;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.*;
@@ -17,6 +18,11 @@ public class  ServiceConfig {
     @Bean
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         return new HibernateTransactionManager(sessionFactory);
+    }
+
+    @Bean
+    public static CatchAndRethrowAnnotationHandlerBeanPostProcessor catchAndRethrowAnnotationHandlerBeanPostProcessor() {
+        return new CatchAndRethrowAnnotationHandlerBeanPostProcessor();
     }
 
     @Bean
