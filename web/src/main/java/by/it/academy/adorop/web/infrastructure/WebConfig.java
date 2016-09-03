@@ -18,8 +18,8 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(value = "by.it.academy.adorop.web", excludeFilters = {@ComponentScan.Filter(classes = Configuration.class)})
-@Import({ServiceConfig.class, SecurityConfig.class})
+@ComponentScan(value = "by.it.academy.adorop.web")
+@Import({ServiceConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired

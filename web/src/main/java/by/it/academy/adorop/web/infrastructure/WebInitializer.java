@@ -1,5 +1,6 @@
 package by.it.academy.adorop.web.infrastructure;
 
+import by.it.academy.adorop.service.config.ServiceConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -14,7 +15,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{ServiceConfig.class};
     }
 
     @Override
