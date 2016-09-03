@@ -34,11 +34,12 @@ public class CatchAndRethrowAnnotationHandlerBeanPostProcessor implements BeanPo
                     try {
                         return method.invoke(bean, args);
                     } catch (InvocationTargetException e) {
-                        if (exceptionToCatch.isAssignableFrom(e.getCause().getClass())){
+                        Throwable cause = e.getCause();
+                        if (exceptionToCatch.isAssignableFrom(cause.getClass())){
                             Constructor<? extends RuntimeException> constructor = rethrow.getConstructor(Throwable.class);
-                            throw constructor.newInstance(e);
+                            throw constructor.newInstance(cause);
                         } else {
-                            throw e;
+                            throw cause;
                         }
                     }
                 }
