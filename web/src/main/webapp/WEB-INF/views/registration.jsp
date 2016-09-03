@@ -10,7 +10,7 @@
 ${message}
 <s:url value="/js/loginValidator.js" var="loginValidator"/>
 <script src="${loginValidator}" language="JavaScript"></script>
-<sf:form modelAttribute="user" method="post"  onsubmit="return validateLogin()">
+<sf:form modelAttribute="user" method="post">
     Document Id:   <sf:input path="documentId" id="login"/><comment id="loginMessage"></comment>
     <sf:errors path="documentId"/><br>
     Password:      <sf:password path="password"/>

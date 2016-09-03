@@ -1,10 +1,7 @@
 package by.it.academy.adorop.web.security;
 
-import by.it.academy.adorop.service.config.ServiceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -16,8 +13,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan("by.it.academy.adorop.web.security")
-@Import(ServiceConfig.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
