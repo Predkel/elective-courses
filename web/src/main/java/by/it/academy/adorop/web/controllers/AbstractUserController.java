@@ -13,29 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 
-public abstract class AbstractUserController<U extends User> {
-
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity createNew(@Valid U user, Errors errors) {
-        if (errors.hasErrors()) {
-            return withoutBody(HttpStatus.BAD_REQUEST);
-        }
-        if (alreadyExists(user)) {
-            return withoutBody(HttpStatus.CONFLICT);
-        }
-        service().persist(user);
-        return withoutBody(HttpStatus.CREATED);
-    }
-
-    private ResponseEntity withoutBody(HttpStatus httpStatus) {
-        return ResponseEntity.status(httpStatus).build();
-    }
-
-    private boolean alreadyExists(U user) {
-        return service().isAlreadyExists(user);
-    }
-
-    protected abstract UserService<U> service();
+public abstract class AbstractUserController<U extends User> extends AbstractController<U , Long> {
 
     @RequestMapping(value = "/current", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public @ResponseBody U getCurrent(@AuthenticationPrincipal U user) {
