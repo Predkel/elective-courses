@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
-//@CatchAndRethrow(exceptionToCatch = RuntimeException.class, rethrow = ServiceException.class)
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public abstract class BasicService<T, ID extends Serializable> implements Service<T, ID> {
 
@@ -30,9 +30,19 @@ public abstract class BasicService<T, ID extends Serializable> implements Servic
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    @Transactional(propagation = Propagation.REQUIRED)
     public T persist(T entity) {
         return getDAO().persist(entity);
+    }
+
+    @Override
+    public T getSingleResultBy(String nameOfUniqueProperty, Object value) {
+        return getDAO().getBy(nameOfUniqueProperty, value).get(0);
+    }
+
+    @Override
+    public T getSingleResultBy(Map<String, Object> namesOfUniquePropertiesToValues) {
+        return getDAO().getBy(namesOfUniquePropertiesToValues).get(0);
     }
 
     protected abstract DAO<T, ID> getDAO();

@@ -32,7 +32,7 @@ public abstract class AbstractUserController<U extends User> {
     }
 
     private boolean alreadyExists(U user) {
-        return service().isAlreadyExists(user.getDocumentId());
+        return service().isAlreadyExists(user);
     }
 
     protected abstract UserService<U> service();

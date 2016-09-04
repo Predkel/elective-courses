@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"student_id", "course_id"}))
 public class Mark implements Serializable {
 
     private static final long serialVersionUID = -1785702160286528224L;
@@ -17,7 +18,7 @@ public class Mark implements Serializable {
     private Student student;
     @ManyToOne(fetch = FetchType.EAGER)
     private Course course;
-//    @Pattern(regexp = "[0-9]|(10)", message = "should be a number from zero to ten")
+
     @Column
     private Integer value;
 

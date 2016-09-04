@@ -17,9 +17,9 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         Object principal = authentication.getPrincipal();
         String pathToController;
         if (principal.getClass() == Teacher.class) {
-            pathToController = "/teachers.html";
+            pathToController = "/teachers";
         } else {
-            pathToController = "/students.html";
+            pathToController = "/students";
         }
         response.sendRedirect(pathToController);
     }

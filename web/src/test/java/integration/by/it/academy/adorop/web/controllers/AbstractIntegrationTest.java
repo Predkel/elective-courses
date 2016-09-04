@@ -23,7 +23,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class, AbstractIntegrationTest.TestPersistenceConfig.class})
-public class AbstractIntegrationTest {
+public abstract class AbstractIntegrationTest {
 
     protected MockMvc mvc;
     @Autowired

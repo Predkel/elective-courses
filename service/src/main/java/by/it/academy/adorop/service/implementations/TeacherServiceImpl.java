@@ -3,6 +3,8 @@ package by.it.academy.adorop.service.implementations;
 import by.it.academy.adorop.dao.api.DAO;
 import by.it.academy.adorop.dao.api.MarkDAO;
 import by.it.academy.adorop.dao.api.UserDAO;
+import by.it.academy.adorop.dao.exceptions.DaoException;
+import by.it.academy.adorop.dao.utils.CatchAndRethrow;
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
@@ -17,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Order(9)
 @Transactional(rollbackFor = Exception.class)
+@CatchAndRethrow(exceptionToCatch = RuntimeException.class, rethrow = ServiceException.class)
 public class TeacherServiceImpl extends BasicUserService<Teacher> implements TeacherService {
 
     private final MarkDAO markDAO;

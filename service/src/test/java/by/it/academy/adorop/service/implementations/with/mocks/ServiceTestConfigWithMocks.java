@@ -1,4 +1,4 @@
-package by.it.academy.adorop.service.implementations;
+package by.it.academy.adorop.service.implementations.with.mocks;
 
 import by.it.academy.adorop.dao.api.CourseDAO;
 import by.it.academy.adorop.dao.api.DAO;
@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.context.annotation.*;
 
 @Configuration
-public class ServiceTestConfig {
+public class ServiceTestConfigWithMocks {
     @Bean
     @Profile("withMocks")
     public CourseDAO courseDaoImpl() {

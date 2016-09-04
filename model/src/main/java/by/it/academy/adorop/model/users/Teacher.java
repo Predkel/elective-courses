@@ -17,7 +17,7 @@ public class Teacher extends User implements Serializable {
     private static final long serialVersionUID = -1041249766477934517L;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Course> courses = new HashSet<>();
 
     public Set<Course> getCourses() {

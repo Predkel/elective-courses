@@ -1,12 +1,10 @@
 package integration.by.it.academy.adorop.web.controllers;
 
-import by.it.academy.adorop.model.users.Student;
-import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import org.junit.Test;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.ResultActions;
 
+import static integration.by.it.academy.adorop.web.controllers.AuthenticationUtilsForTests.authenticatedStudent;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -25,25 +23,8 @@ public class StudentControllerTest extends AbstractIntegrationTest {
     public void getCurrentShouldReturnAuthenticatedStudent() throws Exception {
         mvc.perform(get(GET_CURRENT_STUDENT_URL)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
-                .with(authentication(studentAuthentication())))
+                .with(authentication(authenticatedStudent())))
                 .andExpect(jsonPath("$.documentId").value("adorop88"));
-    }
-
-    private Authentication studentAuthentication() {
-        Student student = buildStudent();
-        UserAuthentication<Student> authentication = UserAuthentication.newInstance(student);
-        authentication.setAuthenticated(true);
-        return authentication;
-    }
-
-    private Student buildStudent() {
-        Student student = new Student();
-        student.setId(10002L);
-        student.setDocumentId("adorop88");
-        student.setPassword("1234");
-        student.setFirstName("1stName");
-        student.setLastName("lastName");
-        return student;
     }
 
     @Test

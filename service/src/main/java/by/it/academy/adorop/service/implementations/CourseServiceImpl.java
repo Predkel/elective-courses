@@ -8,6 +8,9 @@ import by.it.academy.adorop.service.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @CatchAndRethrow(exceptionToCatch = RuntimeException.class, rethrow = ServiceException.class)
 public class CourseServiceImpl extends BasicService<Course, Long> implements CourseService {
@@ -22,5 +25,13 @@ public class CourseServiceImpl extends BasicService<Course, Long> implements Cou
     @Override
     protected CourseDAO getDAO() {
         return courseDAO;
+    }
+
+    @Override
+    public boolean isAlreadyExists(Course course) {
+        Map<String, Object> uniquePropertiesToValues = new HashMap<>();
+        uniquePropertiesToValues.put("title", course.getTitle());
+        uniquePropertiesToValues.put("teacher.id", course.getTeacher().getId());
+        return !courseDAO.getBy(uniquePropertiesToValues).isEmpty();
     }
 }

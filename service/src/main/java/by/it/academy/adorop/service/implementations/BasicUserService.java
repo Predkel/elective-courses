@@ -15,19 +15,9 @@ public abstract class BasicUserService<T extends User> extends BasicService<T, L
         this.userDAO = userDAO;
     }
 
-    @Override
-    public boolean isValid(String documentId, String password) {
-        T retrievedUser = userDAO.getByDocumentId(documentId);
-        return !(retrievedUser == null || !retrievedUser.getPassword().equals(password));
-    }
 
     @Override
-    public T getByDocumentId(String documentId) {
-        return userDAO.getByDocumentId(documentId);
-    }
-
-    @Override
-    public boolean isAlreadyExists(String documentId) {
-        return userDAO.isAlreadyExists(documentId);
+    public boolean isAlreadyExists(T user) {
+        return !userDAO.getFromAllUsersBy("documentId", user.getDocumentId()).isEmpty();
     }
 }
