@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class ExceptionHandlerAdvice {
 
     public static final String BAD_REQUEST_PAGE = "badRequest";

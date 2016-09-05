@@ -16,7 +16,6 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @NotEmpty
     @Column(nullable = false)
     private String title;
     @Lob

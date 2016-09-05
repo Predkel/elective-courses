@@ -1,5 +1,8 @@
 package integration.by.it.academy.adorop.web.controllers;
 
+import by.it.academy.adorop.model.users.Student;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -48,9 +51,16 @@ public class StudentControllerTest extends AbstractIntegrationTest {
     private ResultActions performCreateNewStudentWithParameters(String documentId, String password, String firstName, String lastname) throws Exception {
         return mvc.perform(post(CREATE_STUDENT_URL)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .param("documentId", documentId)
-                .param("password", password)
-                .param("firstName", firstName)
-                .param("lastName", lastname));
+                .content(jsonStudentWith(documentId, password, firstName, lastname)));
+    }
+
+    private String jsonStudentWith(String documentId, String password, String firstName, String lastname) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Student student = new Student();
+        student.setDocumentId(documentId);
+        student.setPassword(password);
+        student.setFirstName(firstName);
+        student.setLastName(lastname);
+        return mapper.writeValueAsString(student);
     }
 }

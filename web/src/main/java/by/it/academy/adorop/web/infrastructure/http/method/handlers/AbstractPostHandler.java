@@ -1,21 +1,16 @@
-package by.it.academy.adorop.web.controllers;
+package by.it.academy.adorop.web.infrastructure.http.method.handlers;
 
 import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.service.api.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.validation.Valid;
 import java.io.Serializable;
 
-public abstract class AbstractController<T, ID extends Serializable> {
+public abstract class AbstractPostHandler<T, ID extends Serializable> implements PostHandler<T> {
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity createNew(@Valid T entity, Errors errors) {
+    @Override
+    public ResponseEntity createNew(T entity, Errors errors) {
         if (errors.hasErrors()) {
             return withoutBody(HttpStatus.BAD_REQUEST);
         }
