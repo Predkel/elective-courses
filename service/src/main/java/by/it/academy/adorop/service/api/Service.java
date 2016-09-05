@@ -9,6 +9,7 @@ public interface Service<T, ID extends Serializable> {
     Long getTotalCount();
     List<T> getBunch(int firstResult, int maxResult);
     T persist(T entity);
+    void update(T entity);
     boolean isAlreadyExists(T entity);
     T getSingleResultBy(String nameOfUniqueProperty, Object value);
     T getSingleResultBy(Map<String, Object> namesOfUniquePropertiesToValues);

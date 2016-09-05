@@ -2,7 +2,7 @@ package by.it.academy.adorop.web.controllers;
 
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.StudentService;
-import by.it.academy.adorop.web.infrastructure.http.method.handlers.PostHandler;
+import by.it.academy.adorop.web.infrastructure.http.method.handlers.post.PostHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;

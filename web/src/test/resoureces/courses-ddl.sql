@@ -21,6 +21,7 @@ CREATE TABLE `course` (
 );
 
 ALTER TABLE course ADD FOREIGN KEY (teacher_id) REFERENCES user(id);
+ALTER TABLE course MODIFY teacher_id BIGINT(20) NOT NULL ;
 
 DROP TABLE IF EXISTS `hibernate_sequence`;
 CREATE TABLE `hibernate_sequence` (

@@ -1,6 +1,7 @@
 package by.it.academy.adorop.model.users;
 
 import by.it.academy.adorop.model.Mark;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ public class Student extends User implements Serializable {
 
     private static final long serialVersionUID = -52174491949198584L;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Mark> marks = new HashSet<>();
 

@@ -45,5 +45,10 @@ public abstract class BasicService<T, ID extends Serializable> implements Servic
         return getDAO().getBy(namesOfUniquePropertiesToValues).get(0);
     }
 
+    @Override
+    public void update(T entity) {
+        getDAO().update(entity);
+    }
+
     protected abstract DAO<T, ID> getDAO();
 }

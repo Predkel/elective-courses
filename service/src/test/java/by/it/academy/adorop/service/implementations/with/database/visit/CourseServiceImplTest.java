@@ -4,6 +4,7 @@ import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.users.Teacher;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.config.ServiceConfig;
+import by.it.academy.adorop.service.exceptions.ServiceException;
 import by.it.academy.adorop.service.implementations.PersistenceTestConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,6 +39,13 @@ public class CourseServiceImplTest {
     public void isAlreadyExistsShouldReturnTrue() throws Exception {
         Course existingCourse = buildCourse("title_0");
         assertTrue(courseService.isAlreadyExists(existingCourse));
+    }
+
+    @Test(expected = ServiceException.class)
+    public void shouldThrowServiceExceptionWhenAttemptToPersistCourseWithoutTeacherOccurred() throws Exception {
+        Course courseWithoutTeacher = new Course();
+        courseWithoutTeacher.setTitle("some Title");
+        courseService.persist(courseWithoutTeacher);
     }
 
     private Course buildCourse(String title) {

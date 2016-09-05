@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.infrastructure.http.method.handlers;
+package by.it.academy.adorop.web.infrastructure.http.method.handlers.post;
 
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.Service;

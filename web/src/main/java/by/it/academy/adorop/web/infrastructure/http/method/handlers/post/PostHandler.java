@@ -1,4 +1,4 @@
-package by.it.academy.adorop.web.infrastructure.http.method.handlers;
+package by.it.academy.adorop.web.infrastructure.http.method.handlers.post;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
