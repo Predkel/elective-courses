@@ -37,12 +37,14 @@ public abstract class BasicService<T, ID extends Serializable> implements Servic
 
     @Override
     public T getSingleResultBy(String nameOfUniqueProperty, Object value) {
-        return getDAO().getBy(nameOfUniqueProperty, value).get(0);
+        List<T> singleResultList = getDAO().getBy(nameOfUniqueProperty, value);
+        return singleResultList.isEmpty() ? null : singleResultList.get(0);
     }
 
     @Override
     public T getSingleResultBy(Map<String, Object> namesOfUniquePropertiesToValues) {
-        return getDAO().getBy(namesOfUniquePropertiesToValues).get(0);
+        List<T> singleResultList = getDAO().getBy(namesOfUniquePropertiesToValues);
+        return singleResultList.isEmpty() ? null : singleResultList.get(0);
     }
 
     @Override

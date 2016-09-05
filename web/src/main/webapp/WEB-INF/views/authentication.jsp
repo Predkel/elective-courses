@@ -6,7 +6,7 @@
     <title>Authentication</title>
 </head>
 <body>
-<h1><s:message code="users.authentication"/> </h1>
+<h1>Authentication </h1>
 
 <s:url value="/login" var="loginUrl"/>
 <form action="${loginUrl}" method="post">
@@ -16,17 +16,17 @@
         </p>
     </c:if>
     <p>
-        <label for="username"><s:message code="users.document.id"/> </label>
+        <label for="username">Document id: </label>
         <input type="text" id="username" name="username"/>
     </p>
     <p>
-        <label for="password"><s:message code="users.password"/> </label>
+        <label for="password">Password:</label>
         <input type="password" id="password" name="password"/>
     </p>
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
-    <button type="submit" class="btn"><s:message code="users.login"/> </button>
+    <button type="submit" class="btn">Login </button>
 </form>
 <s:url value="/students/new" var="studentsRegistration"/>
 <a href="${studentsRegistration}">Registration for students</a><br>

@@ -28,6 +28,11 @@ public class StudentController extends AbstractUserController<Student> {
         this.postHandler = postHandler;
     }
 
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String mainPage() {
+        return "students";
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity createNew(@RequestBody @Valid Student student, Errors errors) {
         return postHandler.createNew(student, errors);

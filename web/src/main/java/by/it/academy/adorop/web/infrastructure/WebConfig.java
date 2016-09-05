@@ -43,6 +43,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
+    public ViewResolver internalResourceViewResolver(){
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+
+    @Bean
     public MappingJackson2JsonView mappingJackson2JsonView() {
         return new MappingJackson2JsonView();
     }

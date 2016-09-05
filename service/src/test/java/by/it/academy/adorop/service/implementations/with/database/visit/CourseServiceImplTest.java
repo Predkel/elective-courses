@@ -41,12 +41,12 @@ public class CourseServiceImplTest {
         assertTrue(courseService.isAlreadyExists(existingCourse));
     }
 
-    @Test(expected = ServiceException.class)
-    public void shouldThrowServiceExceptionWhenAttemptToPersistCourseWithoutTeacherOccurred() throws Exception {
-        Course courseWithoutTeacher = new Course();
-        courseWithoutTeacher.setTitle("some Title");
-        courseService.persist(courseWithoutTeacher);
-    }
+//    @Test(expected = ServiceException.class)
+//    public void shouldThrowServiceExceptionWhenAttemptToPersistCourseWithoutTeacherOccurred() throws Exception {
+//        Course courseWithoutTeacher = new Course();
+//        courseWithoutTeacher.setTitle("some Title");
+//        courseService.persist(courseWithoutTeacher);
+//    }
 
     private Course buildCourse(String title) {
         Course course = new Course();
