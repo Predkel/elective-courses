@@ -43,6 +43,11 @@ public class CourseController {
         return new ResponseEntity<>(courseService.getBunch(firstResult, maxResults), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public @ResponseBody String getCount() {
+        return "{count :" + courseService.getTotalCount() + "}";
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @PreAuthorize("#course != null and #course.teacher != null and #course.teacher.equals(principal)")
     public ResponseEntity createNew(@RequestBody @Valid Course course, Errors errors) {

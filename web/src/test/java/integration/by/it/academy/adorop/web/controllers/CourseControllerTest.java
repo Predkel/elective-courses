@@ -24,6 +24,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CourseControllerTest extends AbstractIntegrationTest {
     @Autowired
     private CourseService courseService;
+
+    @Test
+    public void getCountShouldReturnTheSameResultThatServiceInJson() throws Exception {
+        mvc.perform(get("/courses/count")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .with(authentication(authenticatedTeacher())))
+                .andExpect(jsonPath("$.count").value(courseService.getTotalCount().intValue()));
+    }
+
     @Test
     public void getBunchShouldReturn400statusCodeWhenOneOfParametersIsNegativeNumber() throws Exception {
         performGetBunchWith("-1", "10")
