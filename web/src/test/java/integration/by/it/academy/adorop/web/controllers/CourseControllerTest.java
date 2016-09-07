@@ -18,6 +18,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -26,11 +27,13 @@ public class CourseControllerTest extends AbstractIntegrationTest {
     private CourseService courseService;
 
     @Test
-    public void getCountShouldReturnTheSameResultThatServiceInJson() throws Exception {
+    public void getCountShouldReturnTheSameResultThatServiceAsString() throws Exception {
         mvc.perform(get("/courses/count")
-                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.TEXT_PLAIN)
                 .with(authentication(authenticatedTeacher())))
-                .andExpect(jsonPath("$.count").value(courseService.getTotalCount().intValue()));
+                .andExpect(status().isOk())
+                .andExpect(content().string(courseService.getTotalCount().toString()));
+//                .andExpect(jsonPath("$.count").value(courseService.getTotalCount().intValue()));
     }
 
     @Test

@@ -28,6 +28,10 @@ public class Paginator {
         return numbersOfPages;
     }
 
+    private void addFirstPage(List<Integer> numbersOfPages) {
+        numbersOfPages.add(1);
+    }
+
     private void addLastPage(List<Integer> numbersOfPages, int numberOfLastPage) {
         numbersOfPages.add(numberOfLastPage);
     }
@@ -63,10 +67,6 @@ public class Paginator {
             }
         }
         return rangeOfRightSide;
-    }
-
-    private void addFirstPage(List<Integer> numbersOfPages) {
-        numbersOfPages.add(1);
     }
 
     private int defineNumberOfLastPage(Long totalCountOfEntities) {

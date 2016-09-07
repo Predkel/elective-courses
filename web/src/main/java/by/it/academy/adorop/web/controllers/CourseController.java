@@ -43,9 +43,9 @@ public class CourseController {
         return new ResponseEntity<>(courseService.getBunch(firstResult, maxResults), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/count", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public @ResponseBody String getCount() {
-        return "{count :" + courseService.getTotalCount() + "}";
+        return courseService.getTotalCount().toString();
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
