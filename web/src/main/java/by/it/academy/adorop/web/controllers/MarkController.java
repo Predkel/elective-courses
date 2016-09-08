@@ -6,6 +6,7 @@ import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
 import by.it.academy.adorop.service.api.StudentService;
+import by.it.academy.adorop.web.infrastructure.http.method.handlers.get.GetHandler;
 import by.it.academy.adorop.web.infrastructure.http.method.handlers.post.PostHandler;
 import by.it.academy.adorop.web.infrastructure.http.method.handlers.put.PutHandler;
 import by.it.academy.adorop.web.infrastructure.resolvers.annotations.ModelById;
@@ -32,16 +33,19 @@ public class MarkController {
     private final Validator validator;
     private final PostHandler<Mark> postHandler;
     private final PutHandler<Mark> putHandler;
+    private final GetHandler<Mark> getHandler;
 
     @Autowired
     public MarkController(MarkService markService,
                           @Qualifier("markValidator") Validator validator,
                           @Qualifier("markPostHandler") PostHandler<Mark> postHandler,
-                          @Qualifier("markPutHandler") PutHandler<Mark> putHandler) {
+                          @Qualifier("markPutHandler") PutHandler<Mark> putHandler,
+                          @Qualifier("markGetHandler") GetHandler<Mark> getHandler) {
         this.markService = markService;
         this.validator = validator;
         this.postHandler = postHandler;
         this.putHandler = putHandler;
+        this.getHandler = getHandler;
     }
 
     @InitBinder
@@ -69,12 +73,12 @@ public class MarkController {
             params = {"courseId", "studentId"})
     @ResponseBody
     @PreAuthorize("principal.equals(#student)")
-    public Mark getBy(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course,
+    public ResponseEntity getBy(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course,
                       @ModelById(nameOfIdParameter = "studentId", serviceClass = StudentService.class) Student student) {
         Map<String, Object> properties = new HashMap<>();
         properties.put("student", student);
         properties.put("course", course);
-        return markService.getSingleResultBy(properties);
+        return getHandler.getBy(properties);
     }
 
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

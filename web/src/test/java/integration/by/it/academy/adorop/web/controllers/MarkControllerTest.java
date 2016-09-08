@@ -96,6 +96,15 @@ public class MarkControllerTest extends AbstractIntegrationTest {
         performGetBySecondCourseAnd("10003").andExpect(status().is(403));
     }
 
+    @Test
+    public void getByCourseAndStudentShouldReturnNullWhenRequestedMarkDoesNotExist() throws Exception {
+        mvc.perform(get("/marks?courseId=9&studentId=10002")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .with(authentication(authenticatedStudent())))
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$").isEmpty());
+    }
+
     private ResultActions performGetBySecondCourseAnd(String studentId) throws Exception {
         return mvc.perform(get("/marks")
                 .param("courseId", "2").param("studentId", studentId)

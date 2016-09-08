@@ -7,9 +7,9 @@
 <div id="pagination-container"></div>
 <div id="courses"></div>
 <div class="mark-table" hidden>
-    <table>
+    <table border="1" cellspacing="0">
         <tr>
-            <th id="title"></th>
+            <th class="title"></th>
         </tr>
         <tr>
             <th>Teacher</th>
@@ -17,9 +17,9 @@
             <th>Mark</th>
         </tr>
         <tr>
-            <td id="teacher"></td>
-            <td id="description"></td>
-            <td id="mark"></td>
+            <td class="teacher"></td>
+            <td class="description"></td>
+            <td class="mark"></td>
         </tr>
     </table>
 </div>
@@ -30,26 +30,32 @@
     $.get('/students/current', undefined, function (response) {
         currentStudent = response;
         $(document).trigger('studentLoaded')
-    }, 'application/json;charset=UTF-8');
+    }, 'json');
+
     $(document).on('studentLoaded', function () {
         doPagination('/courses/count', '/courses', 'firstResult', 'maxResults', function (response) {
             var $courses = $('#courses');
-                $courses.text('');
-                $.each(response, function (index, element) {
-                    $courses.append('<a href="#" class="course" id="' + element.id + '">' + element.title + ' </a><br>')
-                            .children('.course').click(function (event) {
+            $courses.text('');
+            $.each(response, function (index, element) {
+                var courseLink = '<div><a href="#" class="course" id="' + element.id + '">'  + element.title + ' </a><br></div>';
+                var $courseLink = $(courseLink);
+                $courseLink.click(function (event) {
                         event.preventDefault();
                         var courseId = event.target.id;
                         $.get('/marks', {courseId : courseId, studentId : currentStudent.id}, function (response) {
-                            $('#markTable')
-                                    .child('#teacher').text(element.teacher.firstName + ' ' + element.teacher.lastName)
-                                    .child('#description').text(element.description)
-                                    .child('#mark').text(response.value)
-                                    .appendTo('.course#' + courseId)
-                                    .removeAttr('hidden')
-                        }, 'application/json;charset=UTF-8')
-                    })
-                })
+                            var $markTable = $('.mark-table[hidden]').clone();
+                            $markTable.find('table').addClass(courseId.toString());
+                            var table = $markTable
+                                    .removeAttr('hidden').html();
+                            $(event.target).parent().html(table);
+                            $('.title', '.' + courseId).text(element.title);
+                            $('.teacher', '.' + courseId).text(element.teacher.firstName + ' ' + element.teacher.lastName);
+                            $('.description','.' + courseId).text(element.description);
+                            $('.mark', '.' + courseId).text(response.value);
+                        }, 'json')
+                    });
+                $courses.append($courseLink);
+            })
         });
     })
 </script>
