@@ -21,11 +21,6 @@ public class  ServiceConfig {
     }
 
     @Bean
-    public static CatchAndRethrowAnnotationHandlerBeanPostProcessor catchAndRethrowAnnotationHandlerBeanPostProcessor() {
-        return new CatchAndRethrowAnnotationHandlerBeanPostProcessor();
-    }
-
-    @Bean
     @Profile("debug")
     public static BeanPostProcessor profilingBeanPostProcessor() {
         return new ProfilingBeanPostProcessor();

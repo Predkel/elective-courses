@@ -26,6 +26,8 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(classes = {ServiceConfig.class, PersistenceTestConfig.class, ServiceTestConfigWithMocks.class})
 @ActiveProfiles("withMocks")
 public class CourseServiceWithMocksTest {
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Autowired
     private CourseService courseService;

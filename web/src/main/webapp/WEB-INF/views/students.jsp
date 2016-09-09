@@ -23,6 +23,22 @@
         </tr>
     </table>
 </div>
+<div class="course-table" hidden>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th class="title"></th>
+        </tr>
+        <tr>
+            <th>Teacher</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td class="teacher"></td>
+            <td class="description"></td>
+        </tr>
+    </table>
+    <button>Register</button>
+</div>
 <script src="../js/jquery-3.1.0.js"></script>
 <script src="../js/pagination.js"></script>
 <script>
@@ -41,23 +57,58 @@
                 var $courseLink = $(courseLink);
                 $courseLink.click(function (event) {
                         event.preventDefault();
-                        var courseId = event.target.id;
+                        var courseId = event.target.id.toString();
                         $.get('/marks', {courseId : courseId, studentId : currentStudent.id}, function (response) {
-                            var $markTable = $('.mark-table[hidden]').clone();
-                            $markTable.find('table').addClass(courseId.toString());
-                            var table = $markTable
-                                    .removeAttr('hidden').html();
+                            var containerTemplateClass;
+                            if ($.isEmptyObject(response)) {
+                                containerTemplateClass = 'course-table';
+                            } else {
+                                containerTemplateClass = 'mark-table';
+                            }
+
+                            var table = getTable(containerTemplateClass, courseId);
                             $(event.target).parent().html(table);
-                            $('.title', '.' + courseId).text(element.title);
-                            $('.teacher', '.' + courseId).text(element.teacher.firstName + ' ' + element.teacher.lastName);
-                            $('.description','.' + courseId).text(element.description);
-                            $('.mark', '.' + courseId).text(response.value);
+                            setCommonFields(element, courseId);
+
+                            if (!$.isEmptyObject(response)) {
+                                $('.mark', '.' + courseId).text(response.value);
+                            } else {
+                                $('.' + courseId).next('button').click(function (event) {
+                                    event.stopPropagation();
+                                    var newMark = {
+                                        course : {id : parseInt(courseId)},
+                                        student : currentStudent
+                                    };
+                                    $.ajax('/marks',
+                                            {
+                                                method : 'POST',
+                                                data : JSON.stringify(newMark),
+                                                success : function () {
+                                                    $(event.target).parent().html(getTable('mark-table', courseId));
+                                                    setCommonFields(element, courseId)
+                                                }
+                                                ,
+                                                contentType : 'application/json; charset=UTF-8'
+                                            })
+                                })
+                            }
                         }, 'json')
-                    });
+                });
                 $courses.append($courseLink);
             })
         });
-    })
+    });
+    function getTable(containerTemplateClass, tableClass) {
+        var $tableContainer = $('.' + containerTemplateClass + '[hidden]').clone();
+        $tableContainer.find('table').addClass(tableClass);
+        return $tableContainer.removeAttr('hidden').html();
+    }
+
+    function setCommonFields(course, tableClass) {
+        $('.title', '.' + tableClass).text(course.title);
+        $('.teacher', '.' + tableClass).text(course.teacher.firstName + ' ' + course.teacher.lastName);
+        $('.description','.' + tableClass).text(course.description);
+    }
 </script>
 </body>
 </html>

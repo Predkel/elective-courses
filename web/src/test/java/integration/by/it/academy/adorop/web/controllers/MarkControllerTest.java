@@ -58,10 +58,12 @@ public class MarkControllerTest extends AbstractIntegrationTest {
 
     private ResultActions performCreateNewMarkWith(Course course, Student student) throws Exception {
         Mark mark = new Mark(student, course);
+        String content = jsonMark(mark);
+        System.out.println(content);
         return mvc.perform(post("/marks")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .with(authentication(authenticatedStudent()))
-                .content(jsonMark(mark)));
+                .content(content));
 
     }
 
