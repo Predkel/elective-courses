@@ -22,6 +22,9 @@ function doPagination(urlToGetCount, urlToGetItems, firstResultParameterName, ma
                     $errorSpan.text('should be a positive number')
                 } else {
                     maxResults = value;
+                    if (currentPage*maxResults > count) {
+                        currentPage = Math.ceil(count / maxResults);
+                    }
                     setPagesNumbers();
                     getItems();
                 }
