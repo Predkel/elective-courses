@@ -41,6 +41,7 @@
 </div>
 <script src="../js/jquery-3.1.0.js"></script>
 <script src="../js/pagination.js"></script>
+<script src="../js/commons.js"></script>
 <script>
     var currentStudent;
     $.get('/students/current', undefined, function (response) {
@@ -52,10 +53,8 @@
         doPagination('/courses/count', '/courses', 'firstResult', 'maxResults', function (response) {
             var $courses = $('#courses');
             $courses.text('');
-            $.each(response, function (index, element) {
-                var courseLink = '<div><a href="#" class="course" id="' + element.id + '">'  + element.title + ' </a><br></div>';
-                var $courseLink = $(courseLink);
-                $courseLink.click(function (event) {
+            $.each(response, function (index, course) {
+                appendCourseLink($courses, course, function (event) {
                         event.preventDefault();
                         var courseId = event.target.id.toString();
                         $.get('/marks', {courseId : courseId, studentId : currentStudent.id}, function (response) {
@@ -68,7 +67,7 @@
 
                             var table = getTable(containerTemplateClass, courseId);
                             $(event.target).parent().html(table);
-                            setCommonFields(element, courseId);
+                            setCommonFields(course, courseId);
 
                             if (!$.isEmptyObject(response)) {
                                 $('.mark', '.' + courseId).text(response.value);
@@ -85,7 +84,7 @@
                                                 data : JSON.stringify(newMark),
                                                 success : function () {
                                                     $(event.target).parent().html(getTable('mark-table', courseId));
-                                                    setCommonFields(element, courseId)
+                                                    setCommonFields(course, courseId)
                                                 }
                                                 ,
                                                 contentType : 'application/json; charset=UTF-8'
@@ -94,15 +93,9 @@
                             }
                         }, 'json')
                 });
-                $courses.append($courseLink);
             })
         });
     });
-    function getTable(containerTemplateClass, tableClass) {
-        var $tableContainer = $('.' + containerTemplateClass + '[hidden]').clone();
-        $tableContainer.find('table').addClass(tableClass);
-        return $tableContainer.removeAttr('hidden').html();
-    }
 
     function setCommonFields(course, tableClass) {
         $('.title', '.' + tableClass).text(course.title);
