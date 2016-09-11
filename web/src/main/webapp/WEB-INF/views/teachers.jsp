@@ -47,6 +47,8 @@
 <script src="../js/pagination.js"></script>
 <script src="../js/commons.js"></script>
 <script>
+    establishServerSideErrorsHandler();
+
     var currentTeacher;
 
     $.get('/teachers/current', undefined, function (response) {

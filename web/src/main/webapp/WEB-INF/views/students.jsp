@@ -43,7 +43,10 @@
 <script src="../js/pagination.js"></script>
 <script src="../js/commons.js"></script>
 <script>
+    establishServerSideErrorsHandler();
+
     var currentStudent;
+
     $.get('/students/current', undefined, function (response) {
         currentStudent = response;
         $(document).trigger('studentLoaded')

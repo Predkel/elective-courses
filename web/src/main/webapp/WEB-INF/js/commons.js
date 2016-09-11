@@ -12,3 +12,11 @@ function appendCourseLink($containerToAppend, course, onCourseLinkClick) {
     });
     $containerToAppend.append($courseLink)
 }
+
+function establishServerSideErrorsHandler() {
+    $(document).ajaxError(function (event, jqXHR, options) {
+        if (jqXHR.status == 500) {
+            $('body').html('<h1>Some problems with server have occurred. Please, try latter</h1>');
+        }
+    })
+}
