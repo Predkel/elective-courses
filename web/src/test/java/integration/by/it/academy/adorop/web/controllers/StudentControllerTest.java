@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static integration.by.it.academy.adorop.web.controllers.AuthenticationUtilsForTests.authenticatedStudent;
+import static integration.by.it.academy.adorop.web.controllers.AuthenticationUtilsForTests.authenticatedTeacher;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -23,11 +24,19 @@ public class StudentControllerTest extends AbstractIntegrationTest {
     private static final String NOT_VALID_STRING = "";
 
     @Test
-    public void getCurrentShouldReturnAuthenticatedStudent() throws Exception {
+    public void getCurrentShouldReturnAuthenticatedStudentIfCurrentPrincipalIsStudent() throws Exception {
         mvc.perform(get(GET_CURRENT_STUDENT_URL)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .with(authentication(authenticatedStudent())))
                 .andExpect(jsonPath("$.documentId").value("adorop88"));
+    }
+
+    @Test
+    public void getCurrentStudentShouldReturn403statusCodeWhenCurrentPrincipalIsNotStudent() throws Exception {
+        mvc.perform(get(GET_CURRENT_STUDENT_URL)
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .with(authentication(authenticatedTeacher())))
+                .andExpect(status().is(403));
     }
 
     @Test

@@ -1,5 +1,6 @@
 package by.it.academy.adorop.web.security.authentication;
 
+import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.model.users.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +23,8 @@ public class UserAuthentication<T extends User> implements Authentication {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.NO_AUTHORITIES;
+        String role = user.getClass() == Student.class ? "ROLE_STUDENT" : "ROLE_TEACHER";
+        return AuthorityUtils.createAuthorityList(role);
     }
 
     @Override
