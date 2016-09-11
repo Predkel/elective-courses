@@ -7,6 +7,18 @@
 <div id="add-course-container">
     <a href="#" id="add-course-link">Add Course</a>
 </div>
+<div class="add-course-form" hidden>
+    <form class="add-course-form">
+        Title : <label>
+        <input class="title" name="title">
+    </label>
+        <span class="error-title-span"></span>
+        Description: <label>
+        <textarea class="description"></textarea>
+    </label>
+        <input type="submit" value="Save">
+    </form>
+</div>
 <div id="pagination-container"></div>
 <div id="courses"></div>
 <div class="course-table" hidden>
@@ -43,7 +55,53 @@
     }, 'json');
 
     $(document).on('teacherLoaded', function () {
-        $('#add-course-link').click(function () {
+        $('#add-course-container').one('click', function (event) {
+            onAddCourseLinkClick(event);
+
+            function onAddCourseLinkClick(event) {
+                event.preventDefault();
+                var addCourseForm = $('div.add-course-form[hidden]')
+                        .clone()
+                        .removeAttr('hidden')
+                        .html();
+                $('#add-course-container').html(addCourseForm);
+                $('form.add-course-form', '#add-course-container')
+                        .submit(function (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            var $errorSpan = $('.error-title-span', '#add-course-container');
+                            $errorSpan.text('');
+                            var $form = $(this);
+                            var title = $form.find('.title').val();
+                            if ($.trim(title) == '') {
+                                $errorSpan.text('Should be not empty');
+                            } else {
+                                var description = $form.find('.description').val();
+                                var newCourse = {
+                                    title : title,
+                                    description : description,
+                                    teacher : currentTeacher
+                                };
+                                $.ajax('/courses', {
+                                    method : 'POST',
+                                    contentType : 'application/json; charset=UTF-8',
+                                    data : JSON.stringify(newCourse),
+                                    success : function () {
+                                        var $addCourseContainer = $('#add-course-container');
+                                        $addCourseContainer.html('<a href="#" id="add-course-link">Add course</a>');
+                                        $addCourseContainer.one('click', function (event) {
+                                            onAddCourseLinkClick(event);
+                                        })
+                                    },
+                                    error : function (jqXHR, statusText) {
+                                        if (jqXHR.status == 409) {
+                                            $errorSpan.text("You already have course with the same title")
+                                        }
+                                    }
+                                })
+                            }
+                        })
+            }
 
         });
 
