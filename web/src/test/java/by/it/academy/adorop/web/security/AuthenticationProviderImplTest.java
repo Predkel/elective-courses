@@ -1,7 +1,6 @@
 package by.it.academy.adorop.web.security;
 
 import by.it.academy.adorop.model.users.Student;
-import by.it.academy.adorop.model.users.User;
 import by.it.academy.adorop.service.api.StudentService;
 import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
@@ -18,6 +17,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,13 +40,15 @@ public class AuthenticationProviderImplTest {
     private TeacherService teacherService;
     @Mock
     private UserAuthentication authentication;
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         PowerMockito.mockStatic(UserAuthentication.class);
         List<UserService> userServices = Arrays.asList(studentService, teacherService);
-        authenticationProvider = new AuthenticationProviderImpl(userServices);
+        authenticationProvider = new AuthenticationProviderImpl(userServices, passwordEncoder);
     }
 
     @Test(expected = UsernameNotFoundException.class)
@@ -84,6 +86,7 @@ public class AuthenticationProviderImplTest {
     private void whenAuthenticationAttemptIsSuccessful() {
         whenStudentServiceReturnsStudentWith(ANY_PASSWORD);
         whenSubmittedPasswordIs(ANY_PASSWORD);
+        when(passwordEncoder.matches(anyObject(), anyString())).thenReturn(true);
     }
 
     @Test

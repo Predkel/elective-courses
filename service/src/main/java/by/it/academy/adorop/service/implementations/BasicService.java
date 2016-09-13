@@ -20,6 +20,11 @@ public abstract class BasicService<T, ID extends Serializable> implements Servic
     }
 
     @Override
+    public List<T> getAll() {
+        return getDAO().getAll();
+    }
+
+    @Override
     public Long getTotalCount() {
         return getDAO().getCount();
     }
@@ -48,6 +53,7 @@ public abstract class BasicService<T, ID extends Serializable> implements Servic
     }
 
     @Override
+    @Transactional
     public void update(T entity) {
         getDAO().update(entity);
     }

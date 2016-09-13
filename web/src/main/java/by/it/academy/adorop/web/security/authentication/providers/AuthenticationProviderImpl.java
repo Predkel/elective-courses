@@ -1,9 +1,6 @@
 package by.it.academy.adorop.web.security.authentication.providers;
 
 import by.it.academy.adorop.model.users.User;
-import by.it.academy.adorop.service.api.Service;
-import by.it.academy.adorop.service.api.StudentService;
-import by.it.academy.adorop.service.api.TeacherService;
 import by.it.academy.adorop.service.api.UserService;
 import by.it.academy.adorop.web.security.authentication.UserAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +10,20 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class AuthenticationProviderImpl implements AuthenticationProvider {
-    private List<UserService> userServices;
+    private final List<UserService> userServices;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AuthenticationProviderImpl(List<UserService> userServices) {
+    public AuthenticationProviderImpl(List<UserService> userServices, PasswordEncoder passwordEncoder) {
         this.userServices = userServices;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -49,9 +49,13 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         if (user == null) {
             throw new UsernameNotFoundException("user not found");
         }
-        if (!authentication.getCredentials().equals(user.getPassword())) {
+        if (!isPasswordValid(authentication, user)) {
             throw new BadCredentialsException("bad credentials");
         }
+    }
+
+    private boolean isPasswordValid(Authentication authentication, User user) {
+        return passwordEncoder.matches((CharSequence) authentication.getCredentials(), user.getPassword());
     }
 
     private Authentication getCustomAuthentication(User user) {
