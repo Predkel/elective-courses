@@ -41,8 +41,8 @@ public abstract class AbstractIntegrationTest {
 
     @Configuration
     public static class TestPersistenceConfig extends PersistenceConfig {
-        @Override
         @Bean
+        @Override
         public DataSource dataSource() {
             EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
             return builder.setType(EmbeddedDatabaseType.H2)
