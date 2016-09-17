@@ -1405,3 +1405,661 @@ insert into User (documentId, firstName, lastName, password, DTYPE, id) values (
 2016-09-13 13:09:11,852 INFO  - Closing org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Tue Sep 13 13:09:03 EET 2016]; root of context hierarchy
 2016-09-13 13:09:11,866 INFO  - Shutting down EhCache CacheManager
 2016-09-13 13:09:11,879 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 09:36:48,073 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:36:48,311 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@598067a5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3c0ecd4b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@14bf9759, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5f341870, org.springframework.test.context.transaction.TransactionalTestExecutionListener@553f17c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4f7d0008, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@271053e1]
+2016-09-17 09:36:49,957 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:36:49,958 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@d21a74c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6e509ffa, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2898ac89, org.springframework.test.context.support.DirtiesContextTestExecutionListener@683dbc2c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@68267da0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2638011, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@6ff29830]
+2016-09-17 09:36:49,965 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:36:49,965 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@21b2e768, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@57250572, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5609159b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2118cddf, org.springframework.test.context.transaction.TransactionalTestExecutionListener@17a7f733, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@68567e20, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@76ed1b7c]
+2016-09-17 09:36:49,969 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:36:49,969 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3571b748, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3e96bacf, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@484970b0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4470f8a6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7c83dc97, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7748410a, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@740773a3]
+2016-09-17 09:36:50,731 INFO  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Sat Sep 17 09:36:50 EET 2016]; root of context hierarchy
+2016-09-17 09:36:52,251 INFO  - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:36:52,252 INFO  - Overriding bean definition for bean 'ehCacheManagerFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:36:52,253 INFO  - Overriding bean definition for bean 'sessionFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:36:52,253 INFO  - Overriding bean definition for bean 'cacheManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:36:52,663 INFO  - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2016-09-17 09:36:53,323 INFO  - Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2016-09-17 09:36:53,635 INFO  - Executing SQL script from class path resource [courses-ddl.sql]
+2016-09-17 09:36:53,688 INFO  - Executed SQL script from class path resource [courses-ddl.sql] in 53 ms.
+2016-09-17 09:36:53,688 INFO  - Executing SQL script from class path resource [courses-data.sql]
+2016-09-17 09:36:53,695 INFO  - Executed SQL script from class path resource [courses-data.sql] in 7 ms.
+2016-09-17 09:36:54,179 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 09:36:54,180 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 09:36:54,181 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 09:36:54,398 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 09:36:54,621 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 09:36:55,792 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 09:36:57,627 INFO  - Validated configuration attributes
+2016-09-17 09:36:57,632 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.access.channel.ChannelProcessingFilter@316acbb5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e60b459, org.springframework.security.web.context.SecurityContextPersistenceFilter@794366a5, org.springframework.security.web.header.HeaderWriterFilter@127705e4, org.springframework.security.web.authentication.logout.LogoutFilter@493ac8d3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@34585ac9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@40f35e52, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ee47d9e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@717d7587, org.springframework.security.web.session.SessionManagementFilter@15c487a8, org.springframework.security.web.access.ExceptionTranslationFilter@1b2df3aa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@57545c3f]
+2016-09-17 09:36:58,026 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 09:36:58,027 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 09:36:58,027 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 09:36:58,028 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 09:36:58,033 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 09:36:58,034 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 09:36:58,034 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 09:36:58,035 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 09:36:58,037 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 09:36:58,037 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 09:36:58,037 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 09:36:58,039 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 09:36:58,039 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 09:36:58,040 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 09:36:58,063 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 09:36:59,035 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 09:36:59,155 INFO  - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Sat Sep 17 09:36:50 EET 2016]; root of context hierarchy
+2016-09-17 09:36:59,252 INFO  - Initializing EhCache CacheManager
+2016-09-17 09:36:59,620 INFO  - Using DataSource [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@62b475e2] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 09:36:59,920 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:36:59,921 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:36:59,948 INFO  - FrameworkServlet '': initialization completed in 27 ms
+2016-09-17 09:37:01,542 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,542 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,565 INFO  - FrameworkServlet '': initialization completed in 23 ms
+2016-09-17 09:37:01,650 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,650 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,653 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:01,661 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,661 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,669 INFO  - FrameworkServlet '': initialization completed in 6 ms
+2016-09-17 09:37:01,716 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,716 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,722 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 09:37:01,745 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,745 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,752 INFO  - FrameworkServlet '': initialization completed in 7 ms
+2016-09-17 09:37:01,760 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,760 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,763 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:01,775 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,776 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,778 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:01,912 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,912 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,915 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:01,938 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,938 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,941 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:01,958 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,958 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,961 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:01,977 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:01,977 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:01,981 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:02,000 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,000 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,002 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,012 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,013 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,016 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:02,060 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,060 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,071 INFO  - FrameworkServlet '': initialization completed in 11 ms
+2016-09-17 09:37:02,108 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,108 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,112 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 09:37:02,164 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,165 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,167 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,178 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,178 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,180 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,210 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,210 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,212 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,226 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,226 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,228 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,269 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,269 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,272 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:37:02,287 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,288 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,290 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,311 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,311 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,313 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,322 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,322 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,327 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 09:37:02,342 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:37:02,342 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:37:02,344 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:37:02,380 INFO  - Closing org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Sat Sep 17 09:36:50 EET 2016]; root of context hierarchy
+2016-09-17 09:37:02,423 INFO  - Shutting down EhCache CacheManager
+2016-09-17 09:37:02,446 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 09:38:03,730 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:38:03,752 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@598067a5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3c0ecd4b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@14bf9759, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5f341870, org.springframework.test.context.transaction.TransactionalTestExecutionListener@553f17c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4f7d0008, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@271053e1]
+2016-09-17 09:38:05,523 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:38:05,524 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@d21a74c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6e509ffa, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2898ac89, org.springframework.test.context.support.DirtiesContextTestExecutionListener@683dbc2c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@68267da0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2638011, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@6ff29830]
+2016-09-17 09:38:05,539 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:38:05,541 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@21b2e768, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@57250572, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5609159b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2118cddf, org.springframework.test.context.transaction.TransactionalTestExecutionListener@17a7f733, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@68567e20, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@76ed1b7c]
+2016-09-17 09:38:05,547 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 09:38:05,548 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3571b748, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3e96bacf, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@484970b0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4470f8a6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7c83dc97, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7748410a, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@740773a3]
+2016-09-17 09:38:05,872 INFO  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Sat Sep 17 09:38:05 EET 2016]; root of context hierarchy
+2016-09-17 09:38:06,383 INFO  - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:38:06,385 INFO  - Overriding bean definition for bean 'sessionFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:38:06,385 INFO  - Overriding bean definition for bean 'ehCacheManagerFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:38:06,386 INFO  - Overriding bean definition for bean 'cacheManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 09:38:06,625 INFO  - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2016-09-17 09:38:06,944 INFO  - Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2016-09-17 09:38:07,134 INFO  - Executing SQL script from class path resource [courses-ddl.sql]
+2016-09-17 09:38:07,184 INFO  - Executed SQL script from class path resource [courses-ddl.sql] in 50 ms.
+2016-09-17 09:38:07,184 INFO  - Executing SQL script from class path resource [courses-data.sql]
+2016-09-17 09:38:07,191 INFO  - Executed SQL script from class path resource [courses-data.sql] in 7 ms.
+2016-09-17 09:38:07,398 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 09:38:07,401 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 09:38:07,404 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 09:38:07,484 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 09:38:07,607 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 09:38:08,314 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 09:38:09,625 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@41184371, org.springframework.security.web.context.SecurityContextPersistenceFilter@2eed37f4, org.springframework.security.web.header.HeaderWriterFilter@44be69aa, org.springframework.security.web.authentication.logout.LogoutFilter@40f35e52, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@27329d2a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3fb9a67f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15c487a8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@34585ac9, org.springframework.security.web.session.SessionManagementFilter@551e4c6d, org.springframework.security.web.access.ExceptionTranslationFilter@59c70ceb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3d90eeb3]
+2016-09-17 09:38:10,292 INFO  - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Sat Sep 17 09:38:05 EET 2016]; root of context hierarchy
+2016-09-17 09:38:10,395 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 09:38:10,396 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 09:38:10,397 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 09:38:10,398 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 09:38:10,403 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 09:38:10,404 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 09:38:10,404 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 09:38:10,404 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 09:38:10,406 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 09:38:10,407 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 09:38:10,407 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 09:38:10,410 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 09:38:10,410 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 09:38:10,411 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 09:38:10,442 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 09:38:10,465 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 09:38:10,499 INFO  - Initializing EhCache CacheManager
+2016-09-17 09:38:10,743 INFO  - Using DataSource [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@3592c1c4] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 09:38:10,925 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:10,925 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:10,942 INFO  - FrameworkServlet '': initialization completed in 17 ms
+2016-09-17 09:38:12,151 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,152 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,160 INFO  - FrameworkServlet '': initialization completed in 8 ms
+2016-09-17 09:38:12,436 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,436 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,445 INFO  - FrameworkServlet '': initialization completed in 9 ms
+2016-09-17 09:38:12,470 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,470 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,474 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 09:38:12,524 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,524 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,528 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 09:38:12,759 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,759 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,763 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 09:38:12,888 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,888 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,890 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:38:12,916 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:12,916 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:12,920 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 09:38:13,093 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,093 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,095 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:38:13,181 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,181 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,183 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:38:13,199 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,199 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,202 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:38:13,241 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,241 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,244 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:38:13,257 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,257 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,276 INFO  - FrameworkServlet '': initialization completed in 19 ms
+2016-09-17 09:38:13,318 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,318 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,325 INFO  - FrameworkServlet '': initialization completed in 7 ms
+2016-09-17 09:38:13,353 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,353 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,359 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 09:38:13,379 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,380 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,383 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:38:13,395 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,395 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,398 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 09:38:13,450 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,450 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,452 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:38:13,475 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,475 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,481 INFO  - FrameworkServlet '': initialization completed in 6 ms
+2016-09-17 09:38:13,499 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,499 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,505 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 09:38:13,533 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,534 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,536 INFO  - FrameworkServlet '': initialization completed in 1 ms
+2016-09-17 09:38:13,549 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,550 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,558 INFO  - FrameworkServlet '': initialization completed in 8 ms
+2016-09-17 09:38:13,680 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,680 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,683 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 09:38:13,846 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,847 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,848 INFO  - FrameworkServlet '': initialization completed in 1 ms
+2016-09-17 09:38:13,862 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 09:38:13,862 INFO  - FrameworkServlet '': initialization started
+2016-09-17 09:38:13,870 INFO  - FrameworkServlet '': initialization completed in 7 ms
+2016-09-17 09:38:13,939 INFO  - Closing org.springframework.web.context.support.GenericWebApplicationContext@65f095f8: startup date [Sat Sep 17 09:38:05 EET 2016]; root of context hierarchy
+2016-09-17 09:38:13,959 INFO  - Shutting down EhCache CacheManager
+2016-09-17 09:38:13,974 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 09:47:17,558 INFO  - FrameworkServlet 'dispatcher': initialization started
+2016-09-17 09:47:17,566 INFO  - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 09:47:17 EET 2016]; root of context hierarchy
+2016-09-17 09:47:17,671 INFO  - Registering annotated classes: [class by.it.academy.adorop.web.infrastructure.WebConfig]
+2016-09-17 09:47:19,511 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 09:47:19,513 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 09:47:19,515 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 09:47:19,588 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 09:47:21,574 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 09:47:22,284 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 09:47:24,471 INFO  - Validated configuration attributes
+2016-09-17 09:47:24,478 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.access.channel.ChannelProcessingFilter@2eb9c54d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@375213a7, org.springframework.security.web.context.SecurityContextPersistenceFilter@41de2682, org.springframework.security.web.header.HeaderWriterFilter@683a2569, org.springframework.security.web.authentication.logout.LogoutFilter@705cf7d7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4478fc17, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@13fe0230, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c269ae3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42807078, org.springframework.security.web.session.SessionManagementFilter@7575c0c, org.springframework.security.web.access.ExceptionTranslationFilter@4feb5214, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4df363bc]
+2016-09-17 09:47:24,738 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 09:47:24,739 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 09:47:24,740 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 09:47:24,741 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 09:47:24,747 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 09:47:24,747 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 09:47:24,748 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 09:47:24,748 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 09:47:24,750 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 09:47:24,751 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 09:47:24,751 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 09:47:24,752 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 09:47:24,753 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 09:47:24,753 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 09:47:24,798 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 09:47:25,159 INFO  - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 09:47:17 EET 2016]; root of context hierarchy
+2016-09-17 09:47:25,243 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 09:47:25,256 INFO  - Initializing EhCache CacheManager
+2016-09-17 09:47:25,478 INFO  - Using DataSource [JDBC URL = jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8, Username = root, partitions = 1, max (per partition) = 10, min (per partition) = 0, idle max age = 60 min, idle test period = 240 min, strategy = DEFAULT] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 09:47:25,633 INFO  - FrameworkServlet 'dispatcher': initialization completed in 8074 ms
+2016-09-17 09:49:40,445 INFO  - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 09:47:17 EET 2016]; root of context hierarchy
+2016-09-17 09:49:40,473 INFO  - Shutting down EhCache CacheManager
+2016-09-17 09:49:40,481 INFO  - Shutting down connection pool...
+2016-09-17 09:49:40,484 INFO  - Connection pool has been shutdown.
+2016-09-17 10:34:05,277 INFO  - FrameworkServlet 'dispatcher': initialization started
+2016-09-17 10:34:05,283 INFO  - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 10:34:05 EET 2016]; root of context hierarchy
+2016-09-17 10:34:05,350 INFO  - Registering annotated classes: [class by.it.academy.adorop.web.infrastructure.WebConfig]
+2016-09-17 10:34:07,412 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 10:34:07,414 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 10:34:07,416 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 10:34:07,529 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 10:34:08,962 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 10:34:09,499 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 10:34:11,205 INFO  - Validated configuration attributes
+2016-09-17 10:34:11,210 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.access.channel.ChannelProcessingFilter@5af873eb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a78486d, org.springframework.security.web.context.SecurityContextPersistenceFilter@41341754, org.springframework.security.web.header.HeaderWriterFilter@3ebd24fe, org.springframework.security.web.authentication.logout.LogoutFilter@b4d007, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@385aca9a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@543c9a05, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@562b1ef3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b788769, org.springframework.security.web.session.SessionManagementFilter@1cc1a461, org.springframework.security.web.access.ExceptionTranslationFilter@55958471, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a5d096d]
+2016-09-17 10:34:11,376 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 10:34:11,468 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 10:34:11,470 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 10:34:11,470 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 10:34:11,471 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 10:34:11,488 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:34:11,489 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:34:11,490 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 10:34:11,490 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 10:34:11,494 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 10:34:11,494 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 10:34:11,494 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:34:11,498 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 10:34:11,499 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 10:34:11,500 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:34:11,975 INFO  - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 10:34:05 EET 2016]; root of context hierarchy
+2016-09-17 10:34:12,060 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 10:34:12,092 INFO  - Initializing EhCache CacheManager
+2016-09-17 10:34:12,336 INFO  - Using DataSource [JDBC URL = jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8, Username = root, partitions = 1, max (per partition) = 10, min (per partition) = 0, idle max age = 60 min, idle test period = 240 min, strategy = DEFAULT] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 10:34:12,514 INFO  - FrameworkServlet 'dispatcher': initialization completed in 7237 ms
+2016-09-17 10:34:39,708 WARN  - No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'dispatcher'
+2016-09-17 10:35:49,339 INFO  - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 10:34:05 EET 2016]; root of context hierarchy
+2016-09-17 10:35:49,351 INFO  - Shutting down EhCache CacheManager
+2016-09-17 10:35:49,360 INFO  - Shutting down connection pool...
+2016-09-17 10:35:49,363 INFO  - Connection pool has been shutdown.
+2016-09-17 10:56:22,528 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:56:22,609 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3fee9989, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@73ad2d6, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7085bdee, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1ce92674, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5700d6b1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6fd02e5, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@5bcab519]
+2016-09-17 10:56:24,370 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:56:24,370 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@175b9425, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3098cf3b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@610f7aa, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6a03bcb1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@21b2e768, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@57250572, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@5609159b]
+2016-09-17 10:56:24,398 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:56:24,398 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@32910148, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3f56875e, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2b4bac49, org.springframework.test.context.support.DirtiesContextTestExecutionListener@fd07cbb, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3571b748, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3e96bacf, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@484970b0]
+2016-09-17 10:56:24,417 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:56:24,418 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@f2ff811, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@568ff82, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@50caa560, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2a266d09, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5ab9e72c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@186f8716, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@1d8bd0de]
+2016-09-17 10:56:24,933 INFO  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@3738449f: startup date [Sat Sep 17 10:56:24 EET 2016]; root of context hierarchy
+2016-09-17 10:56:26,474 INFO  - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:56:26,475 INFO  - Overriding bean definition for bean 'sessionFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:56:26,475 INFO  - Overriding bean definition for bean 'ehCacheManagerFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:56:26,476 INFO  - Overriding bean definition for bean 'cacheManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:56:26,749 INFO  - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2016-09-17 10:56:27,372 INFO  - Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2016-09-17 10:56:27,607 INFO  - Executing SQL script from class path resource [courses-ddl.sql]
+2016-09-17 10:56:27,682 INFO  - Executed SQL script from class path resource [courses-ddl.sql] in 75 ms.
+2016-09-17 10:56:27,683 INFO  - Executing SQL script from class path resource [courses-data.sql]
+2016-09-17 10:56:27,690 INFO  - Executed SQL script from class path resource [courses-data.sql] in 7 ms.
+2016-09-17 10:56:28,080 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 10:56:28,083 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 10:56:28,084 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 10:56:28,229 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 10:56:28,577 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 10:56:29,524 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 10:56:31,293 INFO  - Validated configuration attributes
+2016-09-17 10:56:31,306 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.access.channel.ChannelProcessingFilter@56f730b2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@717d7587, org.springframework.security.web.context.SecurityContextPersistenceFilter@480b57e2, org.springframework.security.web.header.HeaderWriterFilter@5562c2c9, org.springframework.security.web.authentication.logout.LogoutFilter@13dbed9e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@76a805b7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@340d6d89, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41da3aee, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e906375, org.springframework.security.web.session.SessionManagementFilter@3f36e8d1, org.springframework.security.web.access.ExceptionTranslationFilter@44be69aa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@326e0b8e]
+2016-09-17 10:56:32,150 INFO  - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@3738449f: startup date [Sat Sep 17 10:56:24 EET 2016]; root of context hierarchy
+2016-09-17 10:56:32,276 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 10:56:32,278 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 10:56:32,278 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 10:56:32,280 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 10:56:32,287 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:56:32,287 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 10:56:32,288 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 10:56:32,288 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:56:32,290 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 10:56:32,291 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 10:56:32,291 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:56:32,293 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 10:56:32,293 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 10:56:32,294 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:56:32,322 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 10:56:32,347 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 10:56:32,379 INFO  - Initializing EhCache CacheManager
+2016-09-17 10:56:32,719 INFO  - Using DataSource [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@62b475e2] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 10:56:33,014 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:33,014 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:33,043 INFO  - FrameworkServlet '': initialization completed in 29 ms
+2016-09-17 10:56:34,467 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,467 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,474 INFO  - FrameworkServlet '': initialization completed in 7 ms
+2016-09-17 10:56:34,555 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,555 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,559 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:56:34,565 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,565 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,567 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:34,619 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,620 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,622 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:34,644 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,644 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,655 INFO  - FrameworkServlet '': initialization completed in 11 ms
+2016-09-17 10:56:34,668 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,668 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,673 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:56:34,683 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,684 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,687 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:56:34,799 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,800 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,805 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 10:56:34,823 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,823 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,827 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:56:34,836 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,836 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,841 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 10:56:34,858 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,858 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,861 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:56:34,870 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,870 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,873 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:56:34,882 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,882 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,885 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:56:34,896 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,896 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,899 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:56:34,910 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,910 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,915 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 10:56:34,922 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,922 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,925 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:34,934 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,934 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,939 INFO  - FrameworkServlet '': initialization completed in 5 ms
+2016-09-17 10:56:34,957 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,957 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,959 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:34,970 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:34,970 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:34,972 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:35,008 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:35,008 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:35,017 INFO  - FrameworkServlet '': initialization completed in 9 ms
+2016-09-17 10:56:35,027 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:35,027 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:35,029 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:35,035 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:35,035 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:35,039 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:56:35,050 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:35,050 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:35,052 INFO  - FrameworkServlet '': initialization completed in 1 ms
+2016-09-17 10:56:35,058 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:56:35,058 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:56:35,060 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:56:35,072 INFO  - Closing org.springframework.web.context.support.GenericWebApplicationContext@3738449f: startup date [Sat Sep 17 10:56:24 EET 2016]; root of context hierarchy
+2016-09-17 10:56:35,117 INFO  - Shutting down EhCache CacheManager
+2016-09-17 10:56:35,129 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 10:58:06,249 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:58:06,278 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6500df86, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@402a079c, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@59ec2012, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4cf777e8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2f686d1f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3fee9989, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@73ad2d6]
+2016-09-17 10:58:08,243 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:58:08,244 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@313b2ea6, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2f465398, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@548e6d58, org.springframework.test.context.support.DirtiesContextTestExecutionListener@623a8092, org.springframework.test.context.transaction.TransactionalTestExecutionListener@a1cdc6d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@175b9425, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3098cf3b]
+2016-09-17 10:58:08,253 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:58:08,254 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@394a2528, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6236eb5f, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7c1e2a9e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@fa36558, org.springframework.test.context.transaction.TransactionalTestExecutionListener@672872e1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@32910148, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3f56875e]
+2016-09-17 10:58:08,262 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+2016-09-17 10:58:08,263 INFO  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@55740540, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@60015ef5, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2f54a33d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1018bde2, org.springframework.test.context.transaction.TransactionalTestExecutionListener@65b3f4a4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@f2ff811, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@568ff82]
+2016-09-17 10:58:08,527 INFO  - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2cd2a21f: startup date [Sat Sep 17 10:58:08 EET 2016]; root of context hierarchy
+2016-09-17 10:58:09,032 INFO  - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:58:09,033 INFO  - Overriding bean definition for bean 'ehCacheManagerFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:58:09,033 INFO  - Overriding bean definition for bean 'sessionFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:58:09,034 INFO  - Overriding bean definition for bean 'cacheManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=abstractIntegrationTest.TestPersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in integration.by.it.academy.adorop.web.controllers.AbstractIntegrationTest$TestPersistenceConfig]
+2016-09-17 10:58:09,244 INFO  - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2016-09-17 10:58:09,537 INFO  - Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2016-09-17 10:58:09,689 INFO  - Executing SQL script from class path resource [courses-ddl.sql]
+2016-09-17 10:58:09,740 INFO  - Executed SQL script from class path resource [courses-ddl.sql] in 51 ms.
+2016-09-17 10:58:09,740 INFO  - Executing SQL script from class path resource [courses-data.sql]
+2016-09-17 10:58:09,748 INFO  - Executed SQL script from class path resource [courses-data.sql] in 8 ms.
+2016-09-17 10:58:10,011 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 10:58:10,012 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 10:58:10,014 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 10:58:10,101 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 10:58:10,284 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 10:58:11,052 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 10:58:12,275 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53ed80d3, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c011174, org.springframework.security.web.header.HeaderWriterFilter@3fb9a67f, org.springframework.security.web.authentication.logout.LogoutFilter@59a79443, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@41184371, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@480b57e2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@443faa85, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ba060f3, org.springframework.security.web.session.SessionManagementFilter@673c4f6e, org.springframework.security.web.access.ExceptionTranslationFilter@1fd9893c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6993c8df]
+2016-09-17 10:58:13,066 INFO  - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@2cd2a21f: startup date [Sat Sep 17 10:58:08 EET 2016]; root of context hierarchy
+2016-09-17 10:58:13,182 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 10:58:13,183 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 10:58:13,184 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 10:58:13,184 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 10:58:13,191 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:58:13,191 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:58:13,192 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 10:58:13,192 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 10:58:13,194 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 10:58:13,194 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 10:58:13,195 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:58:13,197 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 10:58:13,197 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 10:58:13,197 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:58:13,242 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 10:58:13,267 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 10:58:13,304 INFO  - Initializing EhCache CacheManager
+2016-09-17 10:58:13,521 INFO  - Using DataSource [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@4d705112] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 10:58:13,706 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:13,706 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:13,723 INFO  - FrameworkServlet '': initialization completed in 17 ms
+2016-09-17 10:58:14,812 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:14,813 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:14,816 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:58:15,064 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,064 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,072 INFO  - FrameworkServlet '': initialization completed in 8 ms
+2016-09-17 10:58:15,098 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,098 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,100 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:15,128 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,128 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,130 INFO  - FrameworkServlet '': initialization completed in 1 ms
+2016-09-17 10:58:15,363 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,363 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,365 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:15,474 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,474 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,484 INFO  - FrameworkServlet '': initialization completed in 10 ms
+2016-09-17 10:58:15,506 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,506 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,510 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:58:15,660 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,660 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,662 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:15,789 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,789 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,791 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:15,804 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,804 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,806 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:15,836 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,836 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,843 INFO  - FrameworkServlet '': initialization completed in 7 ms
+2016-09-17 10:58:15,868 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,868 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,874 INFO  - FrameworkServlet '': initialization completed in 6 ms
+2016-09-17 10:58:15,916 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,916 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,922 INFO  - FrameworkServlet '': initialization completed in 6 ms
+2016-09-17 10:58:15,956 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:15,956 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:15,960 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:58:16,015 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,015 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,019 INFO  - FrameworkServlet '': initialization completed in 4 ms
+2016-09-17 10:58:16,034 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,034 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,036 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:16,058 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,058 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,061 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:58:16,083 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,084 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,087 INFO  - FrameworkServlet '': initialization completed in 3 ms
+2016-09-17 10:58:16,105 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,105 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,106 INFO  - FrameworkServlet '': initialization completed in 1 ms
+2016-09-17 10:58:16,159 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,159 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,178 INFO  - FrameworkServlet '': initialization completed in 19 ms
+2016-09-17 10:58:16,190 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,190 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,201 INFO  - FrameworkServlet '': initialization completed in 11 ms
+2016-09-17 10:58:16,291 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,291 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,293 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:16,339 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,339 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,341 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:16,351 INFO  - Initializing Spring FrameworkServlet ''
+2016-09-17 10:58:16,351 INFO  - FrameworkServlet '': initialization started
+2016-09-17 10:58:16,354 INFO  - FrameworkServlet '': initialization completed in 2 ms
+2016-09-17 10:58:16,387 INFO  - Closing org.springframework.web.context.support.GenericWebApplicationContext@2cd2a21f: startup date [Sat Sep 17 10:58:08 EET 2016]; root of context hierarchy
+2016-09-17 10:58:16,396 INFO  - Shutting down EhCache CacheManager
+2016-09-17 10:58:16,404 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 10:58:29,866 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2016-09-17 10:58:29,881 INFO  - Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2016-09-17 10:58:29,884 INFO  - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+2016-09-17 10:58:30,144 INFO  - Refreshing org.springframework.context.support.GenericApplicationContext@4f7d0008: startup date [Sat Sep 17 10:58:30 EET 2016]; root of context hierarchy
+2016-09-17 10:58:31,043 INFO  - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:31,046 INFO  - Overriding bean definition for bean 'ehCacheManagerFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:31,046 INFO  - Overriding bean definition for bean 'sessionFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:31,047 INFO  - Overriding bean definition for bean 'cacheManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:31,049 INFO  - Overriding bean definition for bean 'courseDaoImpl' with a different definition: replacing [Generic bean: class [by.it.academy.adorop.dao.implementations.CourseDaoImpl]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [E:\JAVA\projects\elective-courses\dao\target\classes\by\it\academy\adorop\dao\implementations\CourseDaoImpl.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=serviceTestConfigWithMocks; factoryMethodName=courseDaoImpl; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.with.mocks.ServiceTestConfigWithMocks]
+2016-09-17 10:58:31,882 INFO  - Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2016-09-17 10:58:32,047 INFO  - Executing SQL script from class path resource [courses-ddl.sql]
+2016-09-17 10:58:32,106 INFO  - Executed SQL script from class path resource [courses-ddl.sql] in 59 ms.
+2016-09-17 10:58:32,106 INFO  - Executing SQL script from class path resource [courses-data.sql]
+2016-09-17 10:58:32,112 INFO  - Executed SQL script from class path resource [courses-data.sql] in 6 ms.
+2016-09-17 10:58:32,242 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 10:58:32,243 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 10:58:32,244 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 10:58:32,294 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 10:58:32,388 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 10:58:33,104 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 10:58:33,805 INFO  - Initializing EhCache CacheManager
+2016-09-17 10:58:33,980 INFO  - Using DataSource [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@57c47a9e] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 10:58:34,075 INFO  - Closing org.springframework.context.support.GenericApplicationContext@4f7d0008: startup date [Sat Sep 17 10:58:30 EET 2016]; root of context hierarchy
+2016-09-17 10:58:34,081 INFO  - Shutting down EhCache CacheManager
+2016-09-17 10:58:34,086 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 10:58:45,317 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2016-09-17 10:58:45,334 INFO  - Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2016-09-17 10:58:45,336 INFO  - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@643b1d11, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2ef5e5e3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@36d4b5c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6d00a15d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@51efea79]
+2016-09-17 10:58:45,345 INFO  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2016-09-17 10:58:45,346 INFO  - Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2016-09-17 10:58:45,346 INFO  - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@58651fd0, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4520ebad, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5419f379, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7dc7cbad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@d2cc05a]
+2016-09-17 10:58:45,640 INFO  - Refreshing org.springframework.context.support.GenericApplicationContext@2f686d1f: startup date [Sat Sep 17 10:58:45 EET 2016]; root of context hierarchy
+2016-09-17 10:58:46,452 INFO  - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:46,453 INFO  - Overriding bean definition for bean 'ehCacheManagerFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=ehCacheManagerFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:46,454 INFO  - Overriding bean definition for bean 'sessionFactoryBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=sessionFactoryBean; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:46,454 INFO  - Overriding bean definition for bean 'cacheManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=by.it.academy.adorop.dao.config.PersistenceConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in class by.it.academy.adorop.dao.config.PersistenceConfig] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=persistenceTestConfig; factoryMethodName=cacheManager; initMethodName=null; destroyMethodName=(inferred); defined in by.it.academy.adorop.service.implementations.PersistenceTestConfig]
+2016-09-17 10:58:47,094 INFO  - Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2016-09-17 10:58:47,278 INFO  - Executing SQL script from class path resource [courses-ddl.sql]
+2016-09-17 10:58:47,312 INFO  - Executed SQL script from class path resource [courses-ddl.sql] in 34 ms.
+2016-09-17 10:58:47,312 INFO  - Executing SQL script from class path resource [courses-data.sql]
+2016-09-17 10:58:47,317 INFO  - Executed SQL script from class path resource [courses-data.sql] in 5 ms.
+2016-09-17 10:58:47,448 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 10:58:47,449 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 10:58:47,450 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 10:58:47,507 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 10:58:47,613 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 10:58:48,210 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 10:58:49,057 INFO  - Initializing EhCache CacheManager
+2016-09-17 10:58:49,277 INFO  - Using DataSource [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@7063686f] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 10:58:49,523 WARN  - SQL Error: 23505, SQLState: 23505
+2016-09-17 10:58:49,523 ERROR - Ð�Ð°Ñ€ÑƒÑˆÐµÐ½Ð¸Ðµ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ð¾Ð³Ð¾ Ð¸Ð½Ð´ÐµÐºÑ�Ð° Ð¸Ð»Ð¸ Ð¿ÐµÑ€Ð²Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð°: "CONSTRAINT_INDEX_2 ON PUBLIC.USER(DOCUMENTID) VALUES ('adorop88', 10002)"
+Unique index or primary key violation: "CONSTRAINT_INDEX_2 ON PUBLIC.USER(DOCUMENTID) VALUES ('adorop88', 10002)"; SQL statement:
+insert into User (documentId, firstName, lastName, password, DTYPE, id) values (?, ?, ?, ?, 'Teacher', ?) [23505-191]
+2016-09-17 10:58:49,524 INFO  - HHH000010: On release of batch it still contained JDBC statements
+2016-09-17 10:58:49,525 ERROR - HHH000346: Error during managed flush [could not execute statement]
+2016-09-17 10:58:49,537 INFO  - Closing org.springframework.context.support.GenericApplicationContext@2f686d1f: startup date [Sat Sep 17 10:58:45 EET 2016]; root of context hierarchy
+2016-09-17 10:58:49,542 INFO  - Shutting down EhCache CacheManager
+2016-09-17 10:58:49,546 INFO  - Shutting down embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2016-09-17 10:59:19,510 INFO  - FrameworkServlet 'dispatcher': initialization started
+2016-09-17 10:59:19,518 INFO  - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 10:59:19 EET 2016]; root of context hierarchy
+2016-09-17 10:59:19,587 INFO  - Registering annotated classes: [class by.it.academy.adorop.web.infrastructure.WebConfig]
+2016-09-17 10:59:21,347 INFO  - HHH000412: Hibernate Core {5.0.7.Final}
+2016-09-17 10:59:21,350 INFO  - HHH000206: hibernate.properties not found
+2016-09-17 10:59:21,352 INFO  - HHH000021: Bytecode provider name : javassist
+2016-09-17 10:59:21,420 INFO  - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-09-17 10:59:21,989 INFO  - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-09-17 10:59:22,671 INFO  - HV000001: Hibernate Validator 5.2.2.Final
+2016-09-17 10:59:24,885 INFO  - Validated configuration attributes
+2016-09-17 10:59:24,891 INFO  - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.access.channel.ChannelProcessingFilter@c963b18, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52dba667, org.springframework.security.web.context.SecurityContextPersistenceFilter@f8f4507, org.springframework.security.web.header.HeaderWriterFilter@5d0e48bd, org.springframework.security.web.authentication.logout.LogoutFilter@4b4a765, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@66af891d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@502e5a2d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@254bb576, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@55be1b7e, org.springframework.security.web.session.SessionManagementFilter@218da622, org.springframework.security.web.access.ExceptionTranslationFilter@1a9eb2db, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6d436f18]
+2016-09-17 10:59:25,452 INFO  - Detected @ExceptionHandler methods in exceptionHandlerAdvice
+2016-09-17 10:59:25,680 INFO  - Mapped "{[/courses/count],methods=[GET],produces=[text/plain]}" onto public java.lang.String by.it.academy.adorop.web.controllers.CourseController.getCount()
+2016-09-17 10:59:25,683 INFO  - Mapped "{[/courses],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.CourseController.createNew(by.it.academy.adorop.model.Course,org.springframework.validation.Errors)
+2016-09-17 10:59:25,683 INFO  - Mapped "{[/courses],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<by.it.academy.adorop.model.Course>> by.it.academy.adorop.web.controllers.CourseController.getBunch(int,int)
+2016-09-17 10:59:25,684 INFO  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String by.it.academy.adorop.web.controllers.LoginController.login()
+2016-09-17 10:59:25,692 INFO  - Mapped "{[/marks],methods=[PUT],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> by.it.academy.adorop.web.controllers.MarkController.update(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:59:25,693 INFO  - Mapped "{[/marks],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.createNew(by.it.academy.adorop.model.Mark,org.springframework.validation.Errors)
+2016-09-17 10:59:25,693 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId],produces=[application/json;charset=UTF-8]}" onto public java.util.List<by.it.academy.adorop.model.Mark> by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course)
+2016-09-17 10:59:25,693 INFO  - Mapped "{[/marks],methods=[GET],params=[courseId && studentId],produces=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.MarkController.getBy(by.it.academy.adorop.model.Course,by.it.academy.adorop.model.users.Student)
+2016-09-17 10:59:25,696 INFO  - Mapped "{[/students],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.StudentController.mainPage()
+2016-09-17 10:59:25,696 INFO  - Mapped "{[/students],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.StudentController.createNew(by.it.academy.adorop.model.users.Student,org.springframework.validation.Errors)
+2016-09-17 10:59:25,696 INFO  - Mapped "{[/students/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:59:25,698 INFO  - Mapped "{[/teachers],methods=[GET],produces=[text/html]}" onto public java.lang.String by.it.academy.adorop.web.controllers.TeacherController.main()
+2016-09-17 10:59:25,699 INFO  - Mapped "{[/teachers],methods=[POST],consumes=[application/json;charset=UTF-8]}" onto public org.springframework.http.ResponseEntity by.it.academy.adorop.web.controllers.TeacherController.createNew(by.it.academy.adorop.model.users.Teacher,org.springframework.validation.Errors)
+2016-09-17 10:59:25,699 INFO  - Mapped "{[/teachers/current],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public U by.it.academy.adorop.web.controllers.AbstractUserController.getCurrent(U)
+2016-09-17 10:59:25,767 INFO  - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 10:59:19 EET 2016]; root of context hierarchy
+2016-09-17 10:59:25,865 INFO  - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-17 10:59:25,894 INFO  - Initializing EhCache CacheManager
+2016-09-17 10:59:26,138 INFO  - Using DataSource [JDBC URL = jdbc:mysql://localhost:3306/elective_courses?useEncoding=yes&useSSL=false&characterEncoding=UTF-8, Username = root, partitions = 1, max (per partition) = 10, min (per partition) = 0, idle max age = 60 min, idle test period = 240 min, strategy = DEFAULT] of Hibernate SessionFactory for HibernateTransactionManager
+2016-09-17 10:59:26,282 INFO  - FrameworkServlet 'dispatcher': initialization completed in 6771 ms
+2016-09-17 11:09:14,304 INFO  - Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat Sep 17 10:59:19 EET 2016]; root of context hierarchy
+2016-09-17 11:09:14,335 INFO  - Shutting down EhCache CacheManager
+2016-09-17 11:09:14,369 INFO  - Shutting down connection pool...
+2016-09-17 11:09:14,374 INFO  - Connection pool has been shutdown.

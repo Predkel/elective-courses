@@ -33,7 +33,6 @@ public class CourseControllerTest extends AbstractIntegrationTest {
                 .with(authentication(authenticatedTeacher())))
                 .andExpect(status().isOk())
                 .andExpect(content().string(courseService.getTotalCount().toString()));
-//                .andExpect(jsonPath("$.count").value(courseService.getTotalCount().intValue()));
     }
 
     @Test

@@ -3,6 +3,7 @@ package by.it.academy.adorop.web.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,6 +18,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    Environment environment;
 
     @Autowired
     AuthenticationSuccessHandler authenticationSuccessHandler;
@@ -54,6 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .permitAll()
                 .successHandler(authenticationSuccessHandler);
+
+                if (!environment.acceptsProfiles("test")) {
+                    http.requiresChannel().anyRequest().requiresSecure();
+                }
     }
 
     @Bean
