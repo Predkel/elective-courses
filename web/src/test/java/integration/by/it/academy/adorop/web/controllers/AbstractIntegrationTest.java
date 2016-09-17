@@ -27,6 +27,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @ContextConfiguration(classes = {WebConfig.class, AbstractIntegrationTest.TestPersistenceConfig.class})
 @ActiveProfiles("test")
 public abstract class AbstractIntegrationTest {
+
     protected MockMvc mvc;
     @Autowired
     protected WebApplicationContext context;
