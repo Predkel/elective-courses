@@ -27,6 +27,14 @@ public class CourseControllerTest extends AbstractIntegrationTest {
     private CourseService courseService;
 
     @Test
+    public void getCountShouldReturn401statusCodeWhenAjaxRequestAndUserIsNotAuthorized() throws Exception {
+        mvc.perform(get("/courses/count")
+                .accept(MediaType.TEXT_PLAIN)
+                .header("X-Requested-With", "XMLHttpRequest"))
+                .andExpect(status().is(401));
+    }
+
+    @Test
     public void getCountShouldReturnTheSameResultThatServiceAsString() throws Exception {
         mvc.perform(get("/courses/count")
                 .accept(MediaType.TEXT_PLAIN)
