@@ -22,10 +22,8 @@ import java.sql.SQLException;
 
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ServiceConfig.class, PersistenceTestConfig.class, ServiceTestConfigWithMocks.class})
-@ActiveProfiles("withMocks")
-public class CourseServiceWithMocksTest {
+
+public class CourseServiceWithMocksTest extends IntegrationTestWithMocks {
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -33,11 +31,6 @@ public class CourseServiceWithMocksTest {
     private CourseService courseService;
     @Autowired
     private CourseDAO courseDAO;
-
-    @Before
-    public void setUp() throws Exception {
-        Mockito.reset(courseDAO);
-    }
 
     @Test(expected = ServiceException.class)
     public void shouldThrowServiceExceptionWhenRuntimeExceptionWasThrown() throws Exception {
