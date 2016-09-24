@@ -5,6 +5,5 @@ import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Teacher;
 
 public interface TeacherService extends UserService<Teacher> {
-    void evaluate(Mark mark);
     void addCourse(Teacher teacher, Course course);
 }

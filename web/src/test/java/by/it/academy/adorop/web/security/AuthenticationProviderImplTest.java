@@ -53,7 +53,7 @@ public class AuthenticationProviderImplTest {
 
     @Test(expected = UsernameNotFoundException.class)
     public void authenticateShouldThrowUserNotFoundExceptionWhenStudentWithGivenDocumentIdDoesNotExist() throws Exception {
-        when(studentService.getSingleResultBy(anyString(), anyObject())).thenReturn(null);
+        when(studentService.findSingleResultBy(anyString(), anyObject())).thenReturn(null);
         authenticationProvider.authenticate(authentication);
     }
 
@@ -72,7 +72,7 @@ public class AuthenticationProviderImplTest {
     private void whenStudentServiceReturnsStudentWith(String password) {
         Student student = new Student();
         student.setPassword(password);
-        when(studentService.getSingleResultBy(anyString(), anyObject())).thenReturn(student);
+        when(studentService.findSingleResultBy(anyString(), anyObject())).thenReturn(student);
     }
 
     @Test

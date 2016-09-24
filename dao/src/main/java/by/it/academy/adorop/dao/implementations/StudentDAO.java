@@ -14,7 +14,7 @@ public class StudentDAO extends BasicUserDAO<Student> {
     }
 
     @Override
-    protected Class<Student> getPersistedClass() {
+    protected Class<Student> persistedClass() {
         return Student.class;
     }
 }

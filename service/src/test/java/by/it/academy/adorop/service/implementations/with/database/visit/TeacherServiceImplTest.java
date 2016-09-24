@@ -42,12 +42,12 @@ public class TeacherServiceImplTest {
         teacher.setPassword("password");
         teacher.setFirstName("anyName");
         teacher.setLastName("anyName");
-        teacherService.persist(teacher);
+        teacherService.save(teacher);
     }
 
     @Test
     public void getSingleResultShouldReturnTeacherFromDatabase() throws Exception {
-        Teacher existingTeacher = teacherService.getSingleResultBy("documentId", "adorop");
+        Teacher existingTeacher = teacherService.findSingleResultBy("documentId", "adorop");
         assertEquals("adorop", existingTeacher.getDocumentId());
         assertEquals("1234", existingTeacher.getPassword());
         assertEquals("first Name", existingTeacher.getFirstName());

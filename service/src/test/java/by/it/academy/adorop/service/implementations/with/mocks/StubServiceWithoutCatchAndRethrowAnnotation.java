@@ -14,6 +14,6 @@ public class StubServiceWithoutCatchAndRethrowAnnotation {
     }
 
     public void test() {
-        courseDAO.getAll();
+        courseDAO.findAll();
     }
 }

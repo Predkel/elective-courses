@@ -32,6 +32,6 @@ public class CourseServiceImpl extends BasicService<Course, Long> implements Cou
         Map<String, Object> uniquePropertiesToValues = new HashMap<>();
         uniquePropertiesToValues.put("title", course.getTitle());
         uniquePropertiesToValues.put("teacher.id", course.getTeacher().getId());
-        return !courseDAO.getBy(uniquePropertiesToValues).isEmpty();
+        return courseDAO.findSingleResultBy(uniquePropertiesToValues) != null;
     }
 }

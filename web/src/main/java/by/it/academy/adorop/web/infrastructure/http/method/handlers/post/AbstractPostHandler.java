@@ -17,7 +17,7 @@ public abstract class AbstractPostHandler<T, ID extends Serializable> implements
         if (alreadyExists(entity)) {
             return withoutBody(HttpStatus.CONFLICT);
         }
-        service().persist(entity);
+        service().save(entity);
         return withoutBody(HttpStatus.CREATED);
     }
 

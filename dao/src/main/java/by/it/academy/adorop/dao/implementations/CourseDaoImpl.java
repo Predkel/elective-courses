@@ -17,7 +17,7 @@ public class CourseDaoImpl extends BasicDAO<Course, Long> implements CourseDAO {
     }
 
     @Override
-    protected Class<Course> getPersistedClass() {
+    protected Class<Course> persistedClass() {
         return Course.class;
     }
 }

@@ -30,7 +30,7 @@ public class CourseServiceImplTest {
 
     @Test
     public void testGetCount() throws Exception {
-        assertSame(3L, courseService.getTotalCount());
+        assertSame(3L, courseService.getCount());
     }
 
     @Test

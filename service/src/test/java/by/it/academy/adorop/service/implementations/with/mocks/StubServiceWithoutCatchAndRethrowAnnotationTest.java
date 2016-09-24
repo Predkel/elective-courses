@@ -15,7 +15,7 @@ public class StubServiceWithoutCatchAndRethrowAnnotationTest extends Integration
 
     @Test(expected = HibernateException.class)
     public void shouldThrowTheSameExceptionThatInDaoWathThrown() throws Exception {
-        when(courseDAO.getAll()).thenThrow( new HibernateException(""));
+        when(courseDAO.findAll()).thenThrow( new HibernateException(""));
         stubServiceWithoutCatchAndRethrowAnnotation.test();
     }
 }

@@ -1,17 +1,24 @@
 package by.it.academy.adorop.service.api;
 
+import javafx.util.Pair;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 public interface Service<T, ID extends Serializable> {
-    List<T> getAll();
+    ID save(T entity);
     T find(ID id);
-    Long getTotalCount();
-    List<T> getBunch(int firstResult, int maxResult);
-    T persist(T entity);
+    List<T> findAll();
+    T findSingleResultBy(String propertyName, Object property);
+    T findSingleResultBy(Pair<String, Object> firstProperty, Pair<String, Object> secondProperty);
+    T findSingleResultBy(Map<String, Object> properties);
+    List<T> findBy(String propertyName, Object property);
+    List<T> findBy(Pair<String, Object> firstProperty, Pair<String, Object> secondProperty);
+    List<T> findBy(Map<String, Object> properties);
     void update(T entity);
+    T delete(T entity);
     boolean isAlreadyExists(T entity);
-    T getSingleResultBy(String nameOfUniqueProperty, Object value);
-    T getSingleResultBy(Map<String, Object> namesOfUniquePropertiesToValues);
+    Long getCount();
+    List<T> getBunch(int firstResult, int maxResults);
 }

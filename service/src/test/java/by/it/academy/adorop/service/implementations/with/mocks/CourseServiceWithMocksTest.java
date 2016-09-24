@@ -35,18 +35,18 @@ public class CourseServiceWithMocksTest extends IntegrationTestWithMocks {
     @Test(expected = ServiceException.class)
     public void shouldThrowServiceExceptionWhenRuntimeExceptionWasThrown() throws Exception {
         when(courseDAO.getCount()).thenThrow(new RuntimeException());
-        courseService.getTotalCount();
+        courseService.getCount();
     }
 
     @Test(expected = ServiceException.class)
     public void shouldThrowServiceExceptionWhenSubClassOfRuntimeExceptionWasThrown() {
         when(courseDAO.getCount()).thenThrow(new HibernateException("test"));
-        courseService.getTotalCount();
+        courseService.getCount();
     }
 
     @Test(expected = ServiceException.class)
     public void shouldThrowServiceExceptionWhenSubClassOfHibernateExceptionWasThrown() throws Exception {
         when(courseDAO.getCount()).thenThrow(new ConstraintViolationException("test", new SQLException(), "test"));
-        courseService.getTotalCount();
+        courseService.getCount();
     }
 }

@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class BasicUserDAO<T extends User> extends BasicDAO<T, Long> implements UserDAO <T>{
 
@@ -19,7 +20,10 @@ public abstract class BasicUserDAO<T extends User> extends BasicDAO<T, Long> imp
     @SuppressWarnings("unchecked")
     public List<User> getFromAllUsersBy(Map<String, Object> propertiesNameToValues) {
         Criteria criteria = currentSession().createCriteria(User.class);
-        addRestrictions(propertiesNameToValues,criteria);
+        Set<Map.Entry<String, Object>> entries = propertiesNameToValues.entrySet();
+        for (Map.Entry<String, Object> propertyToValue : entries) {
+            criteria.add(Restrictions.eq(propertyToValue.getKey(), propertyToValue.getValue()));
+        }
         return criteria.list();
     }
 

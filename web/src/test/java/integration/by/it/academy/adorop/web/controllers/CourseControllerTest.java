@@ -27,6 +27,14 @@ public class CourseControllerTest extends AbstractIntegrationTest {
     private CourseService courseService;
 
     @Test
+    public void testGetBy() throws Exception {
+        mvc.perform(get("/courses?title=title_0")
+                .with(authentication(authenticatedStudent()))
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].title").value("title_0"));
+    }
+
+    @Test
     public void getCountShouldReturn401statusCodeWhenAjaxRequestAndUserIsNotAuthorized() throws Exception {
         mvc.perform(get("/courses/count")
                 .accept(MediaType.TEXT_PLAIN)
@@ -40,7 +48,7 @@ public class CourseControllerTest extends AbstractIntegrationTest {
                 .accept(MediaType.TEXT_PLAIN)
                 .with(authentication(authenticatedTeacher())))
                 .andExpect(status().isOk())
-                .andExpect(content().string(courseService.getTotalCount().toString()));
+                .andExpect(content().string(courseService.getCount().toString()));
     }
 
     @Test
@@ -74,7 +82,7 @@ public class CourseControllerTest extends AbstractIntegrationTest {
         String newTitle = "newTitle";
         performCreateNewWithValidAuthenticationAnd(newTitle)
                 .andExpect(status().is(201));
-        assertNotNull(courseService.getSingleResultBy("title", newTitle));
+        assertNotNull(courseService.findSingleResultBy("title", newTitle));
     }
 
     @Test

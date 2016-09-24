@@ -24,12 +24,6 @@ public class StudentServiceImpl extends BasicUserService<Student> implements Stu
         this.markDAO = markDAO;
     }
 
-
-    @Override
-    public void registerForTheCourse(Student student, Course course) {
-        markDAO.persist(new Mark(student, course));
-    }
-
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
     public boolean isCourseListener(Student student, Course course) {

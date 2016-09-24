@@ -37,7 +37,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         String documentId = authentication.getName();
         User user = null;
         for (UserService userService : userServices) {
-            user = (User) userService.getSingleResultBy("documentId", documentId);
+            user = (User) userService.findSingleResultBy("documentId", documentId);
             if (user != null) {
                 break;
             }

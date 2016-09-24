@@ -36,7 +36,7 @@ public class MarkDAOImpl extends BasicDAO<Mark, Long> implements MarkDAO {
     }
 
     @Override
-    protected Class<Mark> getPersistedClass() {
+    protected Class<Mark> persistedClass() {
         return Mark.class;
     }
 }

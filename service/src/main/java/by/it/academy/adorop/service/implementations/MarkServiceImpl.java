@@ -46,6 +46,6 @@ public class MarkServiceImpl extends BasicService<Mark, Long> implements MarkSer
         Map<String, Object> uniquePropertiesToValues = new HashMap<>();
         uniquePropertiesToValues.put("student.id", mark.getStudent().getId());
         uniquePropertiesToValues.put("course.id", mark.getCourse().getId());
-        return !markDAO.getBy(uniquePropertiesToValues).isEmpty();
+        return markDAO.findSingleResultBy(uniquePropertiesToValues) != null;
     }
 }

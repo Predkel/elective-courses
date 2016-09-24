@@ -11,7 +11,7 @@ import java.util.Map;
 public abstract class AbstractGetHandler<T, ID extends Serializable> implements GetHandler<T> {
     @Override
     public ResponseEntity getBy(Map<String, Object> properties) {
-        T entity = service().getSingleResultBy(properties);
+        T entity = service().findSingleResultBy(properties);
         if (entity == null) {
             return ResponseEntity.status(HttpStatus.OK).body("{}");
         }

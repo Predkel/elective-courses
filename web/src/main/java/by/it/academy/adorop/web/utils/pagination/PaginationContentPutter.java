@@ -32,7 +32,7 @@ public class PaginationContentPutter {
     private static<T, ID extends Serializable> void putPagesNumbers(HttpServletRequest request,
                                                                     Paginator paginator,
                                                                     Service<T, ID> service) {
-        Long totalCount = service.getTotalCount();
+        Long totalCount = service.getCount();
         List<Integer> pagesNumbers = paginator.getPagesNumbers(totalCount);
         request.setAttribute("numbersOfPages", pagesNumbers);
     }
