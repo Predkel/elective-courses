@@ -14,13 +14,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ServiceConfig.class, PersistenceTestConfig.class})
-public class CourseServiceImplTest {
+public class CourseServiceImplTest extends AbstractIntegrationTest {
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -28,10 +30,10 @@ public class CourseServiceImplTest {
     @Qualifier("courseServiceImpl")
     private CourseService courseService;
 
-    @Test
-    public void testGetCount() throws Exception {
-        assertSame(3L, courseService.getCount());
-    }
+//    @Test
+//    public void testGetCount() throws Exception {
+//        assertSame(3L, courseService.getCount());
+//    }
 
     @Test
     public void isAlreadyExistShouldReturnFalse() throws Exception {
@@ -59,5 +61,13 @@ public class CourseServiceImplTest {
         teacher.setId(1L);
         course.setTeacher(teacher);
         return course;
+    }
+
+    @Test
+    public void name() throws Exception {
+        Map<String, Object> restrictions = new HashMap<>();
+        restrictions.put("teacher.firstName", "first Name");
+        List<Course> result = courseService.findBy(restrictions);
+        assertSame(3, result.size());
     }
 }

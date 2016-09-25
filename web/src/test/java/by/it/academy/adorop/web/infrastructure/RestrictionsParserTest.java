@@ -74,6 +74,32 @@ public class RestrictionsParserTest {
         assertContainsValue(restrictions, "123");
     }
 
+    @Test
+    public void testNestedRestrictions() throws Exception {
+        Map<String, Object> restrictions = getRestrictionsWith("teacher.firstName", "wayne", Course.class);
+        assertSize(restrictions, 1);
+        assertContainsParamName(restrictions, "teacher.firstName");
+        assertContainsValue(restrictions, "wayne");
+    }
+
+    @Test
+    public void testMultipleNestedRestrictions() throws Exception {
+        String studentFirstNameParameterName = "student.firstName";
+        String studentLastNameParameterName = "student.lastName";
+        String courseTeacherIdParameterName = "course.teacher.id";
+        Map<String, Object> restrictions = getRestrictionsWith(Mark.class,
+                new Pair<>(studentFirstNameParameterName, "wayne"),
+                new Pair<>(studentLastNameParameterName, "rooney"),
+                new Pair<>(courseTeacherIdParameterName, "1"));
+        assertSize(restrictions, 3);
+        assertContainsParamName(restrictions, studentFirstNameParameterName);
+        assertContainsParamName(restrictions, studentLastNameParameterName);
+        assertContainsParamName(restrictions, courseTeacherIdParameterName);
+        assertEquals(restrictions.get(studentFirstNameParameterName), "wayne");
+        assertEquals(restrictions.get(studentLastNameParameterName), "rooney");
+        assertEquals(restrictions.get(courseTeacherIdParameterName), 1L);
+    }
+
     private Map<String, Object> getRestrictionsWith(Class retriedClass, Pair<String, String>... parameters) {
         return restrictionsParser.parse(getMapWithParameters(parameters), retriedClass);
     }

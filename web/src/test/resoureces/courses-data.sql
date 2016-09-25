@@ -1,4 +1,4 @@
-INSERT INTO `user` VALUES ('Teacher',1,'adorop','first Name','Last Name','1234'),
+INSERT INTO `user` VALUES ('Teacher',1,'adorop','firstName','Last Name','1234'),
   ('Student',10002,'adorop88','1stName','lastName','1234'),('Student',10003,'rooney','wayne ','','123'),
   ('Teacher', 3, 'document', 'teacher', 'teacher', '123');
 

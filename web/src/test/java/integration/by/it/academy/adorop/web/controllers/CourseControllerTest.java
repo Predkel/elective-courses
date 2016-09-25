@@ -35,6 +35,14 @@ public class CourseControllerTest extends AbstractIntegrationTest {
     }
 
     @Test
+    public void testGetByWithNestedRestrictions() throws Exception {
+        mvc.perform(get("/courses?teacher.firstName=firstName")
+                .with(authentication(authenticatedStudent()))
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.[0].title").value("title_0"));
+    }
+
+    @Test
     public void getCountShouldReturn401statusCodeWhenAjaxRequestAndUserIsNotAuthorized() throws Exception {
         mvc.perform(get("/courses/count")
                 .accept(MediaType.TEXT_PLAIN)
@@ -51,24 +59,24 @@ public class CourseControllerTest extends AbstractIntegrationTest {
                 .andExpect(content().string(courseService.getCount().toString()));
     }
 
-    @Test
-    public void getBunchShouldReturn400statusCodeWhenOneOfParametersIsNegativeNumber() throws Exception {
-        performGetBunchWith("-1", "10")
-                .andExpect(status().is(400));
-    }
+//    @Test
+//    public void getBunchShouldReturn400statusCodeWhenOneOfParametersIsNegativeNumber() throws Exception {
+//        performGetBunchWith("-1", "10")
+//                .andExpect(status().is(400));
+//    }
+//
+//    @Test
+//    public void getBunchShouldReturnCoursesFromDatabaseWhenRequestIsValid() throws Exception {
+//        performGetBunchWith("1", "10")
+//                .andExpect(jsonPath("$.[0].teacher.documentId").value("adorop"))
+//                .andExpect(jsonPath("$.[2].title").value("title_4"));
+//    }
 
-    @Test
-    public void getBunchShouldReturnCoursesFromDatabaseWhenRequestIsValid() throws Exception {
-        performGetBunchWith("1", "10")
-                .andExpect(jsonPath("$.[0].teacher.documentId").value("adorop"))
-                .andExpect(jsonPath("$.[2].title").value("title_4"));
-    }
-
-    private ResultActions performGetBunchWith(String firstResult, String maxResults) throws Exception {
-        return mvc.perform(get("/courses").with(authentication(authenticatedStudent()))
-                .param("firstResult", firstResult)
-                .param("maxResults", maxResults));
-    }
+//    private ResultActions performGetBunchWith(String firstResult, String maxResults) throws Exception {
+//        return mvc.perform(get("/courses").with(authentication(authenticatedStudent()))
+//                .param("firstResult", firstResult)
+//                .param("maxResults", maxResults));
+//    }
 
     @Test
     public void createNewShouldReturn403statusCodeWhenStudentAttemptsToCreateCourse() throws Exception {

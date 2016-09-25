@@ -78,7 +78,36 @@ public abstract class BasicDAO<T, ID extends Serializable> implements DAO<T, ID>
         Criteria criteria = currentSession().createCriteria(persistedClass());
         Set<Map.Entry<String, Object>> entries = properties.entrySet();
         for (Map.Entry<String, Object> entry : entries) {
-            criteria.add(Restrictions.eq(entry.getKey(), entry.getValue()));
+            String propertyName = entry.getKey();
+            String[] namesOfNestedProperties = propertyName.split("\\.");
+            int length = namesOfNestedProperties.length;
+            if (!propertyName.contains(".")) {
+                criteria.add(Restrictions.eq(propertyName, entry.getValue()));
+            } else {
+//                String associationPath = propertyName.substring(0, propertyName.lastIndexOf("."));
+//                String alias = associationPath.replace(".", "_");
+                Criteria subCriteria = criteria.createCriteria(namesOfNestedProperties[0]);
+                for (int i = 1; i < length - 1; i++) {
+                    subCriteria = subCriteria.createCriteria(namesOfNestedProperties[i]);
+                }
+                String restrictingProperty = namesOfNestedProperties[length - 1];
+                subCriteria.add(Restrictions.eq(restrictingProperty, entry.getValue()));
+//                criteria.createAlias(associationPath, alias);
+//                criteria.add(Restrictions.sqlRestriction(propertyName + "=" + entry.getValue().toString()));
+//                String alias = namesOfNestedProperties[0];
+//                criteria.createAlias(alias, alias);
+//                for (int i = 1; i < length - 1; i++) {
+////                    alias += "." + namesOfNestedProperties[i];
+//                    String associationPath = namesOfNestedProperties[i-1] + "." + namesOfNestedProperties[i];
+//                    alias = namesOfNestedProperties[i-1] + "_" + namesOfNestedProperties[i];
+////                    alias = namesOfNestedProperties[i];
+//                    criteria.createAlias(associationPath, alias);
+//                }
+//                String lastNameOfNestedProperty = namesOfNestedProperties[length -2] + "." + namesOfNestedProperties[length - 1];
+////                criteria.add(Restrictions.eq(lastNameOfNestedProperty, entry.getValue()));
+//                String restrictingProperty = namesOfNestedProperties[length - 2] + "." + namesOfNestedProperties[length - 1];
+//                criteria.add(Restrictions.eq(restrictingProperty, entry.getValue()));
+            }
         }
         return criteria;
     }
