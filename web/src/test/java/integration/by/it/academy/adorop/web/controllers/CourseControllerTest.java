@@ -28,18 +28,26 @@ public class CourseControllerTest extends AbstractIntegrationTest {
 
     @Test
     public void testGetBy() throws Exception {
-        mvc.perform(get("/courses?title=title_0")
-                .with(authentication(authenticatedStudent()))
-                .accept(MediaType.APPLICATION_JSON_UTF8))
+        performGetBy("title", "title_0")
                 .andExpect(jsonPath("$.[0].title").value("title_0"));
     }
 
     @Test
     public void testGetByWithNestedRestrictions() throws Exception {
-        mvc.perform(get("/courses?teacher.firstName=firstName")
-                .with(authentication(authenticatedStudent()))
-                .accept(MediaType.APPLICATION_JSON_UTF8))
+        performGetBy("teacher.firstName", "firstName")
                 .andExpect(jsonPath("$.[0].title").value("title_0"));
+    }
+
+    @Test
+    public void getByShouldReturn400statusCodeWhenRestrictedPropertyDoesNotExist() throws Exception {
+        performGetBy("title.someProperty", "someValue").andExpect(status().is(400));
+    }
+
+    private ResultActions performGetBy(String parameterName, String parameterValue) throws Exception {
+        return mvc.perform(get("/courses")
+                .with(authentication(authenticatedStudent()))
+                .param(parameterName, parameterValue)
+                .accept(MediaType.APPLICATION_JSON_UTF8));
     }
 
     @Test

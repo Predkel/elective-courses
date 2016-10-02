@@ -24,8 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class MarkControllerTest extends AbstractIntegrationTest {
 
-    @Autowired
-    private MarkService markService;
 
     @Test
     public void createNewShouldReturn201StatusCodeAndSaveNewMarkInDatabaseWhenRequestIsValid() throws Exception {
@@ -103,7 +101,7 @@ public class MarkControllerTest extends AbstractIntegrationTest {
         mvc.perform(get("/marks?courseId=9&studentId=10002")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .with(authentication(authenticatedStudent())))
-                .andExpect(status().is(200))
+                .andExpect(status().is(204))
                 .andExpect(jsonPath("$").isEmpty());
     }
 

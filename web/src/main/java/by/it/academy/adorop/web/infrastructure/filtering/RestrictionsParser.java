@@ -1,7 +1,11 @@
-package by.it.academy.adorop.web.infrastructure;
+package by.it.academy.adorop.web.infrastructure.filtering;
 
+import by.it.academy.adorop.web.infrastructure.exceptions.RequestedPropertyDoesNotExistException;
+import org.springframework.beans.PropertyAccessException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -15,22 +19,18 @@ public class RestrictionsParser {
         for (String parameterName : parametersNames) {
             for (Field declaredField : allDeclaredFields) {
                 String fieldName = declaredField.getName();
-                if (parameterName.split("\\.")[0].equals(fieldName)) {
-                    if (parameterName.equals(fieldName)) {
+                String[] propertiesChain = parameterName.split("\\.");
+                if (propertiesChain[0].equals(fieldName)) {
+                    if (propertiesChain.length == 1) {
                         putScalarValue(parameters, restrictions, parameterName, declaredField);
                     } else {
-                        String[] namesOfNestedFields = parameterName.split("\\.");
-                        for (int i = 0; i < namesOfNestedFields.length - 1; i++) {
+                        for (int i = 0; i < propertiesChain.length - 1; i++) {
                             try {
                                 Class<?> typeOfNestedField = declaredField.getType();
-                                fieldName = namesOfNestedFields[i + 1];
+                                fieldName = propertiesChain[i + 1];
                                 declaredField = findDeclaredFieldByName(typeOfNestedField, fieldName);
-                                if (declaredField == null) {
-                                    //// TODO: 25.09.2016
-                                    throw new TypeMismatchException("", Object.class);
-                                }
                             } catch (NoSuchFieldException e) {
-                                e.printStackTrace();
+                                throw new RequestedPropertyDoesNotExistException(e);
                             }
                         }
                             putScalarValue(parameters, restrictions, parameterName, declaredField);
@@ -42,6 +42,9 @@ public class RestrictionsParser {
     }
 
     private Field findDeclaredFieldByName(Class<?> clazz, String nameOfSearchedField) throws NoSuchFieldException {
+        if (clazz == Object.class) {
+            throw new NoSuchFieldException();
+        }
         Field[] declaredFields = clazz.getDeclaredFields();
 
         for (Field declaredField : declaredFields) {
@@ -49,16 +52,9 @@ public class RestrictionsParser {
             if (fieldName.equals(nameOfSearchedField)) {
                 return clazz.getDeclaredField(nameOfSearchedField);
             }
-            if (clazz == Object.class) {
-                return null;
-            }
         }
         clazz = clazz.getSuperclass();
         return findDeclaredFieldByName(clazz, nameOfSearchedField);
-    }
-
-    private boolean isLastIteration(String[] namesOfNestedFields, int i) {
-        return i + 1 == namesOfNestedFields.length;
     }
 
     private void putScalarValue(Map<String, String> parameters, Map<String, Object> restrictions, String parameterName, Field declaredField) {

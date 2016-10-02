@@ -1,16 +1,11 @@
-package by.it.academy.adorop.web.infrastructure;
+package by.it.academy.adorop.web.infrastructure.exceptions;
 
 import by.it.academy.adorop.service.exceptions.ServiceException;
 import org.apache.log4j.Logger;
-import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ExceptionHandlerAdvice {

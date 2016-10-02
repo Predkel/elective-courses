@@ -4,6 +4,7 @@ import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.model.users.Teacher;
+import by.it.academy.adorop.web.infrastructure.filtering.RestrictionsParser;
 import javafx.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
