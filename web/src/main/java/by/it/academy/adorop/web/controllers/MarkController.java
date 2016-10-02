@@ -1,16 +1,10 @@
 package by.it.academy.adorop.web.controllers;
 
-import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
-import by.it.academy.adorop.model.users.Student;
-import by.it.academy.adorop.service.api.CourseService;
 import by.it.academy.adorop.service.api.MarkService;
-import by.it.academy.adorop.service.api.StudentService;
-import by.it.academy.adorop.web.infrastructure.filtering.Restrictions;
 import by.it.academy.adorop.web.infrastructure.http.method.handlers.get.GetHandler;
 import by.it.academy.adorop.web.infrastructure.http.method.handlers.post.PostHandler;
 import by.it.academy.adorop.web.infrastructure.http.method.handlers.put.PutHandler;
-import by.it.academy.adorop.web.infrastructure.resolvers.annotations.ModelById;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -23,26 +17,21 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/marks")
 public class MarkController {
-    private final MarkService markService;
     private final Validator validator;
     private final PostHandler<Mark> postHandler;
     private final PutHandler<Mark> putHandler;
-    private final GetHandler<Mark> getHandler;
+    private final GetHandler<Long> getHandler;
 
     @Autowired
-    public MarkController(MarkService markService,
-                          @Qualifier("markValidator") Validator validator,
+    public MarkController(@Qualifier("markValidator") Validator validator,
                           @Qualifier("markPostHandler") PostHandler<Mark> postHandler,
                           @Qualifier("markPutHandler") PutHandler<Mark> putHandler,
-                          @Qualifier("markGetHandler") GetHandler<Mark> getHandler) {
-        this.markService = markService;
+                          @Qualifier("markGetHandler") GetHandler<Long> getHandler) {
         this.validator = validator;
         this.postHandler = postHandler;
         this.putHandler = putHandler;
@@ -54,32 +43,15 @@ public class MarkController {
         webDataBinder.setValidator(validator);
     }
 
+    @RequestMapping
+    public ResponseEntity getBy(@RequestParam Map<String, String> parameters) {
+        return getHandler.getBy(parameters);
+    }
+
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @PreAuthorize("#mark != null and #mark.student != null and #mark.student.equals(principal)")
     public ResponseEntity createNew(@RequestBody @Valid Mark mark, Errors errors) {
         return postHandler.createNew(mark, errors);
-    }
-
-    @RequestMapping(method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            params = {"courseId"})
-    @PreAuthorize("#course.teacher.equals(principal)")
-    @ResponseBody
-    public List<Mark> getBy(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course) {
-        return markService.getByCourse(course);
-    }
-
-    @RequestMapping(method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            params = {"courseId", "studentId"})
-    @ResponseBody
-    @PreAuthorize("principal.equals(#student)")
-    public ResponseEntity getBy(@ModelById(nameOfIdParameter = "courseId", serviceClass = CourseService.class) Course course,
-                      @ModelById(nameOfIdParameter = "studentId", serviceClass = StudentService.class) Student student) {
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("student", student);
-        properties.put("course", course);
-        return getHandler.getBy(properties);
     }
 
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

@@ -24,6 +24,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class MarkControllerTest extends AbstractIntegrationTest {
 
+    @Test
+    public void getByShouldReturn400statusCodeWhenParametersChainIsNotValid() throws Exception {
+        mvc.perform(get("/marks?course.id.teacher=1")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .with(authentication(authenticatedStudent())))
+                .andExpect(status().is(400));
+    }
+
+    @Test
+    public void getByShouldReturn400statusCodeWhenValueParameterIsNotNumeric() throws Exception {
+        mvc.perform(get("/marks?value=abs")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .with(authentication(authenticatedStudent())))
+                .andExpect(status().is(400));
+    }
 
     @Test
     public void createNewShouldReturn201StatusCodeAndSaveNewMarkInDatabaseWhenRequestIsValid() throws Exception {
@@ -75,39 +90,27 @@ public class MarkControllerTest extends AbstractIntegrationTest {
     public void getByCourseShouldReturnJsonListWhenRequestIsValid() throws Exception {
         performGetBySecondCourseWith(authenticatedTeacher())
                 .andExpect(status().is(200))
-                .andExpect(jsonPath("$.[0].student.firstName").value("wayne "))
-                .andExpect(jsonPath("$.[1].value").value(1));;
+                .andExpect(jsonPath("$").isArray());
 
-    }
-
-    @Test
-    public void getByCourseShouldReturn403statusCodeWhenCurrentPrincipalIsNotTeacherOfTheCourse() throws Exception {
-        performGetBySecondCourseWith(authenticatedStudent())
-                .andExpect(status().is(403));
     }
 
     @Test
     public void getByCourseAndStudentShouldReturnMarkFromDatabaseWhenRequestIsValid() throws Exception {
-        performGetBySecondCourseAnd("10002").andExpect(jsonPath("$.id").value(10005));
+        performGetBySecondCourseAnd("10002").andExpect(jsonPath("$.[0].id").value(10005));
     }
 
-    @Test
-    public void getByCourseAndStudentShouldReturn403statusCodeWhenGivenStudentIsNotCurrentPrincipal() throws Exception {
-        performGetBySecondCourseAnd("10003").andExpect(status().is(403));
-    }
 
     @Test
-    public void getByCourseAndStudentShouldReturnNullWhenRequestedMarkDoesNotExist() throws Exception {
-        mvc.perform(get("/marks?courseId=9&studentId=10002")
+    public void getByCourseAndStudent404statusCodeWhenRequestedMarkDoesNotExist() throws Exception {
+        mvc.perform(get("/marks?course.id=9&student.id=10002")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .with(authentication(authenticatedStudent())))
-                .andExpect(status().is(204))
-                .andExpect(jsonPath("$").isEmpty());
+                .andExpect(status().is(404));
     }
 
     private ResultActions performGetBySecondCourseAnd(String studentId) throws Exception {
         return mvc.perform(get("/marks")
-                .param("courseId", "2").param("studentId", studentId)
+                .param("course.id", "2").param("student.id", studentId)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .with(authentication(authenticatedStudent())));
     }

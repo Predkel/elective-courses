@@ -12,4 +12,8 @@ public class RequestParamValidator {
     public static boolean isPositiveNumber(String param) {
         return !isEmpty(param) && param.matches("[0-9]+");
     }
+
+    public static boolean isNumeric(String parameter) {
+        return !isEmpty(parameter) && parameter.matches("-?[0-9]+");
+    }
 }

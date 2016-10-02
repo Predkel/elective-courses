@@ -4,7 +4,7 @@ import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.model.Mark;
 import by.it.academy.adorop.model.users.Student;
 import by.it.academy.adorop.model.users.Teacher;
-import by.it.academy.adorop.web.infrastructure.filtering.RestrictionsParser;
+import by.it.academy.adorop.web.infrastructure.filtering.RestrictionsParserImpl;
 import javafx.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +15,11 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class RestrictionsParserTest {
-    private RestrictionsParser restrictionsParser;
+    private RestrictionsParserImpl restrictionsParser;
 
     @Before
     public void setUp() throws Exception {
-        restrictionsParser = new RestrictionsParser();
+        restrictionsParser = new RestrictionsParserImpl();
     }
 
     @Test

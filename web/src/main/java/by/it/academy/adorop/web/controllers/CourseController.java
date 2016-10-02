@@ -2,7 +2,7 @@ package by.it.academy.adorop.web.controllers;
 
 import by.it.academy.adorop.model.Course;
 import by.it.academy.adorop.service.api.CourseService;
-import by.it.academy.adorop.web.infrastructure.filtering.RestrictionsParser;
+import by.it.academy.adorop.web.infrastructure.filtering.RestrictionsParserImpl;
 import by.it.academy.adorop.web.infrastructure.http.method.handlers.post.PostHandler;
 import by.it.academy.adorop.web.infrastructure.validators.CourseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ import java.util.Map;
 public class CourseController {
     private final CourseService courseService;
     private final PostHandler<Course> postHandler;
-    private final RestrictionsParser restrictionsParser;
+    private final RestrictionsParserImpl restrictionsParser;
 
     @Autowired
-    public CourseController(CourseService courseService, @Qualifier("coursePostHandler") PostHandler<Course> postHandler, RestrictionsParser restrctionsParser) {
+    public CourseController(CourseService courseService, @Qualifier("coursePostHandler") PostHandler<Course> postHandler, RestrictionsParserImpl restrctionsParser) {
         this.courseService = courseService;
         this.postHandler = postHandler;
         this.restrictionsParser = restrctionsParser;
